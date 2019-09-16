@@ -51,8 +51,34 @@ function App() {
 }//App()
 ```
 ## 4. Que son los Componentes en React
-- 
+- Te van a permitir separar el código
+- Te permiten reutilizarlos
+- Son como funciones js
+- Puedes pasar datos de un comp a otro con **props**
+- En react los datos fluyen de comp Padre a Hijo, no al reves.
+- Dos tipos: **class component** y **functional component**
+  - ![class vs function](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5d7fef6652faf333827e91c3/02a51b9bbf012a1f2244e03d327c9b87/image.png)
+- El único método obligatorio de class component es **render**
 ```js
+//PrimerComponente.js
+import React, {Component} from 'react';
+
+class PrimerComponente extends Component {
+    render() { 
+        return ( <h1>Hola Mundo en PrimerComponente</h1> );
+    }
+}
+//App.js
+import PrimerComponente from "./components/PrimerComponente";
+function App() {
+  return (
+    <Fragment>
+      <PrimerComponente/>
+      <PrimerComponente/>
+      <PrimerComponente/>
+    </Fragment>
+  );//return
+}//App()
 ```
 ## 5. Creando un Componente Funcional
 - 
