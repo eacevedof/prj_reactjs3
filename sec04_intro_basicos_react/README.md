@@ -29,7 +29,6 @@ function App() {
 export default App;
 ```
 ## 3. React con JSX
-- 
 ```js
 //App.js
 import React, {Fragment} from 'react';
