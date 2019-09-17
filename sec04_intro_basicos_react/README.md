@@ -190,8 +190,25 @@ class Productos extends Component {
 }//class Productos
 ```
 ## 8. Iterando el State y llamando los Componentes
-- 
+- ![producto en reacttools](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/626x229/4a3309cabf1bfea22f6dde8451370ea6/image.png)
 ```js
+//ListaProductos.js
+	render() { 
+		//aplicando destructuring
+		const {productos} = this.state
+		console.log(productos)
+		return (  
+			<Fragment>
+				<h1>Lista de productos</h1>
+				{productos.map(producto =>(
+					<Producto 
+						key={producto.id} 
+						producto={producto}
+					/>
+				))}
+			</Fragment>
+		)
+	}//render
 ```
 ## 9. Mostrando el Contenido en el Componente
 - 
