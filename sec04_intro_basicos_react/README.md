@@ -109,8 +109,31 @@ const PrimerComponente = () =>  (
 export default PrimerComponente;
 ```
 ## 6. Creando más Componentes
-- 
 ```js
+//Header.js
+const Header = (objprops) => (  
+    <header>
+        <h1>{objprops.titulo}</h1>
+    </header>
+);
+
+//lo mismo que el anterior. Con destructuring
+//extrayendo una propiedad en los parámetros
+const Header = ({titulo}) => (  
+	<header>
+		<h1>{titulo}</h1>
+	</header>
+);
+//Footer.js
+import  React from 'react';
+
+const Footer = ({fecha}) => (  
+	<footer>
+		<p>Todos los derechos reservados &copy;{fecha}</p>
+	</footer>
+);
+ 
+export default Footer;
 ```
 ## 7. Introducción al State de React
 - 
