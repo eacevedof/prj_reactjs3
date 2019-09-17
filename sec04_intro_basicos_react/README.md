@@ -81,8 +81,32 @@ function App() {
 }//App()
 ```
 ## 5. Creando un Componente Funcional
-- 
+- Se puede convertir a un **stateless functional component** un componente si:
+  - no tiene ciclo de vida
+  - no tiene **refs**
+  - no tiene **state**
+- **vscode:** `sfc` 
 ```js
+//PrimerComponente.js
+
+//componente funcional con
+//sintaxis de function expression
+const PrimerComponente = () =>  ( <h1>Hola Mundo en PrimerComponente B</h1> );
+
+//en react se recomienda la sintaxis funcional para la definición del componente
+//y la function expression para los métodos
+function PrimerComponente(){
+    return ( <h1>Hola Mundo en PrimerComponente C</h1> );
+}
+
+//PrimerComponente.js
+import React from 'react';
+
+const PrimerComponente = () =>  ( 
+  <h1>Hola Mundo en PrimerComponente</h1> 
+)
+
+export default PrimerComponente;
 ```
 ## 6. Creando más Componentes
 - 
