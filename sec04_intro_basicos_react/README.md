@@ -135,9 +135,59 @@ const Footer = ({fecha}) => (
  
 export default Footer;
 ```
+
 ## 7. Introducción al State de React
-- 
+- Crearemos un class component pq tendrá **state**
+- **vscode:** 
+  - imrc = `import React, { Component } from 'react';`
+  - cc = `class | extends Componen`
 ```js
+//Productos.js
+//una forma de crear state (recomendada):
+class Productos extends Component {
+	state = {
+		productos: [
+			{ id:1, name: "Camisa ReactJS", precio: 30 },	
+			{ id:2, name: "Camisa VueJs", precio: 30 },
+			{ id:3, name: "Camisa Angular", precio: 30 },
+			{ id:4, name: "Camisa Node.js", precio: 30 },
+		]
+	}
+//otra forma 
+  constructor(props){
+    super(props)
+    this.state = {
+      productos: [
+        { id:1, name: "Camisa ReactJS", precio: 30 },	
+        { id:2, name: "Camisa VueJs", precio: 30 },
+        { id:3, name: "Camisa Angular", precio: 30 },
+        { id:4, name: "Camisa Node.js", precio: 30 },
+      ]
+    }
+  }//constructor
+
+//Productos.js final
+class Productos extends Component {
+
+	state = {
+		productos: [
+			{ id:1, name: "Camisa ReactJS", precio: 30 },	
+			{ id:2, name: "Camisa VueJs", precio: 30 },
+			{ id:3, name: "Camisa Angular", precio: 30 },
+			{ id:4, name: "Camisa Node.js", precio: 30 },
+		]
+	}
+
+	render() { 
+		//aplicando destructuring
+		const {productos} = this.state
+		console.log(productos)
+		return (  
+			<h1>Lista de productos</h1>
+		)
+	}//render
+
+}//class Productos
 ```
 ## 8. Iterando el State y llamando los Componentes
 - 
