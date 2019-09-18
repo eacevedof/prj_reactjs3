@@ -211,8 +211,15 @@ class Productos extends Component {
 	}//render
 ```
 ## 9. Mostrando el Contenido en el Componente
-- 
+- Pinta los productos usando `Producto.js`
 ```js
+//Producto.js
+const Producto = ({producto}) => ( 
+	<div>
+  	<h1>{producto.nombre}</h1> 
+		<p>Precio: {producto.precio}</p>
+	</div>
+);
 ```
 ## 10. Métodos de Ciclo de Vida del Componente
 - 
