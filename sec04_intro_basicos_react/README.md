@@ -222,6 +222,90 @@ const Producto = ({producto}) => (
 );
 ```
 ## 10. Métodos de Ciclo de Vida del Componente
-- 
+- Son métodos o funciones que se ejecutan automáticamente **en el** Componente
+- No se les puede llamar, mejor dicho, no se les debe llamar ya que se gestionan automáticamente.
+- Solo existen en **Class Components**
+- Son eventos que ocurren dede que el componente es creado hasta que es destruido.
+  - Algunos de los eventos:
+  - componentdidmount (seria como el document.ready() de jquery)
+  ```js
+  class App extends Component {
+    componentDidMount(){
+      //aqui se hace la llamada a una API
+      console.log("El documento está listo")
+    }
+    render(){
+      return (
+        <p>Hola Mundo</p>
+      )
+    }
+  }
+  ```
+  - componentwillmount
+  ```js
+  class App extends Component {
+    componentWillMount(){
+      console.log("El componente no está listo, apenas se va a cargar")
+    }
+    render(){
+      return (
+        <p>Hola Mundo</p>
+      )
+    }
+  }
+  ```
+  - componentdidupdate
+  ```js
+  class App extends Component {
+    componentDidUpdate(){
+      console.log("Algo cambió en el componente")
+    }
+    render(){
+      return (
+        <p>Hola Mundo</p>
+      )
+    }
+  }
+  ```
+  - componentwillunmount
+  ```js
+  class App extends Component {
+    componentWillUnmount(){
+      console.log(`Un nuevo componente ha sido cargado y este 
+      será reemplazado, pero puedes ejecutar algo antes de que eso pase`)
+    }
+    render(){
+      return (
+        <p>Hola Mundo</p>
+      )
+    }
+  }
+  ```  
+  - Hay muchos otros que verémos en los próximos proyectos
 ```js
+//ListaProductos.js
+	componentDidMount(){
+		//tercero
+		console.log("componentDidMount",1)
+		this.setState({
+			productos: [
+				{ id:1, nombre: "Camisa ReactJS", precio: 30 },	
+				{ id:2, nombre: "Camisa VueJs",   precio: 30 },
+				{ id:3, nombre: "Camisa Angular", precio: 30 },
+				{ id:4, nombre: "Camisa Node.js", precio: 30 },
+			]
+		})
+	}
+
+	UNSAFE_componentWillMount(){
+		console.log("UNSAFE_componentWillMount",2) //primero
+	}
+
+	UNSAFE_componentWillUpdate (){
+		console.log("UNSAFE_componentWillUpdate",3) //cuarto si se modifica el estado
+	}
+
+	componentWillUnmount(){
+		console.log("componentWillUnmount",4)//no se ejcutara hasta que reemplace este comp
+	}
 ```
