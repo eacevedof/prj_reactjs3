@@ -1,9 +1,7 @@
 # 5. PROYECTO Administrador de Pacientes con Class y Stateless Functional Components
 
 ## 1. Viendo el Proyecto de Este Capítulo
-- 
-```js
-```
+- ![formulario](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/1182x671/2b1670c0f5a17382a86026287fc42381/image.png)
 ## 2. Creando la App y primeros pasos
 - 
 ```js
