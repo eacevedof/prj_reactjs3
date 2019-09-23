@@ -20,8 +20,30 @@
     - Hooks con Context
     - Hooks con Redux
 ## 4. Creando el Primer Componente
-- 
+- Cambio el componente App de funcional a Clase
+- Creo componente Header (stateless functional component)
 ```js
+//App.js
+class App extends Component {
+  state = {  }
+  
+  render() { 
+    return (  
+      <div className="container">
+        <Header titulo="Administrador Pacientes Veterinaria"/>
+      </div>
+    );
+  }//render
+
+}//class App 
+ 
+//Header.js
+//stateless functional component
+const Header = ({titulo}) => (
+  <header>
+    <h1 className="text-center">{titulo}</h1>
+  </header>
+)
 ```
 ## 5. Creando el Formulario
 - 
