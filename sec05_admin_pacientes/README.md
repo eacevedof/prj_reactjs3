@@ -9,9 +9,16 @@
     - clases de bootstrap con varios colores
 - [gist con css](https://gist.github.com/juanpablogdl/40a1702e6663e9032930442c1a91c76e)
 ## 3. React Hooks, Redux, Context y Classes
-- 
-```js
-```
+- Hay varias formas de afrontar un problema en react
+- usando:
+  - Clases y Props 95% del cod existente de react usa esta forma
+  - Context API (Disponible desde 16.3)
+  - React Hooks (Disponible desde 16.8)
+  - Redux (la forma más común de manejar un state complejo)
+  - Se pueden utilizar con otras:
+    - Clases y props con Redux
+    - Hooks con Context
+    - Hooks con Redux
 ## 4. Creando el Primer Componente
 - 
 ```js
