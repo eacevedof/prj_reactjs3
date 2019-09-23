@@ -46,8 +46,44 @@ const Header = ({titulo}) => (
 )
 ```
 ## 5. Creando el Formulario
-- 
+- Componente NuevaCita
+- Este componente es un formulario con campos y botón
 ```js
+//App.js
+  render() { 
+    return (  
+      <div className="container">
+        <Header titulo="Administrador Pacientes Veterinaria"/>
+
+        <div className="row">
+          <div className="col-md-10 mx-auto">
+            <NuevaCita/>
+          </div>
+        </div>
+        
+      </div>
+    );
+  }//render
+//NuevaCita.js
+return (  
+  <div className="card mt-5 py-5">
+    <div className="card-body">
+      <h2 className="card-title text-center mb-5">
+        Llena el form para crear nueva cita
+      </h2>
+      <form>
+        
+        <div className="form-group row">
+          <label className="col-sm-4 col-lg-2 col-form-label">Nombre mascota</label>
+          <div className="col-sm-8 col-lg-10">
+            <input 
+              type="text"
+              className="form-control"
+              placeholder="Nombre mascota"
+              name="mascota"
+            />
+          </div>
+        </div>{/* form-group */}
 ```
 ## 6. Leyendo los datos del formulario
 - 
