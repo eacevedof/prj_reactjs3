@@ -3,9 +3,11 @@
 ## 1. Viendo el Proyecto de Este Capítulo
 - ![formulario](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/1182x671/2b1670c0f5a17382a86026287fc42381/image.png)
 ## 2. Creando la App y primeros pasos
-- 
-```js
-```
+- create-react-app pacientesveterinaria
+- npm start
+- [bootswatch.com](https://bootswatch.com)
+    - clases de bootstrap con varios colores
+- [gist con css](https://gist.github.com/juanpablogdl/40a1702e6663e9032930442c1a91c76e)
 ## 3. React Hooks, Redux, Context y Classes
 - 
 ```js
