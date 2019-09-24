@@ -153,6 +153,8 @@ handleChange = e =>{
 - permite pasar valores del hijo al padre
 ```js
 //NuevaCita.js
+class NuevaCita extends Component {
+  ...
     if(mascota==="" || propietario==="" || fecha==="" || hora==="" || sintomas===""){
       this.setState({
         error: true
