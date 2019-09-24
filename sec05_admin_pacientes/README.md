@@ -86,8 +86,39 @@ return (
         </div>{/* form-group */}
 ```
 ## 6. Leyendo los datos del formulario
-- 
+- Más adelante veremos **refs**
 ```js
+//NuevaCita.js
+class NuevaCita extends Component {
+  state = {  
+    cita: {
+      mascota:"",
+      propietario: "",
+      fecha: "",
+      hora: "",
+      sintomas: "",
+    }
+  }
+  
+  handleChange = e =>{
+    console.log(e.target.name+ ": "+e.target.value)
+    // colocar lo que el usuario escribe en el state
+    this.setState({
+      cita:{
+        ...this.state.cita, //hacemos copia del state para no perderlo
+        [e.target.name] : e.target.value //rescribimos lo que esté cambiando
+      }
+    })
+  }
+  ...
+  <input 
+    type="text"
+    className="form-control"
+    placeholder="Nombre mascota"
+    name="mascota"
+    onChange={this.handleChange}
+    value={this.state.cita.mascota}
+  />  
 ```
 ## 7. Validando un Formulario con State
 - 
