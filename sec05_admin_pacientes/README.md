@@ -121,8 +121,29 @@ class NuevaCita extends Component {
   />  
 ```
 ## 7. Validando un Formulario con State
-- 
 ```js
+//NuevaCita.js
+state = {  
+  cita: {
+    mascota:"",
+    propietario: "",
+    fecha: "",
+    hora: "",
+    sintomas: "",
+  },
+  error: false
+}
+...
+handleChange = e =>{
+  console.log(e.target.name+ ": "+e.target.value)
+  // colocar lo que el usuario escribe en el state
+  this.setState({
+    cita:{
+      ...this.state.cita, //hacemos copia del state para no perderlo
+      [e.target.name] : e.target.value //rescribimos lo que esté cambiando
+    }
+  })
+}
 ```
 ## 8. Almacenando la nueva cita en el state
 - 
