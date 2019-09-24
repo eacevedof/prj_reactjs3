@@ -146,8 +146,69 @@ handleChange = e =>{
 }
 ```
 ## 8. Almacenando la nueva cita en el state
-- 
+- Tenemos que pasar los datos del state de NuevaCita al de App
+- Como pasamos un dato del hijo hacia el padre. Usando una función.
+- Se instala uuid: `npm install uuidv4`
+- Lo interesante aqui es la funcion **props.crearNuevaCita(nuevaCita)**
+- permite pasar valores del hijo al padre
 ```js
+//NuevaCita.js
+    if(mascota==="" || propietario==="" || fecha==="" || hora==="" || sintomas===""){
+      this.setState({
+        error: true
+      })
+      return
+    }
+    // generar objeto con datos
+    const nuevaCita = {...this.state.cita}
+    nuevaCita.id = uuid()
+
+    // agregar la cita al state de App
+    // al ser una clase usamos props
+    this.props.crearNuevaCita(nuevaCita)
+
+  }//handleSubmit
+
+//App.js
+class App extends Component {
+  state = {  
+    citas: []
+  }
+  
+  crearNuevaCita = cita => {
+    //console.log("crearNuevaCita",datos)
+
+    //se hace copia de citas y se hace push del nuevo
+    const citas = [...this.state.citas, cita]
+
+    // agregar el nuevo state
+    this.setState({
+      citas //como el state se llama citas y la variable tambien nos ahorramos citas= citas
+    })
+
+  }
+
+  render() { 
+    return (  
+      <div className="container">
+        <Header titulo="Administrador Pacientes Veterinaria"/>
+
+        <div className="row">
+          <div className="col-md-10 mx-auto">
+            <NuevaCita
+              //atributo función tipo get. 
+              //Es curioso this.crearNuevaCita tiene visibilidad sobre state.citas
+              //cuando llega a NuevaCita.js mantiene esa visibilidad al presionar el boton
+              //en el formulario este modifica el estado con handleSubmit que al final termina llamando
+              //a this.props.crearNuevaCita(nuevaCita) que actualiza citas en App
+              crearNuevaCita={this.crearNuevaCita}
+            />
+          </div>
+        </div>
+
+      </div>
+    );
+  }//render
 ```
 ## 9. Mostrando el mensaje de error
 - 
