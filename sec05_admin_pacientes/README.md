@@ -306,8 +306,46 @@ const Cita = ({cita}) => (
 );
 ```
 ## 12. Eliminando una Cita del State
-- 
 ```js
+//App.js
+  // elimina citas del state
+  eliminarCita = id => {
+    //hacer copia del state
+    const citasActuales = [...this.state.citas]
+    //utilizar filter para sacar el elemento id del arreglo
+    const citas = citasActuales.filter(cita => cita.id !== id)
+    //actualizar el state
+    this.setState({
+      citas
+    })
+  }
+  <div className="mt-5 col-md10 mx-auto">
+    <ListaCitas
+      citas = {this.state.citas}
+      eliminarCita = {this.eliminarCita}
+    />
+
+//ListaCitas.js
+const ListaCitas = ({citas, eliminarCita}) => (
+....
+{citas.map(cita => (
+  <Cita 
+    key={cita.id}
+    cita={cita}
+    eliminarCita={eliminarCita}
+    />
+))}
+...
+//Cita.js
+const Cita = ({cita, eliminarCita}) => (  
+  <div className="media mt-3">
+  ...
+  <button
+  className="btn btn-danger"
+  //importante no se llama directamente onclic=eliminarcita(cita.id) pq se ejecutaría
+  //hay que envolver la acción en una función anónima
+  onClick={()=>eliminarCita(cita.id)}
+  >Borrar</button>
 ```
 ## 13. Colocando las citas en el Storage
 - 
