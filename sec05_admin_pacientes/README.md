@@ -228,6 +228,36 @@ class App extends Component {
 ```
 ## 10. Reiniciando el Formulario al agregar la nueva cita
 ```js
+//NuevaCita.js
+const stateInicial = {
+  cita: {
+    mascota:"",
+    propietario: "",
+    fecha: "",
+    hora: "",
+    sintomas: "",
+  },
+  error: false
+}
+
+class NuevaCita extends Component {
+  
+  state = {  
+    ...stateInicial
+  }
+
+  ...
+  
+    // al ser una clase usamos props
+    this.props.crearNuevaCita(nuevaCita)
+
+    // colocar el state inicial. Se resetea el formulario
+    this.setState({
+      ...stateInicial
+    })
+
+  }//handleSubmit
+  ...  
 ```
 ## 11. Mostrando las Citas del State
 - 

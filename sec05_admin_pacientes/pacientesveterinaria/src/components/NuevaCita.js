@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
 import uuid from 'uuidv4'
 
+const stateInicial = {
+  cita: {
+    mascota:"",
+    propietario: "",
+    fecha: "",
+    hora: "",
+    sintomas: "",
+  },
+  error: false
+}
+
 class NuevaCita extends Component {
+  
   state = {  
-    cita: {
-      mascota:"",
-      propietario: "",
-      fecha: "",
-      hora: "",
-      sintomas: "",
-    },
-    error: false
+    ...stateInicial
   }
   
   handleChange = e =>{
@@ -46,6 +51,11 @@ class NuevaCita extends Component {
     // agregar la cita al state de App
     // al ser una clase usamos props
     this.props.crearNuevaCita(nuevaCita)
+
+    // colocar el state inicial. Se resetea el formulario
+    this.setState({
+      ...stateInicial
+    })
 
   }//handleSubmit
 
