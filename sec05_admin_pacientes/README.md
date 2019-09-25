@@ -213,11 +213,20 @@ class App extends Component {
   }//render
 ```
 ## 9. Mostrando el mensaje de error
-- 
 ```js
+//NuevaCita.js
+  render() { 
+    // extraemos el atributo error el objeto state
+    const {error} = this.state
+  ...
+      <h2 className="card-title text-center mb-5">
+        Llena el form para crear nueva cita
+      </h2>
+      {error ? <div className="alert alert-danger mt-2 mb-5 text-center"> Todos los campos son obligatorios</div> :null}
+      <form
+  ...
 ```
 ## 10. Reiniciando el Formulario al agregar la nueva cita
-- 
 ```js
 ```
 ## 11. Mostrando las Citas del State
