@@ -260,8 +260,50 @@ class NuevaCita extends Component {
   ...  
 ```
 ## 11. Mostrando las Citas del State
-- 
 ```js
+//App.js
+import ListaCitas from "./components/ListaCitas"
+...
+<div className="mt-5 col-md10 mx-auto">
+  <ListaCitas
+    citas = {this.state.citas}
+  />
+</div>
+
+//ListaCitas.js
+import Cita from "./Cita"
+
+const ListaCitas = ({citas}) => (
+  <div className="card mt-2 py-5">
+    <div className="card-body">
+      <h2 className="card-title text-center">
+        Administra las citas aqui
+      </h2>
+      <div className="lista-citas">
+        {citas.map(cita => (
+          <Cita 
+            key={cita.id}
+            cita={cita}
+            />
+        ))}
+      </div>
+    </div>
+  </div>
+)
+
+//Cita.js
+const Cita = ({cita}) => (  
+  <div className="media mt-3">
+    <div className="media-body">
+      <h3 className="mt-0">{cita.mascota}</h3>
+      <p className="card-text"><span>Nombre Dueño: </span>{cita.propietario}</p>
+      <p className="card-text"><span>Fecha: </span>{cita.fecha}</p>
+      <p className="card-text"><span>Hora: </span>{cita.hora}</p>
+      <p className="card-text"><span>Sintomas: </span></p>
+      <p>{cita.propietario}</p>
+    </div>
+  </div>
+);
 ```
 ## 12. Eliminando una Cita del State
 - 
