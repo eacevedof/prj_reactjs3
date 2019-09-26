@@ -348,8 +348,27 @@ const Cita = ({cita, eliminarCita}) => (
   >Borrar</button>
 ```
 ## 13. Colocando las citas en el Storage
-- 
+- Para poder almacenar usaremos los eventos del ciclo de vida
+- componentDidMount(): cuando la app carga
+- componentDidUpdate(): cuando eliminamos o agregamos una nueva cita
+  - ![local-storage](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5d7fef6652faf333827e91c3/acf45ee014c300dc9af32cf3e0e34c7f/image.png)
 ```js
+//App.js
+// cuando la app carga
+componentDidMount(){
+  const citasLs = localStorage.getItem("citas")
+  if(citasLs){
+    this.setState({
+      citas: JSON.parse(citasLs)
+    })
+  }
+}
+
+// cuando eliminamos o agregamos una nueva cita
+componentDidUpdate(){
+  //localstorage no admite arrays
+  localStorage.setItem("citas",JSON.stringify(this.state.citas))
+}
 ```
 ## 14. Documentando tus Apps de React con PropTypes
 - 
