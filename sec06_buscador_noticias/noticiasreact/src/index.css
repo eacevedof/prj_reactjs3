@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #039be5;
+}
+.card-content h3 {
+  font-size: 1.4rem;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.contenedor-noticias {
+  padding: 2rem;
+  border-radius: 1rem;  
+  margin-top: 3rem;
+}
+
+.buscador {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+.buscador label {
+  font-size: 2rem;
+  color: black;
+}
+.dropdown-content li>span {
+  color: black;
+}
+.select-wrapper input.select-dropdown:focus {
+  border-bottom: 1px solid #e64a19!important;
+}
+h2 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.card-action .btn {
+  width: 100%;
+}
+.enviar input[type="submit"] {
+  width: 100%;
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: scale(1.25);
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: all .5s ease-in;
+  transform: scale(1);
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: scale(1.25);
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: all .5s ease-in;
+  transform: scale(1);
+}
