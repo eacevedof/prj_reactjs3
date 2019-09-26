@@ -400,6 +400,8 @@ const ListaCitas = ({citas, eliminarCita}) =>{
 }
 ```
 ## 16. Deployment del Proyecto
-- 
-```js
-```
+- Netlify, crear cuenta en plataforma
+- `npm run build` compilar
+- subir la carpeta build
+- dominio generado: https://dazzling-borg-ff58db.netlify.com/
+- ![subida a netlify](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/501x600/263a634e1a4118b5123397fb5d2d84a5/image.png)
