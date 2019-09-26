@@ -383,8 +383,21 @@ Cita.propTypes = {
 export default Cita
 ```
 ## 15. Mostrando un mensaje condicionalmente
-- 
 ```js
+//ListaCitas.js
+const ListaCitas = ({citas, eliminarCita}) =>{
+
+  //imprimir mensaje en base a si hay citas o no
+  const mensaje = Object.keys(citas).length === 0 ? 'No hay citas' : 'Administra citas'
+  
+  return (
+    <div className="card mt-2 py-5">
+      <div className="card-body">
+        <h2 className="card-title text-center">
+          {mensaje}
+        </h2>
+...
+}
 ```
 ## 16. Deployment del Proyecto
 - 
