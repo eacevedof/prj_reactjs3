@@ -1,9 +1,9 @@
 # 6. PROYECTO Buscador de Noticias con Class Components
 
 ## 1. Viendo el Proyecto de este capítulo
-- 
-```js
-```
+- Se usará Class components y stateless funcional components
+- que es como están el 95% de proyectos en react
+
 ## 2. Creando la App y primeros pasos
 - 
 ```js
