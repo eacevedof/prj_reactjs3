@@ -371,8 +371,16 @@ componentDidUpdate(){
 }
 ```
 ## 14. Documentando tus Apps de React con PropTypes
-- 
 ```js
+//Cita.js
+import PropTypes from "prop-types"
+...
+Cita.propTypes = {
+  cita: PropTypes.object.isRequired,
+  eliminarCita: PropTypes.func.isRequired
+}
+
+export default Cita
 ```
 ## 15. Mostrando un mensaje condicionalmente
 - 
