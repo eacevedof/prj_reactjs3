@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
 - **Interesante!!** usar funciones asincronas dentro de funciones normales sin usar promise.then() :)
 ```js
 //App.js
-
 //documento está listo, aqui se tiene que hacer la llamada
 componentDidMount(){
   this.get_async_noticias()
