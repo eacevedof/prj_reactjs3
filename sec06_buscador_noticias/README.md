@@ -49,8 +49,18 @@ get_async_noticias = async () => {
 }//get_async_noticias
 ```
 ## 4. Creando el Header
-- 
 ```js
+//App.js
+render() { 
+    return ( 
+      <Fragment>
+        <Header 
+          titulo = "Noticias React API"
+        />
+        <div className="container white contenedor-noticias"></div>
+      </Fragment>
+    )
+  }//render
 ```
 ## 5. Iterando las Noticias y llamando los Componentes
 - 
