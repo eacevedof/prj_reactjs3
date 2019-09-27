@@ -22,10 +22,32 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 ```
-
 ## 3. Consultando la API de noticias
-- []()
+- [newsapi.org/](https://newsapi.org/) 
+  - Fuente de noticias
+- [Más sobre mi apikey](https://trello.com/c/8oxzB53M/121-apikey)
+- [docu newsapi](https://newsapi.org/docs/endpoints/top-headlines)
+- Usaremos este endpoint: [https://newsapi.org/v2/top-headlines?country=us&apiKey=tuapikey](https://newsapi.org/v2/top-headlines?country=us&apiKey=xyz)
+- **Interesante!!** usar funciones asincronas dentro de funciones normales sin usar promise.then() :)
 ```js
+//App.js
+
+//documento está listo, aqui se tiene que hacer la llamada
+componentDidMount(){
+  this.get_async_noticias()
+}//componentDidMount
+
+get_async_noticias = async () => {
+  const apikey = "d83a1ac3fa404f67bae0d83a4334698x";
+  const url = `https://newsapi.org/v2/top-headlines?source=techcrunch&country=us&apiKey=${apikey}`
+  console.log("componentDidMount.url",url)
+  const respuesta = await fetch(url)
+  const noticias = await respuesta.json()
+  console.log("componentDidMount.noticias.articles",noticias.articles)
+  this.setState({
+    noticias: noticias.articles
+  })
+}//get_async_noticias
 ```
 ## 4. Creando el Header
 - 
