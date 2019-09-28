@@ -63,7 +63,8 @@ render() {
   }//render
 ```
 ## 5. Iterando las Noticias y llamando los Componentes
-- 
+- **error:** `TypeError: Cannot read property 'map' of undefined`
+  - **solución:** Faltaba inicializar `notices = []` en el estado
 ```js
 ```
 ## 6. Mostrando la información de las Noticias

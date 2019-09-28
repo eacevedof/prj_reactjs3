@@ -5,7 +5,7 @@ const Noticia = () => {
   return(  
     <h1>Desde Noticia</h1>
   )
-}
 
- 
-export default Noticia;
+}// fnNoticia
+
+export default Noticia

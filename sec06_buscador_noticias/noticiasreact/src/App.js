@@ -5,7 +5,9 @@ import ListaNoticias from "./components/ListaNoticias"
 
 class App extends Component {
   
-  state = {  }
+  state = {  
+    noticias: []
+  }
 
   //documento está listo, aqui se tiene que hacer la llamada
   componentDidMount(){
@@ -33,6 +35,7 @@ class App extends Component {
         <div className="container white contenedor-noticias">
           <ListaNoticias
             noticias={this.state.noticias}
+            //noticias = {["a1","b2","c3"]}
           />
         </div>
       </Fragment>
