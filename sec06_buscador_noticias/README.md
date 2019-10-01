@@ -66,6 +66,40 @@ render() {
 - **error:** `TypeError: Cannot read property 'map' of undefined`
   - **solución:** Faltaba inicializar `notices = []` en el estado
 ```js
+//ListaNoticias.js
+import React from 'react';
+import Noticia from "./Noticia"
+
+const ListaNoticias = ({noticias}) => (
+  <div className="row">
+    {noticias.map(noticia => (
+      <Noticia 
+        key = {noticia.url}
+        noticia = {noticia}
+      />
+    ))}
+  </div>
+)
+
+//json noticia
+/*
+author: "Paulina Dedaj"
+content: "A Florida teen found dead last week in a burglarized Port Charlotte home is being hailed a 
+hero after his family said he died while protecting his 5-year-old sister.
+↵The body of Khyler Edman, 15, was discovered by the Charlotte County Sheriff’s Office after … 
+[+1840 chars]"
+description: "A Florida teen found dead last week in a burglarized Port Charlotte home is being hailed 
+a hero after his family said Monday he died while protecting his 5-year-old sister."
+publishedAt: "2019-10-01T18:25:16Z"
+source:
+id: "fox-news"
+name: "Fox News"
+__proto__: Object
+title: "Florida boy, 15, died while 'protecting' sister, 5, from home invasion, suspect arrested with 
+several stabs... - Fox News"
+url: "https://www.foxnews.com/us/florida-teen-15-died-while-protecting-sister-5-from-home-invasion-suspect-arrested-with-several-stabs-wounds"
+urlToImage: "https://static.foxnews.com/foxnews.com/content/uploads/2019/10/Khyler-Edman-split.jpg"
+*/
 ```
 ## 6. Mostrando la información de las Noticias
 - 
