@@ -7,7 +7,7 @@ const ListaNoticias = ({noticias}) => (
     {noticias.map(noticia => (
       <Noticia 
         key = {noticia.url}
-        noticia = {Noticia}
+        noticia = {noticia}
       />
     ))}
   </div>
