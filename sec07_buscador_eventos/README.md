@@ -1,0 +1,55 @@
+# 7. PROYECTO Aplicación de Eventos con Context API y EventBrite API
+
+## 1. El Proyecto que construiremos
+- Demo del proyecto
+- Buscador de eventos por contextos
+- Un combo de selección de categorias y texto libre
+  - ![imagen demo](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5d7fef6652faf333827e91c3/2d84096892c95816790a92dc68bd2016/image.png)
+## 2. Creando la App y Primeros Pasos
+- 
+```js
+```
+## 3. Creando el Header
+- 
+```js
+```
+## 4. Introducción a la API de EventBrite
+- 
+```js
+```
+## 5. Qué es Context API
+- 
+```js
+```
+## 6. Creando el Context
+- 
+```js
+```
+## 7. Creando el Formulario
+- 
+```js
+```
+## 8. Mostrando el resultado del Context en el Formulario
+- 
+```js
+```
+## 9. Leyendo los Datos del Formulario
+- 
+```js
+```
+## 10. Creando Context para los eventos
+- 
+```js
+```
+## 11. Como realizar la búsqueda de eventos con Context
+- 
+```js
+```
+## 12. Leyendo el Resultado de la búsqueda
+- 
+```js
+```
+## 13. Mostrando la Información de los Eventos
+- 
+```js
+```
