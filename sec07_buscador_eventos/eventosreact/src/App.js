@@ -1,9 +1,12 @@
-import React from 'react';
+//App.js
+import React, {Fragment} from 'react';
+import Header from "./components/Header"
 
 function App() {
   return (
-   <h1>hola</h1>
-  );
+    <Fragment>
+      <Header/>
+    </Fragment>
+  )
 }
-
 export default App;

@@ -25,8 +25,27 @@
 </body>
 ```
 ## 3. Creando el Header
-- 
+- Header y App
+- Usamos fragment pq vamos a usar distintos componentes
 ```js
+//Header.js
+import React from 'react'
+const Header = () => (  
+  <header className="uk-margin" uk-margin="true">
+    <h1 className="uk-text-center">Eventos en React con EventBrite API</h1>
+  </header>
+)
+
+//App.js
+import React, {Fragment} from 'react';
+import Header from "./components/Header"
+function App() {
+  return (
+    <Fragment>
+      <Header/>
+    </Fragment>
+  )
+}
 ```
 ## 4. Introducción a la API de EventBrite
 - 
