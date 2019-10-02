@@ -15,17 +15,19 @@ class App extends Component {
     this.get_async_noticias()
   }//componentDidMount
 
-  get_async_noticias = async () => {
+  get_async_noticias = async (categoria="general") => {
     const apikey = "d83a1ac3fa404f67bae0d83a4334698a";
-    const url = `https://newsapi.org/v2/top-headlines?source=techcrunch&country=us&apiKey=${apikey}`
-    console.log("componentDidMount.url",url)
+    //https://newsapi.org/v2/top-headlines?country=us&category=entertainment&apiKey=d83a1ac3fa404f67bae0d83a4334698a    
+    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${categoria}&apiKey=${apikey}`
+    console.log("get_async_noticias.url",url)
     const respuesta = await fetch(url)
     const noticias = await respuesta.json()
-    console.log("componentDidMount.noticias.articles",noticias.articles)
+    console.log("get_async_noticias.noticias.articles",noticias.articles)
     this.setState({
       noticias: noticias.articles
     })
   }//get_async_noticias
+
 
   render() { 
     return ( 
@@ -35,7 +37,7 @@ class App extends Component {
         />
         <div className="container white contenedor-noticias">
           
-          <Formulario />
+          <Formulario get_noticias={this.get_async_noticias}/>
           
           <ListaNoticias
             noticias={this.state.noticias}

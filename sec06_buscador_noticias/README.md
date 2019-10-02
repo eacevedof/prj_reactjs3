@@ -121,7 +121,7 @@ const Noticia = ({noticia}) => {
         </div>
 
         <div className="card-action">
-          <a href={url} target="_blank" without rel="noopener noreferrer" className="waves-effect waves-light btn">
+          <a href={url} target="_blank" rel="noopener noreferrer" className="waves-effect waves-light btn">
             Ver noticia completa
           </a>
         </div>
@@ -158,6 +158,7 @@ class Formulario extends Component {
   cambiarCategoria(){
 
   }
+
   render() { 
     return (  
       <div className="buscaodr row">
@@ -189,8 +190,31 @@ import Formulario from "./components/Formulario"
       <Formulario />
 ```
 ## 9. Consultando las Noticias en base a la selección
-- 
+- Callback en this.setState({...})
 ```js
+class Formulario extends Component {
+  state = {  
+    categoria: "general"
+  }
+
+  // componentDidMount(){
+  //   this.setState({
+  //     categoria: "general"
+  //   })    
+  // }
+
+  cambiarCategoria = e =>{
+    
+    this.setState({
+      categoria: e.target.value
+    },()=>{
+      //se llama el callback para que se refresque <ListaNoticias noticias={this.state.noticias} />
+      //ya que get_noticias actualiza this.state.noticias
+      //en app.js: <Formulario getNoticias={this.get_async_noticias}/>
+      this.props.get_noticias(this.state.categoria)
+    })
+  }
+  ...  
 ```
 ## 10. Documentando la App
 - 
