@@ -217,8 +217,16 @@ class Formulario extends Component {
   ...  
 ```
 ## 10. Documentando la App
-- 
+- El href en header con #!
 ```js
+//Header.js
+  <a href="#!" className="brand-logo center">{titulo}</a>
+//Formulario.js
+import PropTypes from "prop-types"
+...
+Formulario.propTypes = {
+  get_noticias: PropTypes.func.isRequired
+}
 ```
 ## 11. Deployment del Proyecto
 - 
