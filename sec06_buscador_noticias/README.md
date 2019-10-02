@@ -229,6 +229,6 @@ Formulario.propTypes = {
 }
 ```
 ## 11. Deployment del Proyecto
-- 
-```js
-```
+- `npm run build`
+- subimos a netlify
+- [https://eaf-noticias.netlify.com/](https://eaf-noticias.netlify.com/)
