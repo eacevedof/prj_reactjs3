@@ -55,9 +55,11 @@ function App() {
 - [crear api key](https://www.eventbrite.com/account-settings/apps/new)
 
 ## 5. Qué es Context API
-- 
-```js
-```
+- Disponible desde la v16.3
+  - ![context-api](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5d7fef6652faf333827e91c3/15db65b145b4153dfcb63c4305d8927a/image.png)
+  - ![props obsoletos?](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5d7fef6652faf333827e91c3/dc804672f48cee0a921dbcbdd8524ebd/image.png)
+  - ![palabras clave](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5d7fef6652faf333827e91c3/03bdbf16bac346d2a451778e8ee150e9/image.png)
+
 ## 6. Creando el Context
 - 
 ```js
