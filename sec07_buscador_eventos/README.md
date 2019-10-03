@@ -27,6 +27,8 @@
 ## 3. Creando el Header
 - Header y App
 - Usamos fragment pq vamos a usar distintos componentes
+- [eventbrite.com](https://www.eventbrite.com/platform/docs/introduction)
+  - Api de eventos
 ```js
 //Header.js
 import React from 'react'
