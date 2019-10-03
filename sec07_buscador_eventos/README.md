@@ -50,9 +50,9 @@ function App() {
 }
 ```
 ## 4. Introducción a la API de EventBrite
-- [Mis api-keys](https://www.eventbrite.com/account-settings/apps)
-- [Lista de categorias](https://www.eventbrite.com/platform/api#/reference/categories)
-- [crear api key](https://www.eventbrite.com/account-settings/apps/new)
+- [eventbrite - Mis api-keys](https://www.eventbrite.com/account-settings/apps)
+- [eventbrite - Lista de categorias](https://www.eventbrite.com/platform/api#/reference/categories)
+- [eventbrite - crear api key](https://www.eventbrite.com/account-settings/apps/new)
 
 ## 5. Qué es Context API
 - Disponible desde la v16.3
@@ -61,8 +61,61 @@ function App() {
   - ![palabras clave](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5d7fef6652faf333827e91c3/03bdbf16bac346d2a451778e8ee150e9/image.png)
 
 ## 6. Creando el Context
-- 
+- Usaremos axios
+- `npm install --save axios`
+- [eventbrite categories](https://www.eventbrite.com/platform/api#/reference/categories/retrieve/category-by-id)
+  - **get** `https://www.eventbriteapi.com/v3/categories/id/`
 ```js
+//CategoriasContext.js
+import React, { Component } from 'react'
+import axios from "axios"
+
+const oContext = React.createContext()
+export const CategoriasConsumer = oContext.Consumer
+
+class CategoriasProvider extends Component {
+
+  token = "CFUVFRX4ZD43ZDFWVQKO"
+
+  state = {  
+    categorias : []
+  }
+
+  componentDidMount(){
+    this.get_async_categories()
+  }
+
+  get_async_categories = async ()=>{
+    let url = `https://www.eventbriteapi.com/v3/categories/?token=${this.token}&locale=es_ES`
+    let categorias = await axios.get(url)
+    console.log(categorias.data.categories)
+    this.setState({
+      categorias: categorias.data.categorias
+    })
+  }
+
+  render() { 
+    return (  
+      <oContext.Provider
+        value={{
+          categorias: this.state.categorias
+        }}
+      >
+        {this.props.children}
+      </oContext.Provider>
+    )
+  }
+
+}//class CategoriasProvider
+
+export default CategoriasProvider;
+
+//App.js
+import CategoriasProvider from "./context/CategoriasContext"
+
+function App() {
+  return (
+    <CategoriasProvider>
 ```
 ## 7. Creando el Formulario
 - 
