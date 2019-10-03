@@ -17,7 +17,7 @@
 - [Seccion 4: Introducción y Básicos de React](https://github.com/eacevedof/prj_reactjs3/tree/master/sec04_intro_basicos_react#4-introducci%C3%B3n-y-b%C3%A1sicos-de-react)
 - [Seccion 5: PROYECTO Administrador de Pacientes con Class y Stateless Functional Components](https://github.com/eacevedof/prj_reactjs3/tree/master/sec05_admin_pacientes#5-proyecto-administrador-de-pacientes-con-class-y-stateless-functional-components)
 - [Seccion 6: PROYECTO Buscador de Noticias con Class Components](https://github.com/eacevedof/prj_reactjs3/tree/master/sec06_buscador_noticias#6-proyecto-buscador-de-noticias-con-class-components)
-- [Seccion 7: PROYECTO Aplicación de Eventos con Context API y EventBrite API]()
+- [Seccion 7: PROYECTO Aplicación de Eventos con Context API y EventBrite API](https://github.com/eacevedof/prj_reactjs3/blob/master/sec07_buscador_eventos/README.md#7-proyecto-aplicaci%C3%B3n-de-eventos-con-context-api-y-eventbrite-api)
 - [Seccion 8: ]()
 - [Seccion 9: ]()
 - [Seccion 10: ]()

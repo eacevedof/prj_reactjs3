@@ -50,9 +50,10 @@ function App() {
 }
 ```
 ## 4. Introducción a la API de EventBrite
-- 
-```js
-```
+- [Mis api-keys](https://www.eventbrite.com/account-settings/apps)
+- [Lista de categorias](https://www.eventbrite.com/platform/api#/reference/categories)
+- [crear api key](https://www.eventbrite.com/account-settings/apps/new)
+
 ## 5. Qué es Context API
 - 
 ```js
