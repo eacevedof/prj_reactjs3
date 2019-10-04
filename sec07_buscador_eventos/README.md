@@ -149,8 +149,30 @@ class Formulario extends Component {
 }//Formulario
 ```
 ## 8. Mostrando el resultado del Context en el Formulario
-- 
+- Utilizando el consumer
 ```js
+//Formulario.js
+<select 
+  className="uk-select"
+  name="categoria"
+>
+  <CategoriasConsumer>
+    {
+      //escucha al provider en app.js
+      //value: es un objeto con el array de categorias
+      (objprov)=>{
+        console.log("consumer objprov",objprov)
+        return (
+          objprov.categorias.map(categoria =>(
+            <option key={categoria.id} objprov={categoria.id} data-uk-form-select>
+              {categoria.name_localized}
+            </option>
+          ))
+        )
+      }
+    }
+  </CategoriasConsumer>
+</select>
 ```
 ## 9. Leyendo los Datos del Formulario
 - 
