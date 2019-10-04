@@ -118,8 +118,35 @@ function App() {
     <CategoriasProvider>
 ```
 ## 7. Creando el Formulario
-- 
+- **vscode** `imrc` `import React, { Component } from 'react';`
 ```js
+//Formulario.js
+class Formulario extends Component {
+  state = {  
+    nombre:     "",
+    categoria:  ""
+  }
+
+  render() { 
+    return (  
+      <form>
+        ...
+          <div className="uk-margin" uk-margin="true">
+            <input 
+              name="nombre"
+              className="uk-input"
+              placeholder="Nombre de Evento o Ciudad"
+            />
+          </div>
+          <div className="uk-margin" uk-margin="true">
+            <select 
+              className="uk-select"
+              name="categoria"
+        ...
+      </form>
+    )//return
+  }//render
+}//Formulario
 ```
 ## 8. Mostrando el resultado del Context en el Formulario
 - 
