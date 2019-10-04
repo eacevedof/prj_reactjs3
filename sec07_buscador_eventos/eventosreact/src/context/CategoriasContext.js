@@ -30,7 +30,7 @@ class CategoriasProvider extends Component {
     return (  
       <oContext.Provider
         value={{
-          categorias: this.state.categorias
+          categorias: this.state.categorias 
         }}
       >
         {this.props.children}

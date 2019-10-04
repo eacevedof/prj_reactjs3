@@ -206,8 +206,14 @@ get_datos_evento = ojsevent => {
 >
 ```
 ## 10. Creando Context para los eventos
-- 
+- [eventbrite - event search](https://www.eventbrite.com/platform/api#/reference/event-search/list/search-events)
+- `https://www.eventbriteapi.com/v3/events/search/?token=${this.token}&locale=es_ES`
 ```js
+//EventosContext.js
+get_async_events = async (busqueda)=>{
+  let url = `https://www.eventbriteapi.com/v3/events/search/?token=${this.token}
+  &locale=es_ES&categories=${busqueda.categoria}&q=${busqueda.nombre}&sort_by=${this.ordenar}
+  `
 ```
 ## 11. Como realizar la búsqueda de eventos con Context
 - 
