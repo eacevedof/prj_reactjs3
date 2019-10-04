@@ -10,6 +10,15 @@ class Formulario extends Component {
     categoria:  ""
   }
 
+  //si el usuario agrega un evento o categoria
+  get_datos_evento = ojsevent => {
+    console.log("get_datos_evento.ojsevent.target.name",ojsevent.target.name)
+    console.log("get_datos_evento.ojsevent.target.value",ojsevent.target.value)
+    this.setState({
+      [ojsevent.target.name] : ojsevent.target.value
+    })
+  }
+
   render() { 
     return (  
       <form>
@@ -26,6 +35,8 @@ class Formulario extends Component {
               name="nombre"
               className="uk-input"
               placeholder="Nombre de Evento o Ciudad"
+              //se le pasa el evento js como argumento
+              onChange={this.get_datos_evento}
             />
           </div>
 
@@ -33,6 +44,8 @@ class Formulario extends Component {
             <select 
               className="uk-select"
               name="categoria"
+              //se le pasa el evento js como argumento
+              onChange={this.get_datos_evento}
             >
               <CategoriasConsumer>
                 {

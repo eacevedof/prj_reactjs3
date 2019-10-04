@@ -175,8 +175,35 @@ class Formulario extends Component {
 </select>
 ```
 ## 9. Leyendo los Datos del Formulario
-- 
+- `[ojsevent.target.name] : ojsevent.target.value` ? pq el []
+  - pregunta udemy
 ```js
+//Formulario.js
+//si el usuario agrega un evento o categoria
+get_datos_evento = ojsevent => {
+  console.log("get_datos_evento.ojsevent.target.name",ojsevent.target.name)
+  console.log("get_datos_evento.ojsevent.target.value",ojsevent.target.value)
+  this.setState({
+    [ojsevent.target.name] : ojsevent.target.value
+  })
+}
+
+<input 
+  name="nombre"
+  className="uk-input"
+  placeholder="Nombre de Evento o Ciudad"
+  //se le pasa el evento js como argumento
+  onChange={this.get_datos_evento}
+/>
+</div>
+
+<div className="uk-margin" uk-margin="true">
+<select 
+  className="uk-select"
+  name="categoria"
+  //se le pasa el evento js como argumento
+  onChange={this.get_datos_evento}
+>
 ```
 ## 10. Creando Context para los eventos
 - 
