@@ -311,6 +311,7 @@ const ListaEventos = () => {
 ```
 ## 13. Mostrando la Información de los Eventos
 - En los achor es aconsejable agregar esta propiedad para mejorar la seguridad: `rel="noopener noreferrer"`
+- site online: [eaf-eventos.netlify.com](https://eaf-eventos.netlify.com/)
 ```js
 //ListaEventos.js
 const ListaEventos = () => {
