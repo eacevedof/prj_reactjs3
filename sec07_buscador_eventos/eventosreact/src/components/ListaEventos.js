@@ -11,7 +11,10 @@ const ListaEventos = () => {
         {(evtprops)=>{
           console.log("listaeventos.evtprops",evtprops)
           return evtprops.eventos.map(evento => (
-            <Evento/>
+            <Evento
+              key={evento.id}
+              evento={evento}
+            />
           ))
         }}
       </EventosConsumer>

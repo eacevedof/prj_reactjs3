@@ -78,10 +78,11 @@ class Formulario extends Component {
                     </CategoriasConsumer>
                   </select>
                 </div>
-              </div>
-      
-              <div>
-                <input type="submit" className="uk-button uk-button-danger" value="Busca Eventos" />
+
+                <div>
+                  <input type="submit" className="uk-button uk-button-danger" value="Busca Eventos" />
+                </div>                
+              
               </div>
             </form>            
           )

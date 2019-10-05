@@ -310,7 +310,53 @@ const ListaEventos = () => {
     </EventosProvider>
 ```
 ## 13. Mostrando la Información de los Eventos
-- 
+- En los achor es aconsejable agregar esta propiedad para mejorar la seguridad: `rel="noopener noreferrer"`
 ```js
+//ListaEventos.js
+const ListaEventos = () => {
+  return (  
+    <div className="uk-child-width-1-3@m" uk-grid="true">
+      <EventosConsumer>
+        {(evtprops)=>{
+          console.log("listaeventos.evtprops",evtprops)
+          return evtprops.eventos.map(evento => (
+            <Evento
+              key={evento.id}
+              evento={evento}
+            />
+          ))
+        }}
+      </EventosConsumer>
+    </div>
+  )
+//Evento.js
+const Evento = ({evento}) => {
+  //extraer el texto
+  let text = evento.descrption
+  
+  if(text){
+    if(text.length > 250)
+      text = text.substr(0,250)
+  }
+  else
+    text = null
 
+  return(
+    <div>
+      <div className="uk-card uk-card-default ">
+        <div className="uk-card-media-top">
+          {evento.logo 
+            ? <img src={evento.logo.url} alt={evento.name} /> 
+            : null}
+        </div>
+        <div className="uk-card-body">
+            <h3 className="uk-card-title">{evento.name.text}</h3>
+            {text}
+        </div>
+        <div className="uk-card-footer">
+          <a href={evento.url} target="_blank" rel="noopener noreferrer" className="uk-button uk-button-secondary">Más información</a>
+        </div>
+      </div>
+    </div>
+  );
 ```
