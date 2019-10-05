@@ -276,8 +276,38 @@ function App() {
 }            
 ```
 ## 12. Leyendo el Resultado de la búsqueda
-- 
+- **vscode** `imr` => `import React from 'react'`
 ```js
+//ListaEventos.js
+import Evento from "./Evento"
+import {EventosConsumer} from "../context/EventosContext"
+
+const ListaEventos = () => {
+  return (  
+    <div className="uk-child-width-1-3@m" uk-grid="true">
+      <EventosConsumer>
+        {(evtprops)=>{
+          console.log("listaeventos.evtprops",evtprops)
+          return evtprops.eventos.map(evento => (
+            <Evento/>
+          ))
+        }}
+      </EventosConsumer>
+    </div>
+  )
+}
+
+//App.js
+  return (
+    <EventosProvider>
+      <CategoriasProvider>
+        <Header/>
+        <div className="uk-container">
+          <Formulario/>
+          <ListaEventos/>
+        </div>
+      </CategoriasProvider>
+    </EventosProvider>
 ```
 ## 13. Mostrando la Información de los Eventos
 - 
