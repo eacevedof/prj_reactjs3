@@ -13,21 +13,24 @@ class CategoriasProvider extends Component {
     categorias : []
   }
 
+  //al cargar la página
   componentDidMount(){
     this.get_async_categories()
   }
 
   get_async_categories = async ()=>{
     let url = `https://www.eventbriteapi.com/v3/categories/?token=${this.token}&locale=es_ES`
-    let categorias = await axios.get(url)
-    console.log(categorias.data.categories)
+    let payload = await axios.get(url)
+    //console.log("get_async_categories.payload",payload)
+    console.log("get_async_categories.payload.data.categories",payload.data.categories)
     this.setState({
-      categorias: categorias.data.categories
+      categorias: payload.data.categories
     })
   }
 
   render() { 
-    return (  
+    return ( 
+      //categorias.provider 
       <oContext.Provider
         value={{
           categorias: this.state.categorias 

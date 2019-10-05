@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 
 import {CategoriasConsumer} from "../context/CategoriasContext"
+import {EventosConsumer} from "../context/EventosContext"
 
 class Formulario extends Component {
 
@@ -10,67 +11,83 @@ class Formulario extends Component {
     categoria:  ""
   }
 
-  //si el usuario agrega un evento o categoria
+  //se ejecuta en nombre.onChange y categoria.onChange
   get_datos_evento = ojsevent => {
+    //console.log("get_datos_evento.ojsevent.target",ojsevent.target)
     console.log("get_datos_evento.ojsevent.target.name",ojsevent.target.name)
     console.log("get_datos_evento.ojsevent.target.value",ojsevent.target.value)
     this.setState({
+      //se guardaría: nombre:valor, categoria:valor
       [ojsevent.target.name] : ojsevent.target.value
     })
   }
 
   render() { 
     return (  
-      <form>
-        <fieldset className="uk-fieldset uk-margin">
-          <legend className="uk-legend uk-text-center">
-            Busca tu evento por Nombre y Categoría
-          </legend>
-        </fieldset>
-
-        <div className="uk-column-1-3@m uk-margin">
-          
-          <div className="uk-margin" uk-margin="true">
-            <input 
-              name="nombre"
-              className="uk-input"
-              placeholder="Nombre de Evento o Ciudad"
-              //se le pasa el evento js como argumento
-              onChange={this.get_datos_evento}
-            />
-          </div>
-
-          <div className="uk-margin" uk-margin="true">
-            <select 
-              className="uk-select"
-              name="categoria"
-              //se le pasa el evento js como argumento
-              onChange={this.get_datos_evento}
+      <EventosConsumer>
+      {
+        //eventoscontext.provider.value:{eventos:payloadeventos,get_eventos:this.get_async_events(busqueda)}
+        //evsprops: eventoscontext.provider.props
+        (evsprops)=>{
+          console.log("formulario.eventosconsumer.evsprops",evsprops)
+          return (
+            <form
+              onSubmit={(e)=>{
+                e.preventDefault();
+                evsprops.get_eventos(this.state)
+              }}
             >
-              <CategoriasConsumer>
-                {
-                  //escucha al provider en app.js
-                  //value: es un objeto con el array de categorias
-                  (objprov)=>{
-                    console.log("consumer objprov",objprov)
-                    return (
-                      objprov.categorias.map(categoria =>(
-                        <option key={categoria.id} objprov={categoria.id} data-uk-form-select>
-                          {categoria.name_localized}
-                        </option>
-                      ))
-                    )
-                  }
-                }
-              </CategoriasConsumer>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <input type="submit" className="uk-button uk-button-danger" value="Busca Eventos" />
-        </div>
-      </form>
+              <fieldset className="uk-fieldset uk-margin">
+                <legend className="uk-legend uk-text-center">
+                  Busca tu evento por Nombre y Categoría
+                </legend>
+              </fieldset>
+      
+              <div className="uk-column-1-3@m uk-margin">
+                <div className="uk-margin" uk-margin="true">
+                  <input 
+                    name="nombre"
+                    className="uk-input"
+                    placeholder="Nombre de Evento o Ciudad"
+                    //se le pasa el evento js como argumento
+                    onChange={this.get_datos_evento}
+                  />
+                </div>
+      
+                <div className="uk-margin" uk-margin="true">
+                  <select 
+                    name="categoria"
+                    className="uk-select"
+                    //se le pasa el evento js como argumento
+                    onChange={this.get_datos_evento}
+                  >
+                    <CategoriasConsumer>
+                      {
+                        //catsprops: categoriascontext.provider.props
+                        (catsprops)=>{
+                          console.log("categoriasconsumer.catsprops",catsprops)
+                          return (
+                            catsprops.categorias.map(categoria =>(
+                              <option key={categoria.id} value={categoria.id} data-uk-form-select>
+                                {categoria.name_localized}
+                              </option>
+                            ))
+                          )
+                        }
+                      }
+                    </CategoriasConsumer>
+                  </select>
+                </div>
+              </div>
+      
+              <div>
+                <input type="submit" className="uk-button uk-button-danger" value="Busca Eventos" />
+              </div>
+            </form>            
+          )
+        }
+      }
+      </EventosConsumer>      
     )//return
   }//render
 

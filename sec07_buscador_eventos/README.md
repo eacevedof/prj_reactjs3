@@ -216,8 +216,64 @@ get_async_events = async (busqueda)=>{
   `
 ```
 ## 11. Como realizar la búsqueda de eventos con Context
-- 
+- Los proveedores tienen un objeto **contexto** (`React.createContext()`) que tiene la propiedad **consumer** y **provider**
+- Al **provider** se le configura la **props** única **value** `value={{k1:v1,k2:fn2,...}}` que podrá ser escuchada por el resto de componentes
+- Para poder configurar un callback de una prop pasandole parámetros hay que hacerlo usando una función anónima: `onSubmit={(e)=>{fncallback(param)}}`
 ```js
+//EventosContext.js
+  render() { 
+    return (  
+      <EventosConsumer>
+      {
+        //eventoscontext.provider.value:{eventos:payloadeventos,get_eventos:this.get_async_events(busqueda)}
+        //evsprops: eventoscontext.provider.props.value
+        (evsprops)=>{
+          console.log("formulario.eventosconsumer.evsprops",evsprops)
+          return (
+            <form
+              onSubmit={(e)=>{
+                e.preventDefault();
+                //llamada asincrona del provider que actualizará state.eventos
+                evsprops.get_eventos(this.state)
+              }}
+            >
+            ...
+              <div className="uk-margin" uk-margin="true">
+                  <select 
+                    name="categoria"
+                    className="uk-select"
+                    //se le pasa el evento js como argumento
+                    onChange={this.get_datos_evento}
+                  >
+                    <CategoriasConsumer>
+                      {
+                        //catsprops: categoriascontext.provider.props.value
+                        (catsprops)=>{
+                          console.log("categoriasconsumer.catsprops",catsprops)
+                          return (
+                            catsprops.categorias.map(categoria =>(
+                              <option key={categoria.id} value={categoria.id} data-uk-form-select>
+                                {categoria.name_localized}
+                              </option>
+                            ))
+                          )
+                        }
+                      }
+                    </CategoriasConsumer>
+            ...
+//App.js
+function App() {
+  return (
+    <EventosProvider>
+      <CategoriasProvider>
+        <Header/>
+        <div className="uk-container">
+          <Formulario/>
+        </div>
+      </CategoriasProvider>
+    </EventosProvider>
+  )
+}            
 ```
 ## 12. Leyendo el Resultado de la búsqueda
 - 
