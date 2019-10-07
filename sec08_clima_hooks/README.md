@@ -108,8 +108,29 @@ function App() {
 }
 ```
 ## 6. Colocando los valores del formulario en el state
-- 
 ```js
+//Formulario.js
+import React, {useState} from "react"
+
+function Formulario(){
+
+  //state del componente
+  // busqueda = state, guardarBusqueda = setState
+  //variable de estado y su setter
+  const [busqueda, guardarBusqueda] = useState({
+    ciudad: "", pais: ""
+  }) 
+
+  const handleChange = e => {
+    //cambiar el state
+    //this.setState({})
+    guardarBusqueda({
+      ...busqueda, //el estado anterior +
+      [e.target.name] : e.target.value //el estado actual
+    })
+
+    console.log("Formulario.handleChange.busqueda",busqueda)
+  }
 ```
 ## 7. Validando el Formulario
 - 

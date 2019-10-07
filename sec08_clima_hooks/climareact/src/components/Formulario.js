@@ -1,10 +1,23 @@
 //Formulario.js
-import React from "react"
+import React, {useState} from "react"
 
 function Formulario(){
 
+  //state del componente
+  // busqueda = state, guardarBusqueda = setState
+  const [busqueda, guardarBusqueda] = useState({
+    ciudad: "", pais: ""
+  }) 
+
   const handleChange = e => {
     //cambiar el state
+    //this.setState({})
+    guardarBusqueda({
+      ...busqueda, //el estado anterior +
+      [e.target.name] : e.target.value //el estado actual
+    })
+
+    console.log("Formulario.handleChange.busqueda",busqueda)
   }
 
   return (
