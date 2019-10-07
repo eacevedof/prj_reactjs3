@@ -1,9 +1,9 @@
 # 8. PROYECTO Aplicación del Clima con React Hooks
 
 ## 1. El Proyecto que construiremos
-- 
-```js
-```
+- Demo app clima
+  - ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/1153x570/a5a02b979f75836a5556791f563e7d12/image.png)
+
 ## 2. Que son los React Hooks y Preguntas Frecuentes
 - 
 ```js
