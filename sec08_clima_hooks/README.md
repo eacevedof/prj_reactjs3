@@ -25,9 +25,11 @@
   - **Avanzados**: useContext, useRef, useReducer, useCallback, useMemo
 
 ## 3. Creando la App y Primeros Ajustes
-- 
-```js
-```
+- `create-react-app climareact`
+- [gist - css y materialize](https://gist.github.com/juanpablogdl/9ad7b55fb821df1dd32209cacc9c90a7)
+- [API - Openweathermap](https://openweathermap.org/)
+  - [Acceso](https://trello.com/c/q12tzhCa/123-openweathermaporg)
+- [Openweathermap - apikeys](https://home.openweathermap.org/api_keys)
 ## 4. Creando el Header
 - 
 ```js
