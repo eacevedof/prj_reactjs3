@@ -48,8 +48,64 @@ function Header({titulo}){
 }//Header
 ```
 ## 5. Creando el Formulario
-- 
 ```js
+//Formulario.js
+import React from "react"
+
+function Formulario(){
+
+  const handleChange = e => {
+    //cambiar el state
+  }
+
+  return (
+    <form>
+      <div className="input-field col s12">
+        <input 
+          name="ciudad"
+          id="ciudad"
+          onChange={handleChange}
+        />
+        <label htmlFor="ciudad">Ciudad:</label>
+      </div>
+
+      <div className="input-field col s12">
+        <select name="pais">
+          ...
+        </select>
+      </div>
+
+      <div className="input-field col s12">
+        <input 
+          type="submit" 
+          className="wafes-effect wafes-light btn-large btn-block yellow accent-4" 
+          value="Buscar Clima" />
+      </div>
+    </form>
+  )
+}
+
+//App.js
+import Header from "./components/Header"
+import Formulario from "./components/Formulario"
+
+function App() {
+  return (
+    <div className="App">
+      <Header 
+        titulo="Clima React App" />
+      <div className="contenedor-form">
+        <div className="container">
+          <div className="row">
+            <div className="col s12 m6">
+              <Formulario/>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+  );
+}
 ```
 ## 6. Colocando los valores del formulario en el state
 - 
