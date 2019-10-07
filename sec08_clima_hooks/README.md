@@ -133,8 +133,42 @@ function Formulario(){
   }
 ```
 ## 7. Validando el Formulario
-- 
 ```js
+//Formulario.js
+  const consultarClima = e => {
+    e.preventDefault();
+    // pasar hacia el componente principal la busqueda del usuario
+    datosConsulta(busqueda)
+  }
+
+  return (
+    <form
+      onSubmit={consultarClima}
+
+//App.js
+function App() {
+
+  //state principal
+  const [ciudad, guardarCiudad] = useState("")
+  const [pais, guardarPais] = useState("")
+
+  const datosConsulta = datos => {
+    console.log(datos)
+    // validar que ambos campos esten
+    if(datos.ciudad === "" || datos.pais === ""){
+      //un error
+      return;
+    }
+
+    //
+    guardarCiudad(datos.ciudad)
+    guardarPais(datos.pais)
+  }
+  ...
+    <div className="col s12 m6">
+      <Formulario datosConsulta={datosConsulta}/>
+    </div>  
+  ...
 ```
 ## 8. Mostrar el Error de la validación
 - 

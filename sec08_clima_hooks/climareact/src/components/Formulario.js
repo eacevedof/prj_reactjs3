@@ -1,7 +1,7 @@
 //Formulario.js
 import React, {useState} from "react"
 
-function Formulario(){
+function Formulario({datosConsulta}){
 
   //state del componente
   // busqueda = state, guardarBusqueda = setState
@@ -18,10 +18,19 @@ function Formulario(){
     })
 
     console.log("Formulario.handleChange.busqueda",busqueda)
+    console.log("Formulario.handleChange.e.target",e.target)
+  }
+
+  const consultarClima = e => {
+    e.preventDefault();
+    // pasar hacia el componente principal la busqueda del usuario
+    datosConsulta(busqueda)
   }
 
   return (
-    <form>
+    <form
+      onSubmit={consultarClima}
+    >
       <div className="input-field col s12">
         <input 
           name="ciudad"
@@ -32,7 +41,7 @@ function Formulario(){
       </div>
 
       <div className="input-field col s12">
-        <select name="pais">
+        <select name="pais" onChange={handleChange}>
           <option value="">Selecciona un país</option>
           <option value="US">Estados unidos</option>
           <option value="MX">México</option>
