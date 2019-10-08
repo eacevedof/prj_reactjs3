@@ -259,6 +259,42 @@ import React, {useState,useEffect} from 'react';
   [ciudad,pais])
 ```
 ## 10. Mostrando el Resultado del Clima
-- 
+- Se trata el 404
+- [](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/910x496/e334bdfec1549e58838105af94fb5ace/image.png)
 ```js
+//Clima.js
+import React from 'react';
+
+function Clima({resultado}){
+  
+  console.log("clima.resultado",resultado)
+  const {name, main} = resultado
+
+  if(!name) return null
+
+  //restar grados kelvin
+  const kelvin = 273.15
+ 
+  return (
+    <div className="card-panel white col s12">
+      <div className="black-text">
+        <h2>El clima de {name} es</h2>
+        <p className="temperatura">
+          {parseInt(main.temp_max - kelvin,10)} <span>&#x2103; </span>
+        </p>
+        <p>Temperatura máxima: {parseInt(main.temp_max - kelvin,10)} &#x2103;</p>
+        <p>Temperatura mínima: {parseInt(main.temp_min - kelvin,10)} &#x2103;</p>
+      </div>
+    </div>
+  )
+}
+
+//App.js
+  //cargar un componente condicionalmente
+  let componente = <Clima
+                      resultado={resultado}
+                    />
+  if(error) componente = <Error mensaje="Ambos campos son obligatorios" />
+  if(resultado.cod === "404")
+    componente = <Error mensaje="La ciudad no existe" />
 ```

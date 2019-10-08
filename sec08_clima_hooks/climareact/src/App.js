@@ -3,6 +3,7 @@ import React, {useState,useEffect} from 'react';
 import Header from "./components/Header"
 import Formulario from "./components/Formulario"
 import Error from "./components/Error"
+import Clima from "./components/Clima"
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
   const [ciudad, guardarCiudad] = useState("")
   const [pais, guardarPais] = useState("")
   const [error, guardarError] = useState("")
+  const [resultado, guardarResultado] = useState("")
 
   //es como componentdidmount y didupdate
   useEffect(()=>{
@@ -26,6 +28,7 @@ function App() {
       const resultado = await respuesta.json()
   
       console.log("consultarApi.resultado",resultado)
+      guardarResultado(resultado)
     }
 
     consultarApi()
@@ -51,10 +54,13 @@ function App() {
 
 
   //cargar un componente condicionalmente
-  let componente = null
-  if(error){
-    componente = <Error mensaje="Ambos campos son obligatorios" />
-  }
+  let componente = <Clima
+                      resultado={resultado}
+                    />
+  if(error) componente = <Error mensaje="Ambos campos son obligatorios" />
+  if(resultado.cod === "404")
+    componente = <Error mensaje="La ciudad no existe" />
+
 
   return (
     <div className="App">
