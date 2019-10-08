@@ -171,8 +171,62 @@ function App() {
   ...
 ```
 ## 8. Mostrar el Error de la validación
-- 
+- Un caso de uso: un usuario autenticado ve un menu distinto al no autenticado
+- ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/816x345/0d64c91608f1c5706f8cebcfa47866dd/image.png)
 ```js
+//Error.js
+import React from 'react';
+
+function Error({mensaje}){
+  return (
+    <div className="card-panel red darken-4 error col s12">
+      {mensaje}
+    </div>
+  )
+}
+
+export default Error;
+
+//App.js
+import Error from "./components/Error"
+
+function App() {
+
+  //state principal
+  const [ciudad, guardarCiudad] = useState("")
+  const [pais, guardarPais] = useState("")
+  const [error, guardarError] = useState("")
+
+  const datosConsulta = datos => {
+    console.log(datos)
+    // validar que ambos campos esten
+    if(datos.ciudad === "" || datos.pais === ""){
+      guardarError(true)
+      return
+    }
+
+    // Ciudad  y pais existen, agregarlos al state
+    guardarCiudad(datos.ciudad)
+    guardarPais(datos.pais)
+    guardarError(false)
+  }
+
+  //cargar un componente condicionalmente
+  let componente = null
+  if(error){
+    componente = <Error mensaje="Ambos campos son obligatorios" />
+  }
+  ...
+    <div className="row">
+      
+      <div className="col s12 m6">
+        <Formulario datosConsulta={datosConsulta}/>
+      </div>
+
+      <div className="col s12 m6">
+        {componente}
+      </div>
+  ... 
 ```
 ## 9. Creando la función para consultar la API
 - 
