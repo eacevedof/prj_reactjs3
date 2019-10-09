@@ -298,3 +298,5 @@ function Clima({resultado}){
   if(resultado.cod === "404")
     componente = <Error mensaje="La ciudad no existe" />
 ```
+
+## [En netlify](https://eaf-climat.netlify.com/)
