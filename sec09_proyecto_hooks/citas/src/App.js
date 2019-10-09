@@ -1,7 +1,7 @@
 //App.js
 import React, {useState, Fragment} from 'react'
 
-function Formulario(){
+function Formulario({crearCita}){
 
   const [cita, actualizarCita] = useState({
     mascota: "",
@@ -20,11 +20,21 @@ function Formulario(){
 
   console.log("Formulario.cita",cita)
 
+  const enviarCita = e => {
+    e.preventDefault()
+    console.log("Formulario.enviarcita.cita",cita)
+    // pasar la cita hacia el componente principal
+    crearCita(cita)
+    // reiniciar el state (reiniciar el form)
+  }
+
   return (
     <Fragment>
       <h2>Crear Cita</h2>
 
-      <form>
+      <form
+        onSubmit={enviarCita}
+      >
         <label>Nombre Mascota</label>
         <input 
           type="text" 
@@ -79,7 +89,14 @@ function App() {
   // Función que actualiza el state this.setState()
   const [citas, guardarCitas] = useState([])
 
-  console.log(citas)
+  console.log("App.citas",citas)
+
+  const crearCita = cita => {
+    // tomar una copia del state y agregar el nuevo cliente
+    const nuevasCitas = [...citas, cita]
+    console.log("crearcita.nuevascitas",nuevasCitas)
+    guardarCitas(nuevasCitas)
+  }
 
   return (
     <Fragment>
@@ -87,7 +104,7 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="one-half column">
-            <Formulario />
+            <Formulario crearCita={crearCita} />
           </div>
           <div className="one-half column">
           </div>          

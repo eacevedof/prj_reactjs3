@@ -119,8 +119,43 @@ function Formulario(){
 - Se aplica **onChange={actualizarState}** en el resto de inputs
 
 ## 6. Pasando el State al Componente Principal
-- 
 ```js
+//App.js
+import React, {useState, Fragment} from 'react'
+
+function Formulario({crearCita}){
+  ...
+  const actualizarState = e => {
+    actualizarCita({
+      ...cita,
+      [e.target.name] : e.target.value
+    })
+  }
+
+  const enviarCita = e => {
+    e.preventDefault()
+    console.log("Formulario.enviarcita.cita",cita)
+    // pasar la cita hacia el componente principal
+    crearCita(cita)
+    // reiniciar el state (reiniciar el form)
+  }
+  ...
+      <form
+        onSubmit={enviarCita}
+      >
+  
+  function App() {
+    const crearCita = cita => {
+      // tomar una copia del state y agregar el nuevo cliente
+      const nuevasCitas = [...citas, cita]
+      console.log("crearcita.nuevascitas",nuevasCitas)
+      guardarCitas(nuevasCitas)
+    }   
+    ...
+      <div className="one-half column">
+         <Formulario crearCita={crearCita} />
+      </div>
+  ...
 ```
 ## 7. Mostrando las Citas del State
 - 
