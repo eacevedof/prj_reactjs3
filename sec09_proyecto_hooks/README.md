@@ -116,9 +116,8 @@ function Formulario(){
     />
 ```
 ## 5. Agregando la Información de la cita en el State
-- 
-```js
-```
+- Se aplica **onChange={actualizarState}** en el resto de inputs
+
 ## 6. Pasando el State al Componente Principal
 - 
 ```js
