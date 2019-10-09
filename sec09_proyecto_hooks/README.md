@@ -4,8 +4,24 @@
 - `create-react-app citas`
 
 ## 2. Creando nuestro primer Componente y utilizando useState
-- 
 ```js
+//App.js
+import React, {useState} from 'react'
+
+function App() {
+  // useState retorna 2 funciones
+  // el state actual = this.state
+  // Función que actualiza el state this.setState()
+  const [citas, guardarCitas] = useState([])
+
+  console.log(citas)
+
+  return (
+    <h>hola</h>
+  )
+}
+
+export default App;
 ```
 ## 3. Creando el Componente de Formulario
 - 
