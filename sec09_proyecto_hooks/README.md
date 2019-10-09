@@ -90,8 +90,30 @@ function App() {
     </Fragment>
 ```
 ## 4. Actualizando el State del Formulario
-- 
 ```js
+//App.js
+function Formulario(){
+
+  const [cita, actualizarCita] = useState({
+    mascota: "",
+    propietario: "",
+    fecha: "",
+    hora: "",
+    sintomas: ""
+  })
+
+  const actualizarState = e => {
+    actualizarCita({
+      ...cita,
+      [e.target.name] : e.target.value
+    })
+  }
+...
+      name="mascota"
+      className="u-full-width" 
+      placeholder="Nombre Mascota" 
+      onChange={actualizarState}
+    />
 ```
 ## 5. Agregando la Información de la cita en el State
 - 
