@@ -1,9 +1,8 @@
 # 9. PROYECTO React Hooks - Creando un Proyecto con Hooks
 
 ## 1. Creando la Aplicación
-- 
-```js
-```
+- `create-react-app citas`
+
 ## 2. Creando nuestro primer Componente y utilizando useState
 - 
 ```js
