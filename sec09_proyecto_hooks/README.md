@@ -188,8 +188,28 @@ function App() {
     </div>  
 ```
 ## 8. Reiniciar el Formulario después de Enviarlo
-- 
 ```js
+//App.js
+function Formulario({crearCita}){
+
+  const stateInicial = {
+    mascota: "",
+    propietario: "",
+    fecha: "",
+    hora: "",
+    sintomas: ""    
+  }
+  ...
+  const [cita, actualizarCita] = useState(stateInicial)
+  ...
+  const enviarCita = e => {
+    e.preventDefault()
+    console.log("Formulario.enviarcita.cita",cita)
+    // pasar la cita hacia el componente principal
+    crearCita(cita)
+    // reiniciar el state (reiniciar el form)
+    actualizarCita(stateInicial)
+  }  
 ```
 ## 9. Eliminando Citas
 - 
