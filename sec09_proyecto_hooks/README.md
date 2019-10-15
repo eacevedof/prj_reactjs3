@@ -212,8 +212,41 @@ function Formulario({crearCita}){
   }  
 ```
 ## 9. Eliminando Citas
-- 
 ```js
+//App.js
+function Cita({cita, index, eliminarCita}){
+  //app.eliminarcita
+  return(
+    <div className="cita">
+      <p>Mascota: <span>{cita.mascota}</span></p>
+      <p>Dueño: <span>{cita.propietario}</span></p>
+      <p>Fecha: <span>{cita.fecha}</span></p>
+      <p>Hora: <span>{cita.hora}</span></p>
+      <p>Sintomas: <span>{cita.sintomas}</span></p>
+      <button type="button"
+        onClick={()=>eliminarCita(index)}
+        className="button eliminar u-full-width">Eliminar X</button>
+    </div>
+  )
+}
+
+function App() {
+  // elimina las citas del state
+  const eliminarCita = index => {
+    const nuevasCitas = [...citas]
+    nuevasCitas.splice(index,1)
+    guardarCitas(nuevasCitas)
+  }
+
+    <div className="one-half column">
+        {citas.map((cita,index)=>(
+          <Cita
+            key={index}
+            index={index}
+            cita={cita}
+            eliminarCita={eliminarCita}
+          />
+        ))}  
 ```
 ## 10. Cambiando el Titulo si tenemos o no citas
 - 

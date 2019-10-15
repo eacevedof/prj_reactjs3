@@ -1,7 +1,8 @@
 //App.js
 import React, {useState, Fragment} from 'react'
 
-function Cita({cita}){
+function Cita({cita, index, eliminarCita}){
+  //app.eliminarcita
   return(
     <div className="cita">
       <p>Mascota: <span>{cita.mascota}</span></p>
@@ -9,6 +10,9 @@ function Cita({cita}){
       <p>Fecha: <span>{cita.fecha}</span></p>
       <p>Hora: <span>{cita.hora}</span></p>
       <p>Sintomas: <span>{cita.sintomas}</span></p>
+      <button type="button"
+        onClick={()=>eliminarCita(index)}
+        className="button eliminar u-full-width">Eliminar X</button>
     </div>
   )
 }
@@ -119,6 +123,14 @@ function App() {
     const nuevasCitas = [...citas, cita]
     console.log("crearcita.nuevascitas",nuevasCitas)
     guardarCitas(nuevasCitas)
+    
+  }
+
+  // elimina las citas del state
+  const eliminarCita = index => {
+    const nuevasCitas = [...citas]
+    nuevasCitas.splice(index,1)
+    guardarCitas(nuevasCitas)
   }
 
   return (
@@ -135,6 +147,7 @@ function App() {
                 key={index}
                 index={index}
                 cita={cita}
+                eliminarCita={eliminarCita}
               />
             ))}
           </div>          
