@@ -158,8 +158,34 @@ function Formulario({crearCita}){
   ...
 ```
 ## 7. Mostrando las Citas del State
-- 
+- ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/1043x397/232cb4a2ae61e5914d6c5fe2f453c700/image.png)
 ```js
+//App.js
+function Cita({cita}){
+  return(
+    <div className="cita">
+      <p>Mascota: <span>{cita.mascota}</span></p>
+      <p>Dueño: <span>{cita.propietario}</span></p>
+      <p>Fecha: <span>{cita.fecha}</span></p>
+      <p>Hora: <span>{cita.hora}</span></p>
+      <p>Sintomas: <span>{cita.sintomas}</span></p>
+    </div>
+  )
+}
+....
+function App() {
+    <div className="one-half column">
+      <Formulario crearCita={crearCita} />
+    </div>
+    <div className="one-half column">
+      {citas.map((cita,index)=>(
+        <Cita
+          key={index}
+          index={index}
+          cita={cita}
+        />
+      ))}
+    </div>  
 ```
 ## 8. Reiniciar el Formulario después de Enviarlo
 - 
