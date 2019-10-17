@@ -1,5 +1,5 @@
 //App.js
-import React, {useState, Fragment} from 'react'
+import React, {useState, useEffect, Fragment} from 'react'
 
 function Cita({cita, index, eliminarCita}){
   //app.eliminarcita
@@ -110,10 +110,16 @@ function Formulario({crearCita}){
 
 
 function App() {
+
+  // cargar citas del localstorage como state inicial
+  let citasIniciales = JSON.parse(localStorage.getItem("citas"))
+  if (!citasIniciales)
+    citasIniciales = []
+
   // useState retorna 2 funciones
   // el state actual = this.state
   // Función que actualiza el state this.setState()
-  const [citas, guardarCitas] = useState([])
+  const [citas, guardarCitas] = useState(citasIniciales)
 
   console.log("App.citas",citas)
 
@@ -133,6 +139,22 @@ function App() {
     guardarCitas(nuevasCitas)
   }
 
+  //emula los eventos de carga
+  useEffect(
+    //useEffect: didmount didupdate
+    //useEffect se ejecutaría constantemente, con cualquier mínimo cambio
+    //callback a ejecutar:
+    () => {
+      let citasIniciales = JSON.parse(localStorage.getItem("citas"))
+      if(citasIniciales){
+        localStorage.setItem("citas", JSON.stringify(citas))
+      }
+      else{
+        localStorage.setItem("citas",JSON.stringify([]))
+      }
+    },[citas] //indica, que es lo que tiene que cambiar para que se ejecute el callback
+  )
+  
   // Cargar Condicionalmente un título
   const titulo = Object.keys(citas).length === 0 ? "No hay citas" : "Administrar Las Citas"
 

@@ -258,6 +258,33 @@ function App() {
       <h2>{titulo}</h2>
 ```
 ## 11. Almacenando las Citas en LocalStorage
-- 
 ```js
+//App.js
+function App() {
+
+  // cargar citas del localstorage como state inicial
+  let citasIniciales = JSON.parse(localStorage.getItem("citas"))
+  if (!citasIniciales)
+    citasIniciales = []
+
+  // useState retorna 2 funciones
+  // el state actual = this.state
+  // Función que actualiza el state this.setState()
+  const [citas, guardarCitas] = useState(citasIniciales)
+  ...
+  //emula los eventos de carga
+  useEffect(
+    //useEffect: didmount didupdate
+    //useEffect se ejecutaría constantemente, con cualquier mínimo cambio
+    //callback a ejecutar:
+    () => {
+      let citasIniciales = JSON.parse(localStorage.getItem("citas"))
+      if(citasIniciales){
+        localStorage.setItem("citas", JSON.stringify(citas))
+      }
+      else{
+        localStorage.setItem("citas",JSON.stringify([]))
+      }
+    },[citas] //indica, que es lo que tiene que cambiar para que se ejecute el callback
+  )
 ```
