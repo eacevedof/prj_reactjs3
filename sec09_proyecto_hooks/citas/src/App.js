@@ -133,6 +133,9 @@ function App() {
     guardarCitas(nuevasCitas)
   }
 
+  // Cargar Condicionalmente un título
+  const titulo = Object.keys(citas).length === 0 ? "No hay citas" : "Administrar Las Citas"
+
   return (
     <Fragment>
       <h1>Administrador de Pacientes</h1>  
@@ -142,6 +145,7 @@ function App() {
             <Formulario crearCita={crearCita} />
           </div>
           <div className="one-half column">
+            <h2>{titulo}</h2>
             {citas.map((cita,index)=>(
               <Cita
                 key={index}

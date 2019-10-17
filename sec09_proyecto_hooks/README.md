@@ -249,8 +249,13 @@ function App() {
         ))}  
 ```
 ## 10. Cambiando el Titulo si tenemos o no citas
-- 
 ```js
+//App.js
+  // Cargar Condicionalmente un título
+  const titulo = Object.keys(citas).length === 0 ? "No hay citas" : "Administrar Las Citas"
+  ...
+    <div className="one-half column">
+      <h2>{titulo}</h2>
 ```
 ## 11. Almacenando las Citas en LocalStorage
 - 
