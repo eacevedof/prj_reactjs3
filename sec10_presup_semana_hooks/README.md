@@ -75,8 +75,14 @@ function Pregunta(){
   )
 ```
 ## 5. Mostrando un Mensaje de Error
--
 ```js
+//Pregunta.js
+  return (
+    <Fragment>
+      <h2>Coloca tu Presupuesto</h2>
+      {error ? <p className="alert alert-danger error">El presupuesto es incorrecto</p>: null}
+      <form
+        onSubmit={agregarPresupuesto}
 ```
 ## 6. Pasando el Presupuesto al Componente Principal
 -
