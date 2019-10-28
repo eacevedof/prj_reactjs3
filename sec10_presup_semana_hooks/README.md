@@ -1,7 +1,7 @@
 # 10. PROYECTO  Presupuesto Semanal elaborado con React Hooks
 
 ## 1. El Proyecto Final de este capítulo
-- `create-react-app citas`
+- ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/958x515/eec944e656d185ddb0647162385d82d2/image.png)
 
 ## 2. Creando la App y Primeros Ajustes
 -
