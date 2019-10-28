@@ -1,7 +1,10 @@
 //Pregunta.js
 import React, {Fragment, useState} from 'react'
 
-function Pregunta(){
+//como se van a pasar varios argumentos mejor se usa props
+//en lugar del deconstructoring
+function Pregunta(props){
+  const {guardarPresupuesto} = props
 
   const [cantidad, guardarCantidad] = useState(0)
   const [error, guardarError] = useState(false)
@@ -12,6 +15,9 @@ function Pregunta(){
       guardarError(true)
       return
     }
+    guardarError(false)
+    //app.presupuesto = cantidad
+    guardarPresupuesto(cantidad)
   }
 
   return (

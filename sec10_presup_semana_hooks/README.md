@@ -85,8 +85,27 @@ function Pregunta(){
         onSubmit={agregarPresupuesto}
 ```
 ## 6. Pasando el Presupuesto al Componente Principal
--
 ```js
+//Pregunta.js
+//como se van a pasar varios argumentos mejor se usa props
+//en lugar del deconstructoring
+function Pregunta(props){
+  const {guardarPresupuesto} = props
+
+//App.js
+function App() {
+  //state
+  const [presupuesto, guardarPresupuesto] = useState(0)
+
+  return (
+    <div className="App">
+      <header>
+        <h1>Gasto Semanal</h1>
+        <div className="contenido-principal contenido">
+          <Pregunta 
+            guardarPresupuesto={guardarPresupuesto}
+          />
+        </div>
 ```
 ## 7. Mostrando los Componentes Condicionalmente
 -
