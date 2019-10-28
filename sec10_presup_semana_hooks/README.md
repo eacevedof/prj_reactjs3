@@ -8,8 +8,39 @@
   - Tiene **normalize.css y skeleton.css**
 - [Gist helper.js e index.css](https://gist.github.com/juanpablogdl/7f2a486ee41f0c972ca990e4f654a08a)
 ## 3. Agregando el Primer Componente
--
 ```js
+//Pregunta.js
+function Pregunta(){
+  return (
+    <Fragment>
+      <h2>Coloca tu Presupuesto</h2>
+      <form>
+        <input type="text"
+          className="u-full-width"
+          placeholder="Agrega tu Presupuesto"
+          //onChange={}
+        />
+        <input type="submit" className="button-primary u-full-width" value="Definir Presupuesto"/>
+      </form>
+    </Fragment>
+  )
+}
+
+//App.js
+import Pregunta from "./components/Pregunta"
+
+function App() {
+  return (
+    <div className="App">
+      <header>
+        <h1>Gasto Semanal</h1>
+        <div className="contenido-principal contenido">
+          <Pregunta/>
+        </div>
+      </header>
+    </div>
+  );
+}
 ```
 ## 4. Validando el Presupuesto
 -
