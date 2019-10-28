@@ -4,9 +4,9 @@
 - ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/958x515/eec944e656d185ddb0647162385d82d2/image.png)
 
 ## 2. Creando la App y Primeros Ajustes
--
-```js
-```
+- [getskeleton.com](http://getskeleton.com) framework css
+  - Tiene **normalize.css y skeleton.css**
+- [Gist helper.js e index.css](https://gist.github.com/juanpablogdl/7f2a486ee41f0c972ca990e4f654a08a)
 ## 3. Agregando el Primer Componente
 -
 ```js
