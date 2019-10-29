@@ -1,5 +1,5 @@
 //App.js
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Pregunta from "./components/Pregunta"
 import Formulario from "./components/Formulario"
 
@@ -9,6 +9,11 @@ function App() {
   const [preguntaPresup, guardarPreguntaPresup] = useState(true)
   const [gasto, guardarGasto] = useState({})
   const [gastos, guardarGastos] = useState([])
+
+  useEffect(()=>{
+    const listadoGastos = [...gastos,gasto]
+    //guardarGastos(listadoGastos)
+  })
 
   return (
     <div className="App">
