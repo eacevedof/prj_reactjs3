@@ -256,8 +256,43 @@ const Error = ({mensaje}) => (
   />  
 ```
 ## 11. Creando los Componentes que mostrarán los gastos
--
 ```js
+//Gasto.js
+const Gasto = () => (
+  <li className="gastos">
+    <p>
+      {Gasto.nombreGasto}
+      <span className="gasto">${Gasto.cantidadGasto}</span>
+    </p>
+  </li>
+)
+//Listado.js
+import Gasto from "./Gasto"
+function Listado({gastos}) {
+  return (
+    <div className="gastos-realizados">
+      <h2>Listado</h2>
+      {gastos.map(gasto => (
+        <Gasto 
+          key = {gasto.id}
+          gasto={gasto}
+        />
+      ))}
+    </div>
+  )
+}
+
+//App.js
+useEffect(()=>{
+  const listadoGastos = [...gastos,gasto]
+  guardarGastos(listadoGastos)
+},[])//por esto se quedaba colgado, es necesario pasar un objeto inicial
+
+<div className="one-half column">
+  <Listado 
+    gastos={gastos}
+  />
+</div>
 ```
 ## 12. Mostrando los Gastos
 -

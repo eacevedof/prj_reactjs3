@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react';
 import Pregunta from "./components/Pregunta"
 import Formulario from "./components/Formulario"
+import Listado from "./components/Listado"
 
 function App() {
   //state
@@ -12,8 +13,8 @@ function App() {
 
   useEffect(()=>{
     const listadoGastos = [...gastos,gasto]
-    //guardarGastos(listadoGastos)
-  })
+    guardarGastos(listadoGastos)
+  },[])//por esto se quedaba colgado, es necesario pasar un objeto inicial
 
   return (
     <div className="App">
@@ -33,7 +34,11 @@ function App() {
                   guardarGasto={guardarGasto}
                 />
               </div>
-              <div className="one-half column"></div>
+              <div className="one-half column">
+                <Listado 
+                  gastos={gastos}
+                />
+              </div>
             </div>
           )
 
