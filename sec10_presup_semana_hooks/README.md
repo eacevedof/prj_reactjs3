@@ -189,8 +189,17 @@ guardarPreguntaPresup={guardarPreguntaPresup}
     </div>
 ```
 ## 9. Creando un componente de errores
--
 ```js
+//Error.js
+import React from 'react';
+
+const Error = ({mensaje}) => (
+  <p className="alert alert-danger error">{mensaje}</p>
+)
+//Formulario.js
+{error ? <Error mensaje="Ambos campos son obligatorios o Presup Incorrecto"/> : null}
+//Pregunta.js
+{error ? <Error mensaje="El presupuesto es incorrecto"/> : null}
 ```
 ## 10. Pasando el gasto al componente principal
 -

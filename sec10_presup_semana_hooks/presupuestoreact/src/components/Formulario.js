@@ -1,5 +1,6 @@
 //Formulario.js
 import React,{useState} from 'react'
+import Error from "./Error"
 
 function Formulario(props){
 
@@ -22,6 +23,7 @@ function Formulario(props){
       onSubmit={agregarGasto}
     >
       <h2>Agrega tus Gastos Aqui</h2>
+      {error ? <Error mensaje="Ambos campos son obligatorios o Presup Incorrecto"/> : null}
       <div className="campo">
         <label>Nombre Gasto</label>
         <input 
