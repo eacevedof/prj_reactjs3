@@ -108,8 +108,28 @@ function App() {
         </div>
 ```
 ## 7. Mostrando los Componentes Condicionalmente
--
 ```js
+//Pregunta.js
+const {guardarPresupuesto,guardarPreguntaPresup} = props
+guardarPreguntaPresup(false)
+
+//App.js
+<div className="contenido-principal contenido">
+{
+preguntaPresup  ?
+<Pregunta 
+guardarPresupuesto={guardarPresupuesto}
+guardarPreguntaPresup={guardarPreguntaPresup}
+/>
+: (
+  <div className="row">
+    <div className="one-half column">
+      <p>Formulario aqui</p>
+    </div>
+
+    <div className="one-half column"></div>
+  </div>
+)
 ```
 ## 8. Leyendo los Valores de los Gastos
 -
