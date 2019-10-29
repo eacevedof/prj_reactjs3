@@ -202,8 +202,58 @@ const Error = ({mensaje}) => (
 {error ? <Error mensaje="El presupuesto es incorrecto"/> : null}
 ```
 ## 10. Pasando el gasto al componente principal
--
+- `npm install --save shortid`
 ```js
+//Formulario.js
+  const agregarGasto = e =>{
+    e.preventDefault()
+
+    if(cantidadGasto<1 || isNaN(cantidadGasto) || nombreGasto===""){
+      guardarError(true)
+      return
+    }    
+    guardarError(false)
+
+    const gasto = {
+      nombreGasto,
+      cantidadGasto,
+      id: shortid.generate()
+    } 
+
+    //app.props.guadargasto que guarda en app.gasto
+    guadarGasto(gasto)
+
+    //resetamos el form
+    guardarNombreGasto("")
+    guardarCantidadGasto("")
+  }//agregarGasto
+
+<label>Nombre Gasto</label>
+<input 
+  type="text"
+  className="u-full-width"
+  placeholder="Ej. Transporte"
+  onChange={e => guardarNombreGasto(e.target.value)}
+  value={nombreGasto}
+/>
+</div>
+<div className="campo">
+<label>Cantidad Gasto</label>
+<input 
+  type="number"
+  className="u-full-width"
+  placeholder="Ej. 300"
+  onChange={e => guardarCantidadGasto(parseInt(e.target.value,10))}
+  value={cantidadGasto}
+/>  
+
+//App.js
+  const [gasto, guardarGasto] = useState({})
+  const [gastos, guardarGastos] = useState([])
+
+  <Formulario
+    guardarGasto={guardarGasto}
+  />  
 ```
 ## 11. Creando los Componentes que mostrarán los gastos
 -
