@@ -1,0 +1,81 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+* {
+  margin:0 ;
+}
+html {
+  height: 100%;
+}
+body {
+  background-image: url(logo.svg), -webkit-linear-gradient(top left, #007d35 0%, #007d35 40%, #0f574e 100%);
+  min-height: 100%;
+  background-position: center 80px, center center;
+  background-repeat:no-repeat;
+  background-size: 400px, 100% 100%;
+  display: flex;
+  align-items: flex-end;
+}
+@media (min-width:768px) {
+  body {
+    align-items: center;
+  }
+}
+
+#root {
+  width: 100%;
+}
+.contenedor {
+  display: flex;
+  align-items: center;
+  padding-top: 10rem;
+  flex-direction: column;
+}
+
+.frase {
+  padding: 3rem;
+  border-radius: .5rem;
+  background-color: rgba(255,255,255,1);
+  max-width:800px;
+}
+.frase h1::before {
+  content: open-quote;
+  font-size:10rem;
+  color: black;
+  position: absolute;
+  left: -1rem;
+  top: -2rem;
+}
+.frase h1 {
+  font-family: 'Staatliches', cursive;
+  text-align:center;
+  position: relative;
+  padding-left: 4rem;
+}
+.frase p {
+  font-family: 'Handlee', cursive;
+  font-size: 1.6rem;
+  color: #666;
+  text-align:right; 
+  margin-top: 2rem;
+}
+
+button {
+  background: -webkit-linear-gradient(top left, #007d35 0%, #007d35 40%, #0f574e 100%);
+
+  background-size: 300px;
+  
+  font-family: 'Staatliches', cursive;
+  color:white;
+  margin-top: 3rem;
+  padding: 1rem 3rem;
+  font-size: 2rem;
+  border: 2px solid black;
+}
+button:hover {
+  cursor:pointer;
+  background-size:400px;
+}
