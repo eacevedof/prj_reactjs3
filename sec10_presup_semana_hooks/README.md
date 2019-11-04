@@ -344,6 +344,46 @@ function Pregunta(props){
   guardarRestante(cantidad)
 ```
 ## 14. Calculando el Restante
--
-```js
+- https://gist.github.com/juanpablogdl/7f2a486ee41f0c972ca990e4f654a08a
+- helpers.js
+```js 
+//App.js
+//componentDidMount
+useEffect(()=>{
+  if(crearGasto){
+    const listadoGastos = [...gastos,gasto]
+    guardarGastos(listadoGastos)
+
+    // restar el presupuesto
+    const presupuestoRestante = restante - gasto.cantidadGasto
+    guardarRestante(presupuestoRestante)
+
+    // una vez que se agrega, lo ponemos como false
+    guardarCrearGasto(false)
+  }
+},[crearGasto,gastos,gasto,restante])//por esto se quedaba colgado,
+// es necesario pasar un objeto inicial
+/*
+Line 30:5:  React Hook useEffect has missing dependencies: 'gasto', 'gastos'
+, and 'restante'. Either include them or remove the dependency array  
+react-hooks/exhaustive-deps
+*/
+
+//helpers.js
+export const revisarPresupuesto = (presupuesto,restante) => {
+    let clase;
+    // Comprobar el 25% 
+    if( (presupuesto / 4) > restante) {
+         clase = 'alert alert-danger';
+    } else if( (presupuesto / 2) > restante) {
+        clase = 'alert alert-warning'
+    } else {
+        clase = 'alert alert alert-success';
+    }
+    return clase;
+} 
+//ControlPresupuesto.js
+<div className={revisarPresupuesto(presupuesto,restante)}>
+  Restante : $ {restante}
+</div>
 ```

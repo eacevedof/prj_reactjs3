@@ -20,10 +20,20 @@ function App() {
       const listadoGastos = [...gastos,gasto]
       guardarGastos(listadoGastos)
 
+      // restar el presupuesto
+      const presupuestoRestante = restante - gasto.cantidadGasto
+      guardarRestante(presupuestoRestante)
+
       // una vez que se agrega, lo ponemos como false
       guardarCrearGasto(false)
     }
-  },[crearGasto])//por esto se quedaba colgado, es necesario pasar un objeto inicial
+  },[crearGasto,gastos,gasto,restante])//por esto se quedaba colgado,
+  // es necesario pasar un objeto inicial
+  /*
+  Line 30:5:  React Hook useEffect has missing dependencies: 'gasto', 'gastos'
+  , and 'restante'. Either include them or remove the dependency array  
+  react-hooks/exhaustive-deps
+  */
 
   return (
     <div className="App">
