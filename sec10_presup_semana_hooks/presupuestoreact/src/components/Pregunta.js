@@ -5,7 +5,7 @@ import Error from "./Error"
 //como se van a pasar varios argumentos mejor se usa props
 //en lugar del deconstructoring
 function Pregunta(props){
-  const {guardarPresupuesto,guardarPreguntaPresup} = props
+  const {guardarPresupuesto,guardarPreguntaPresup,guardarRestante} = props
 
   const [cantidad, guardarCantidad] = useState(0)
   const [error, guardarError] = useState(false)
@@ -19,6 +19,7 @@ function Pregunta(props){
     guardarError(false)
     //app.presupuesto = cantidad
     guardarPresupuesto(cantidad)
+    guardarRestante(cantidad)
     guardarPreguntaPresup(false)
   }
 

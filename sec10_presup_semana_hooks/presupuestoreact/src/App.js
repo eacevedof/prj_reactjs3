@@ -3,10 +3,12 @@ import React, {useState, useEffect} from 'react';
 import Pregunta from "./components/Pregunta"
 import Formulario from "./components/Formulario"
 import Listado from "./components/Listado"
+import ControlPresupuesto from "./components/ControlPresupuesto"
 
 function App() {
   //state
   const [presupuesto, guardarPresupuesto] = useState(0)
+  const [restante, guardarRestante] = useState(0)
   const [preguntaPresup, guardarPreguntaPresup] = useState(true)
   const [crearGasto, guardarCrearGasto] = useState(false)
   const [gasto, guardarGasto] = useState({})
@@ -33,6 +35,7 @@ function App() {
           <Pregunta 
             guardarPresupuesto={guardarPresupuesto}
             guardarPreguntaPresup={guardarPreguntaPresup}
+            guardarRestante={guardarRestante}
           />
           : (
             <div className="row">
@@ -46,10 +49,13 @@ function App() {
                 <Listado 
                   gastos={gastos}
                 />
-              </div>
+                <ControlPresupuesto 
+                  presupuesto={presupuesto}
+                  restante={restante}
+                />                
+              </div>             
             </div>
           )
-
         }
         </div>
       </header>

@@ -322,8 +322,26 @@ useEffect(()=>{
     guardarError(false)  
 ```
 ## 13. Mostrando el Presupuesto y restante
--
 ```js
+//ControlPresupuesto.js
+import React, {Fragment} from 'react';
+
+const ControlPresupuesto = ({presupuesto, restante}) => (
+  <Fragment>
+    <div className="alert alert-primary">
+      presupuesto: ${presupuesto}
+    </div>
+    <div className="">
+      Restante : $ {restante}
+    </div>
+  </Fragment>
+)
+ 
+//pregunta.js
+function Pregunta(props){
+  const {guardarPresupuesto,guardarPreguntaPresup,guardarRestante} = props
+  ...
+  guardarRestante(cantidad)
 ```
 ## 14. Calculando el Restante
 -
