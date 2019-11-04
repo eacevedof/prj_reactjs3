@@ -295,8 +295,31 @@ useEffect(()=>{
 </div>
 ```
 ## 12. Mostrando los Gastos
--
+- Configurar carga por defecto con useEffect (componentDidMount)
 ```js
+//App.js
+  //componentDidMount
+  useEffect(()=>{
+    if(crearGasto){
+      const listadoGastos = [...gastos,gasto]
+      guardarGastos(listadoGastos)
+
+      // una vez que se agrega, lo ponemos como false
+      guardarCrearGasto(false)
+    }
+  },[crearGasto])//por esto se quedaba colgado, es necesario pasar un objeto inicial
+  ...
+  <Formulario
+    guardarGasto={guardarGasto}
+    guardarCrearGasto={guardarCrearGasto}
+  />
+//Formulario.js
+    //app.props.guadargasto que guarda en app.gasto
+    guardarGasto(gasto)
+    guardarCrearGasto(true)
+
+    //eliminar alerta
+    guardarError(false)  
 ```
 ## 13. Mostrando el Presupuesto y restante
 -

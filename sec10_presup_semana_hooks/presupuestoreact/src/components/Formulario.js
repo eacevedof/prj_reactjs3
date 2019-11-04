@@ -4,8 +4,9 @@ import Error from "./Error"
 import shortid from "shortid"
 
 function Formulario(props){
-
-  const {guadarGasto} = props;
+  //console.log("formulario props",props)
+  //return
+  const {guardarGasto, guardarCrearGasto} = props;
 
   const [nombreGasto,guardarNombreGasto] = useState("")
   const [cantidadGasto,guardarCantidadGasto] = useState("0")
@@ -18,8 +19,7 @@ function Formulario(props){
       guardarError(true)
       return
     }    
-    guardarError(false)
-
+    
     const gasto = {
       nombreGasto,
       cantidadGasto,
@@ -27,7 +27,11 @@ function Formulario(props){
     } 
 
     //app.props.guadargasto que guarda en app.gasto
-    guadarGasto(gasto)
+    guardarGasto(gasto)
+    guardarCrearGasto(true)
+
+    //eliminar alerta
+    guardarError(false)
 
     //resetamos el form
     guardarNombreGasto("")

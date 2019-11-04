@@ -8,13 +8,20 @@ function App() {
   //state
   const [presupuesto, guardarPresupuesto] = useState(0)
   const [preguntaPresup, guardarPreguntaPresup] = useState(true)
+  const [crearGasto, guardarCrearGasto] = useState(false)
   const [gasto, guardarGasto] = useState({})
   const [gastos, guardarGastos] = useState([])
 
+  //componentDidMount
   useEffect(()=>{
-    const listadoGastos = [...gastos,gasto]
-    guardarGastos(listadoGastos)
-  },[])//por esto se quedaba colgado, es necesario pasar un objeto inicial
+    if(crearGasto){
+      const listadoGastos = [...gastos,gasto]
+      guardarGastos(listadoGastos)
+
+      // una vez que se agrega, lo ponemos como false
+      guardarCrearGasto(false)
+    }
+  },[crearGasto])//por esto se quedaba colgado, es necesario pasar un objeto inicial
 
   return (
     <div className="App">
@@ -24,14 +31,15 @@ function App() {
         {
           preguntaPresup  ?
           <Pregunta 
-          guardarPresupuesto={guardarPresupuesto}
-          guardarPreguntaPresup={guardarPreguntaPresup}
+            guardarPresupuesto={guardarPresupuesto}
+            guardarPreguntaPresup={guardarPreguntaPresup}
           />
           : (
             <div className="row">
               <div className="one-half column">
                 <Formulario
                   guardarGasto={guardarGasto}
+                  guardarCrearGasto={guardarCrearGasto}
                 />
               </div>
               <div className="one-half column">
