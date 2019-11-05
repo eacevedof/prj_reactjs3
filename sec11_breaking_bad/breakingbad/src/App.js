@@ -1,11 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+//App.js
+import React, {useState, useEffect} from 'react';
 
 function App() {
-  return (
-    <h2>Breaking Bad</h2>
-  );
+  return <p>hola</p>
 }
 
 export default App;
