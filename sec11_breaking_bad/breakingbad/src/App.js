@@ -36,13 +36,18 @@ function App() {
     },[])
 
   console.log("frase",frase)
+
   return (
     <div className="contenedor">
       <Frase
         frase={frase}
       />
+      <button
+        onClick={get_async_data}
+      >Generar Nueva</button>
     </div>
   )
-}
+
+}//App()
 
 export default App;

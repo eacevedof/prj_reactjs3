@@ -64,5 +64,16 @@ function Frase({frase}){
 ```
 ## 5. Agregar un botón para generar una nueva frase
 ```js
+//App.js
+  return (
+    <div className="contenedor">
+      <Frase
+        frase={frase}
+      />
+      <button
+        onClick={get_async_data}
+      >Generar Nueva</button>
+    </div>
+  )
 ```
 
