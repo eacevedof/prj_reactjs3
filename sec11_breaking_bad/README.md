@@ -44,6 +44,23 @@ function App() {
 ```
 ## 4. Mostrando los Resultados de la Consulta
 ```js
+//App.js
+function Frase({frase}){
+  return (
+    <div className="frase">
+      <h1>{frase.quote}</h1>
+      <p>-{frase.author}</p>
+    </div>
+  )
+}
+...
+  return (
+    <div className="contenedor">
+      <Frase
+        frase={frase}
+      />
+    </div>
+  )
 ```
 ## 5. Agregar un botón para generar una nueva frase
 ```js

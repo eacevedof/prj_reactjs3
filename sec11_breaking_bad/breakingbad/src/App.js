@@ -2,6 +2,15 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 
+function Frase({frase}){
+  return (
+    <div className="frase">
+      <h1>{frase.quote}</h1>
+      <p>-{frase.author}</p>
+    </div>
+  )
+}
+
 function App() {
   
   //obtener la frase de la api
@@ -27,7 +36,13 @@ function App() {
     },[])
 
   console.log("frase",frase)
-  return <p>{frase.quote}</p>
+  return (
+    <div className="contenedor">
+      <Frase
+        frase={frase}
+      />
+    </div>
+  )
 }
 
 export default App;
