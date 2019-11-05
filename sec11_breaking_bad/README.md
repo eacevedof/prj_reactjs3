@@ -76,5 +76,5 @@ function Frase({frase}){
     </div>
   )
 ```
-## Netlyfy
+## Netlify
 - [https://eaf-breakingbad.netlify.com/](https://eaf-breakingbad.netlify.com/)
