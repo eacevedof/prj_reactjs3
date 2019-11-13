@@ -1,9 +1,16 @@
 import React, {useState, useEffect, Fragment} from "react"
+import Formulario from "./components/Formulario"
 
 function App() {
+  const [artista, agregarArtista] = useState("")
+  const [letra, agregarLetra] = useState([])
+  const [info, agregarInfo] = useState({})
+
   return (
-    <h1>Hola</h1>
-  );
+    <Fragment>
+      <Formulario />
+    </Fragment>
+  )
 }
 
 export default App;
