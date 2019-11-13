@@ -4,8 +4,7 @@
 - ![](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5d7fef6652faf333827e91c3/f6fb85df221d4cabbdf4b12814697b69/image.png)
 ## 2. Primeros pasos con el Proyecto
 - [Gist material](https://gist.github.com/juanpablogdl/913aa9fb212bee2815291b5228cfbfef)
-```js
-```
+- Inicio del proyecto
 ## 3. Creando múltiples state y múltiples Componentes
 - 
 ```js
