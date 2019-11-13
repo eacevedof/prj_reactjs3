@@ -2,6 +2,18 @@ import React, {useState} from "react"
 
 
 function Formulario(){
+  const [busqueda, agregarBusqueda] = useState({
+    artista: "",
+    cancion: ""
+  })
+
+  const actualizarState = e => {
+    agregarBusqueda({
+      ...busqueda,
+      [e.target.name]: e.target.value 
+    })
+  }
+
   return (
     <div className="bg-info">
       <div className="container">
@@ -19,6 +31,7 @@ function Formulario(){
                                     className="form-control" 
                                     name="artista" 
                                     placeholder="Nombre Artista" 
+                                    onChange={actualizarState}
                                     required
                                 />
                             </div>
@@ -30,7 +43,8 @@ function Formulario(){
                                     type="text" 
                                     className="form-control" 
                                     name="cancion" 
-                                    placeholder="Nombre Canción" 
+                                    placeholder="Nombre Canción"
+                                    onChange={actualizarState} 
                                     required
                                 />
                             </div>
