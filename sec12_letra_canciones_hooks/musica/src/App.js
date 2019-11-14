@@ -6,9 +6,14 @@ function App() {
   const [letra, agregarLetra] = useState([])
   const [info, agregarInfo] = useState({})
 
+  //metodo para consultar la api de letras de canciones
+  const consultarApiLetra = () =>{
+     console.log("consultarApiLetra")
+  }
+
   return (
     <Fragment>
-      <Formulario />
+      <Formulario consultarApiLetra={consultarApiLetra} />
     </Fragment>
   )
 }

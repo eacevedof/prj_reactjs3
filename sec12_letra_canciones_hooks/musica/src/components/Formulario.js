@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 
 
-function Formulario(){
+function Formulario({consultarApiLetra}){
   const [busqueda, agregarBusqueda] = useState({
     artista: "",
     cancion: ""
@@ -14,11 +14,18 @@ function Formulario(){
     })
   }
 
+  const on_submit = e => {
+    e.preventDefault()
+    console.log("on_submit")
+    consultarApiLetra(busqueda)
+  }
+
   return (
     <div className="bg-info">
       <div className="container">
           <div className="row">
               <form 
+                onSubmit={on_submit}
                 className="col card text-white bg-transparent  mb-5 pt-5 pb-2">
                   <fieldset>
                       <legend className="text-center">Buscador Letras Canciones</legend>
