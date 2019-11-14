@@ -18,7 +18,7 @@
 ```js
 ```
 ## 6. Consultando la API de Letras
-- 
+- npm install axios
 ```js
 ```
 ## 7. Mostrando los Resultados de la Letra
