@@ -13,6 +13,8 @@
 
 ## 6. Consultando la API de Letras
 - npm install axios
+- no va la api
+- https://api.lyrics.ovh/v1/travis/side
 
 ## 7. Mostrando los Resultados de la Letra
 ```js
