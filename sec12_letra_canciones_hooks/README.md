@@ -38,8 +38,42 @@ function Cancion({letra}){
 export default Cancion
 ```
 ## 8. useEffect para realizar la segunda consulta
-- 
 ```js
+//App.js
+  //metodo para consultar la api de letras de canciones
+  const consultarApiLetra = async busqueda =>{
+    const {artista, cancion} = busqueda
+     
+    const url = `https://api.lyrics.ovh/v1/${artista}/${cancion}`;
+    //en este caso usamos axios ya que useEffect se usa cuando se cambia algun componente
+    //que va a desencadenar otro.  Por ejemplo cuando se va a cargar la página se necesita llamar una API
+    
+    console.log("url:",url)
+    const resultado = await axios(url)
+
+    //dispara el useEffect
+    agregarArtista(artista)
+
+    agregarLetra(resultado.data.lyrics)
+
+  }//consultarApiLetra
+
+  // Método para consultar la API de Información
+  const consultarAPIInfo = async () => {
+      const url = `https://theaudiodb.com/api/v1/json/1/search.php?s=${artista}`;
+      const resultado = await axios(url);
+      agregarInfo(resultado.data.artists[0]);
+      console.log(info)
+  }  
+
+  //componentDidUpdate
+  useEffect(
+    ()=>{
+      consultarAPIInfo(artista)
+      console.log("agregaste artista")
+  },[artista])
+  //configuracion de que escucha de variables, cuando cambien se ejecutará esta funcion
+
 ```
 ## 9. Mostrando la información del Artista
 - 

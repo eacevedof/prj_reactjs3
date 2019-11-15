@@ -18,9 +18,29 @@ function App() {
     
     console.log("url:",url)
     const resultado = await axios(url)
-    //console.log(resultado.data.lyrics)
+
+    //dispara el useEffect
+    agregarArtista(artista)
+
     agregarLetra(resultado.data.lyrics)
-  }
+
+  }//consultarApiLetra
+
+  // Método para consultar la API de Información
+  const consultarAPIInfo = async () => {
+      const url = `https://theaudiodb.com/api/v1/json/1/search.php?s=${artista}`;
+      const resultado = await axios(url);
+      agregarInfo(resultado.data.artists[0]);
+      console.log(info)
+  }  
+
+  //componentDidUpdate
+  useEffect(
+    ()=>{
+      consultarAPIInfo(artista)
+      console.log("agregaste artista")
+  },[artista])
+  //configuracion de que escucha de variables, cuando cambien se ejecutará esta funcion
 
   return (
     <Fragment>
