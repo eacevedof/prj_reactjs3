@@ -1,6 +1,5 @@
 import React, {useState} from "react"
 
-
 function Formulario({consultarApiLetra}){
   const [busqueda, agregarBusqueda] = useState({
     artista: "",

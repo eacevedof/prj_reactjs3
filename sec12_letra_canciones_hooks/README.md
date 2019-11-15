@@ -6,24 +6,34 @@
 - [Gist material](https://gist.github.com/juanpablogdl/913aa9fb212bee2815291b5228cfbfef)
 - Inicio del proyecto
 ## 3. Creando múltiples state y múltiples Componentes
-- 
-```js
-```
+
 ## 4. Leyendo los valores del Formulario
-- 
-```js
-```
+
 ## 5. Pasando la búsqueda al componente principal
-- 
-```js
-```
+
 ## 6. Consultando la API de Letras
 - npm install axios
-```js
-```
+
 ## 7. Mostrando los Resultados de la Letra
-- 
 ```js
+//Cancion.js
+import React,{Fragment} from 'react'
+
+function Cancion({letra}){
+
+  //si no hay datos devuelvo un render vacio (null)
+  if(letra.length === 0)
+    return null
+
+  return (
+    <Fragment>
+      <h2>Letra Cancion</h2>
+      <p className="letra">{letra}</p>
+    </Fragment>
+  )
+}
+
+export default Cancion
 ```
 ## 8. useEffect para realizar la segunda consulta
 - 
