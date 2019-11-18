@@ -112,9 +112,9 @@ export default Header;
   - ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/1028x754/25aa3d83bd72e5123e93da8414d96124/image.png)
 - Usaremos fetch y axios para consumir los endpoints
 ## 7. Creando una API con JSON Server
-- 
-```js
-```
+- **json-server** npm install -g json-server
+- json-server ./db.json -p 4000
+
 ## 8. Consultando la API
 - 
 ```js
