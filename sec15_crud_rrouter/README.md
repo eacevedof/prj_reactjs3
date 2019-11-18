@@ -1,9 +1,8 @@
 ## 15. PROYECTO CRUD con React Router, JSON Server y React Hooks
 
 ## 1. El Proyecto que construiremos
-- 
-```js
-```
+- ![](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5d7fef6652faf333827e91c3/550c088c92022c9be7954643fe424f0a/image.png)
+
 ## 2. Creando la Aplicación y Primeros Pasos
 - 
 ```js
