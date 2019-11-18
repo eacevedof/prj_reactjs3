@@ -107,9 +107,10 @@ const Header = () => {
 export default Header;
 ```
 ## 6. Que es una REST API, Endpoints y Requests
-- 
-```js
-```
+- **API** Application Programming Interface
+- **REST** Representational State Transfer
+  - ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/1028x754/25aa3d83bd72e5123e93da8414d96124/image.png)
+- Usaremos fetch y axios para consumir los endpoints
 ## 7. Creando una API con JSON Server
 - 
 ```js
