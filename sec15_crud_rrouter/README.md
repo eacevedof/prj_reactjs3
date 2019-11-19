@@ -145,8 +145,46 @@ function App() {
   },[])
 ```
 ## 9. Pasando los resultados a Productos
-- 
 ```js
+//App.js
+ return (
+    <Router>
+      <Header/>
+      <main className="container mt-5">
+        <Switch>
+          <Route exact path="/productos"            
+            render={
+              ()=>(
+                //la forma de pasar datos a un componente es usando render
+                <Productos
+                  productos={productos}
+                />
+              )
+            }
+          />
+//Productos.js
+import React, {Fragment} from 'react';
+import ProductoLista from "./ProductoLista"
+
+function Productos({productos}){
+  return (
+    <Fragment>
+      <h1 className="text-center">Productos</h1>
+      <ul className="list-group mt-5">
+        {
+          productos.map((producto) => (
+            <ProductoLista 
+              key={producto.id}
+              producto={producto}
+            />
+          ))
+        }
+      </ul>
+    </Fragment>
+  )
+}
+
+export default Productos;
 ```
 ## 10. Mostrando los Productos
 - 

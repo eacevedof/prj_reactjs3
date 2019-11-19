@@ -30,10 +30,17 @@ function App() {
       <Header/>
       <main className="container mt-5">
         <Switch>
-          <Route exact path="/productos/nuevo" 
+          <Route exact path="/productos"            
             render={()=>(
-
-          )}/>
+              //la forma de pasar datos a un componente es usando render
+              <Productos
+                productos={productos}
+              />
+            )}
+          />
+          <Route exact path="/productos/nuevo" 
+ 
+          />
           <Route exact path="/productos" component={Productos}/>
           <Route exact path="/productos/editar/:id" component={EditarProducto}/>
           <Route exact path="/productos/:id" component={Producto}/>
