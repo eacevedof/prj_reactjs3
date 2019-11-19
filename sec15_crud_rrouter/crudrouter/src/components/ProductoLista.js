@@ -36,7 +36,6 @@ function ProductoLista({producto}){
       </div>
     </li>
   )
-
 }
 
 export default ProductoLista;
