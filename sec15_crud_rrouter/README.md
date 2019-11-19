@@ -114,6 +114,7 @@ export default Header;
 ## 7. Creando una API con JSON Server
 - **json-server** npm install -g json-server
 - json-server ./db.json -p 4000
+- http://localhost:4000/restaurant
 
 ## 8. Consultando la API
 ```js
