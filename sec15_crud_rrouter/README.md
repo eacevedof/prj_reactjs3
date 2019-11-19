@@ -116,7 +116,6 @@ export default Header;
 - json-server ./db.json -p 4000
 
 ## 8. Consultando la API
-- 
 ```js
 //App.js
 import React, {useEffect, useState} from 'react';
