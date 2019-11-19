@@ -118,6 +118,31 @@ export default Header;
 ## 8. Consultando la API
 - 
 ```js
+//App.js
+import React, {useEffect, useState} from 'react';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
+import axios from "axios"
+
+import Header from "./components/Header"
+import Productos from "./components/Productos"
+import EditarProducto from "./components/EditarProducto"
+import AgregarProducto from "./components/AgregarProducto"
+import Producto from "./components/Producto"
+
+function App() {
+
+  const [productos, setProductos] = useState([])
+
+  useEffect(()=>{
+    const consultarApi = async() => {
+      const url = "http://localhost:4000/restaurant"
+      const resultado = await axios.get(url)
+      //console.log("consultarApi.resultado.data",resultado.data)
+      setProductos(resultado.data)
+    }
+
+    consultarApi()
+  },[])
 ```
 ## 9. Pasando los resultados a Productos
 - 
