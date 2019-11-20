@@ -423,8 +423,61 @@ function AgregarProducto(){
       >
 ```
 ## 14. Creando una alerta y redirección
-- 
+- Instalación de sweetalert
+- npm install sweetalert2
+- Redireccion con: history.push("/productos")
+
 ```js
+//AgregarProducto.js
+import Swal from "sweetalert2"
+//high order component
+//gracias a este componente podremos tener acceso al history
+import {withRouter} from "react-router-dom"
+...
+function AgregarProducto({history}){
+  ...
+  const onsubmit_async = async e=>{
+    e.preventDefault()
+    //en cada cambio de los inputs estos estados se han actualizado con sus setters en el onchange
+    if(nombrePlatillo==="" || precioPlatillo==="" || categoria===""){
+      setError(true) //el cambio en error hace que se muestre el comp <Error/>
+      setErrmsg("Todos los campos son obligatorios")
+      return 
+    }
+
+    setError(false); 
+    try {
+      const url = "http://localhost:4000/restaurant"
+      const resultado = await axios.post(url,{
+        nombrePlatillo,
+        precioPlatillo,
+        categoria
+      })
+      if(resultado.status === 201){
+        Swal.fire(
+          "Producto Creado",
+          "El producto se creó correctamente",
+          "success"
+        )
+      }
+    }
+    catch(err){
+      setError(true)
+      //setErrmsg(err.toString())
+      Swal.fire({
+        type: "error",
+        title: "Error",
+        text: err.toString(),
+      })
+    }
+
+    //redirigir al usuario a productolista
+    history.push("/productos")
+
+  }//onsubmit_async
+...
+//wrapper que permite interactuar con el historial
+export default withRouter(AgregarProducto);
 ```
 ## 15. Recargando la lista de productos
 - 

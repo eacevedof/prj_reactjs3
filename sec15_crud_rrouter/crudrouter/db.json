@@ -23,6 +23,12 @@
       "precioPlatillo": "7",
       "categoria": "cortes",
       "id": 4
+    },
+    {
+      "nombrePlatillo": "productos",
+      "precioPlatillo": "4",
+      "categoria": "cortes",
+      "id": 5
     }
   ]
 }

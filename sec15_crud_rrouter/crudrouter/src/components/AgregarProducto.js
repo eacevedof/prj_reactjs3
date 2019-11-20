@@ -2,8 +2,12 @@
 import React, {useState, useEffect} from 'react';
 import Error from "./Error"
 import axios from "axios"
+import Swal from "sweetalert2"
+//high order component
+//gracias a este componente podremos tener acceso al history
+import {withRouter} from "react-router-dom"
 
-function AgregarProducto(){
+function AgregarProducto({history}){
 
   const [nombrePlatillo,setNombrePlatillo] = useState("")
   const [precioPlatillo,setPrecioPlatillo] = useState("")
@@ -32,13 +36,27 @@ function AgregarProducto(){
         precioPlatillo,
         categoria
       })
-      console.log("onsubmit_async result",resultado)
+      if(resultado.status === 201){
+        Swal.fire(
+          "Producto Creado",
+          "El producto se creó correctamente",
+          "success"
+        )
+      }
     }
     catch(err){
       setError(true)
-      console.log("onsubmit_async err",err,typeof err)
-      setErrmsg(err.toString())
+      //setErrmsg(err.toString())
+      Swal.fire({
+        type: "error",
+        title: "Error",
+        text: err.toString(),
+      })
     }
+
+    //redirigir al usuario a productolista
+    history.push("/productos")
+
   }//onsubmit_async
 
   return (
@@ -136,4 +154,4 @@ function AgregarProducto(){
   )
 }
 
-export default AgregarProducto;
+export default withRouter(AgregarProducto);
