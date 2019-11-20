@@ -1,21 +1,40 @@
+//AgregarProducto.js
 import React, {useState, useEffect} from 'react';
+import Error from "./Error"
 
 function AgregarProducto(){
-  //
+
   const [nombrePlatillo,setNombrePlatillo] = useState("")
   const [precioPlatillo,setPrecioPlatillo] = useState("")
   const [categoria,setCategoria] = useState("")
+  const [error,setError] = useState(false)
 
   const getValorRadio = e => {
     setCategoria(e.target.value)
+  }
+
+  const on_submit = e=>{
+    e.preventDefault()
+    //en cada cambio de los inputs estos estados se han actualizado con sus setters en el onchange
+    if(nombrePlatillo==="" || precioPlatillo==="" || categoria===""){
+      setError(true) //el cambio en error hace que se muestre el comp <Error/>
+      return 
+    }
+
+    setError(false); 
   }
 
   return (
     <div className="col-md-8 mx-auto ">
       <h1 className="text-center">Agregar Nuevo Producto</h1>
 
+      {
+        error ? <Error msg="Todos los campos son obligatorios" /> : null
+      }
+
       <form
           className="mt-5"
+          onSubmit={on_submit}
       >
         <div className="form-group">
           <label>Nombre Platillo</label>

@@ -324,7 +324,7 @@ function AgregarProducto(){
               onChange={getValorRadio}
             />
             <label className="form-check-label">
-                Ensalada
+              Ensalada
             </label>
           </div>
         </div>
@@ -337,8 +337,32 @@ function AgregarProducto(){
 export default AgregarProducto;
 ```
 ## 12. Validando el Formulario
-- 
 ```js
+//AgregarProducto.js
+...
+  const on_submit = e=>{
+    e.preventDefault()
+    //en cada cambio de los inputs estos estados se han actualizado con sus setters en el onchange
+    if(nombrePlatillo==="" || precioPlatillo==="" || categoria===""){
+      setError(true) //el cambio en error hace que se muestre el comp <Error/>
+      return 
+    }
+
+    setError(false); 
+  }
+
+  return (
+    <div className="col-md-8 mx-auto ">
+      <h1 className="text-center">Agregar Nuevo Producto</h1>
+
+      {
+        error ? <Error msg="Todos los campos son obligatorios" /> : null
+      }
+
+      <form
+          className="mt-5"
+          onSubmit={on_submit}
+      >
 ```
 ## 13. Creando nuevos productos
 - 
