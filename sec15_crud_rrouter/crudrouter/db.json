@@ -1,16 +1,28 @@
 {
-  "restaurant":[
+  "restaurant": [
     {
       "precioPlatillo": "200",
       "nombrePlatillo": "Cheescake",
-      "categoria":  "postres",
+      "categoria": "postres",
       "id": 1
     },
     {
       "precioPlatillo": "300",
       "nombrePlatillo": "Rib Eye 400g",
-      "categoria":  "cortes",
+      "categoria": "cortes",
       "id": 2
+    },
+    {
+      "nombrePlatillo": "nueva enx",
+      "precioPlatillo": "3",
+      "categoria": "postre",
+      "id": 3
+    },
+    {
+      "nombrePlatillo": "ricorico",
+      "precioPlatillo": "7",
+      "categoria": "cortes",
+      "id": 4
     }
   ]
 }

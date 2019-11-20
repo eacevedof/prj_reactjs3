@@ -1,6 +1,7 @@
 //AgregarProducto.js
 import React, {useState, useEffect} from 'react';
 import Error from "./Error"
+import axios from "axios"
 
 function AgregarProducto(){
 
@@ -8,33 +9,49 @@ function AgregarProducto(){
   const [precioPlatillo,setPrecioPlatillo] = useState("")
   const [categoria,setCategoria] = useState("")
   const [error,setError] = useState(false)
+  const [errmsg,setErrmsg] = useState("")
 
   const getValorRadio = e => {
     setCategoria(e.target.value)
   }
 
-  const on_submit = e=>{
+  const onsubmit_async = async e=>{
     e.preventDefault()
     //en cada cambio de los inputs estos estados se han actualizado con sus setters en el onchange
     if(nombrePlatillo==="" || precioPlatillo==="" || categoria===""){
       setError(true) //el cambio en error hace que se muestre el comp <Error/>
+      setErrmsg("Todos los campos son obligatorios")
       return 
     }
 
     setError(false); 
-  }
+    try {
+      const url = "http://localhost:4000/restaurant"
+      const resultado = await axios.post(url,{
+        nombrePlatillo,
+        precioPlatillo,
+        categoria
+      })
+      console.log("onsubmit_async result",resultado)
+    }
+    catch(err){
+      setError(true)
+      console.log("onsubmit_async err",err,typeof err)
+      setErrmsg(err.toString())
+    }
+  }//onsubmit_async
 
   return (
     <div className="col-md-8 mx-auto ">
       <h1 className="text-center">Agregar Nuevo Producto</h1>
 
       {
-        error ? <Error msg="Todos los campos son obligatorios" /> : null
+        error ? <Error msg={errmsg} /> : null
       }
 
       <form
           className="mt-5"
-          onSubmit={on_submit}
+          onSubmit={onsubmit_async}
       >
         <div className="form-group">
           <label>Nombre Platillo</label>
