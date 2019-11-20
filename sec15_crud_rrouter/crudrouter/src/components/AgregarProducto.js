@@ -7,7 +7,8 @@ import Swal from "sweetalert2"
 //gracias a este componente podremos tener acceso al history
 import {withRouter} from "react-router-dom"
 
-function AgregarProducto({history}){
+//se inyecta app.setRecargar
+function AgregarProducto({history,setRecargar}){
 
   const [nombrePlatillo,setNombrePlatillo] = useState("")
   const [precioPlatillo,setPrecioPlatillo] = useState("")
@@ -54,6 +55,7 @@ function AgregarProducto({history}){
       })
     }
 
+    setRecargar(true)
     //redirigir al usuario a productolista
     history.push("/productos")
 

@@ -480,8 +480,113 @@ function AgregarProducto({history}){
 export default withRouter(AgregarProducto);
 ```
 ## 15. Recargando la lista de productos
-- 
+- cmd+shift+r limpia cache de todos los componentes
 ```js
+//App.js
+function App() {
+
+  const [productos, setProductos] = useState([])
+  //variable y funcion que se usara para inyectarla en AgregarProducto
+  //de modo que cuando ese form cree un nuevo prod setee este buleano a true
+  //lo que hará que se desencadene la llamada ajax del listado
+  const [recargar,setRecargar] = useState(true)
+
+  useEffect(()=>{
+    if(recargar){
+      const consultarApi = async() => {
+        const url = "http://localhost:4000/restaurant"
+        const resultado = await axios.get(url)
+        setProductos(resultado.data)
+      } 
+      consultarApi()
+      // cambiar a false la recarga de los productos
+      setRecargar(false)      
+    }
+
+  //recargar es la unica dependencia, unica variable de estado
+  //que se toma en cuenta en useEffect
+  },[recargar])
+
+  return (
+    <Router>
+      <Header/>
+      <main className="container mt-5">
+        <Switch>
+          <Route exact path="/productos"            
+            render={()=>(
+              //la forma de pasar datos a un componente es usando render
+              <Productos
+                productos={productos}
+              />
+            )}
+          />
+          <Route exact path="/productos/nuevo" 
+            //component={AgregarProducto}
+            render={
+              () => (
+                <AgregarProducto 
+                  setRecargar={setRecargar}
+                />
+              )
+            }
+          />
+          <Route exact path="/productos" component={Productos}/>
+          <Route exact path="/productos/editar/:id" component={EditarProducto}/>
+          <Route exact path="/productos/:id" component={Producto}/>
+        </Switch>
+      </main>
+      <p className="mt-4 p2 text-center">Todos los derechos reservados</p>
+    </Router>
+  )
+}
+
+//AgregarProducto.js
+//se inyecta app.setRecargar
+function AgregarProducto({history,setRecargar}){
+
+  const [nombrePlatillo,setNombrePlatillo] = useState("")
+  const [precioPlatillo,setPrecioPlatillo] = useState("")
+
+  const onsubmit_async = async e=>{
+    e.preventDefault()
+    //en cada cambio de los inputs estos estados se han actualizado con sus setters en el onchange
+    if(nombrePlatillo==="" || precioPlatillo==="" || categoria===""){
+      setError(true) //el cambio en error hace que se muestre el comp <Error/>
+      setErrmsg("Todos los campos son obligatorios")
+      return 
+    }
+
+    setError(false); 
+    try {
+      const url = "http://localhost:4000/restaurant"
+      const resultado = await axios.post(url,{
+        nombrePlatillo,
+        precioPlatillo,
+        categoria
+      })
+      if(resultado.status === 201){
+        Swal.fire(
+          "Producto Creado",
+          "El producto se creó correctamente",
+          "success"
+        )
+      }
+    }
+    catch(err){
+      setError(true)
+      //setErrmsg(err.toString())
+      Swal.fire({
+        type: "error",
+        title: "Error",
+        text: err.toString(),
+      })
+    }
+
+    setRecargar(true)
+    //redirigir al usuario a productolista
+    history.push("/productos")
+
+  }//onsubmit_async  
 ```
 ## 16. Pasando los datos del producto a editar
 - 

@@ -9,21 +9,29 @@ import EditarProducto from "./components/EditarProducto"
 import AgregarProducto from "./components/AgregarProducto"
 import Producto from "./components/Producto"
 
-
 function App() {
 
   const [productos, setProductos] = useState([])
+  //variable y funcion que se usara para inyectarla en AgregarProducto
+  //de modo que cuando ese form cree un nuevo prod setee este buleano a true
+  //lo que hará que se desencadene la llamada ajax del listado
+  const [recargar,setRecargar] = useState(true)
 
   useEffect(()=>{
-    const consultarApi = async() => {
-      const url = "http://localhost:4000/restaurant"
-      const resultado = await axios.get(url)
-      //console.log("consultarApi.resultado.data",resultado.data)
-      setProductos(resultado.data)
+    if(recargar){
+      const consultarApi = async() => {
+        const url = "http://localhost:4000/restaurant"
+        const resultado = await axios.get(url)
+        setProductos(resultado.data)
+      } 
+      consultarApi()
+      // cambiar a false la recarga de los productos
+      setRecargar(false)      
     }
 
-    consultarApi()
-  },[])
+  //recargar es la unica dependencia, unica variable de estado
+  //que se toma en cuenta en useEffect
+  },[recargar])
 
   return (
     <Router>
@@ -39,7 +47,14 @@ function App() {
             )}
           />
           <Route exact path="/productos/nuevo" 
-            component={AgregarProducto}
+            //component={AgregarProducto}
+            render={
+              () => (
+                <AgregarProducto 
+                  setRecargar={setRecargar}
+                />
+              )
+            }
           />
           <Route exact path="/productos" component={Productos}/>
           <Route exact path="/productos/editar/:id" component={EditarProducto}/>
