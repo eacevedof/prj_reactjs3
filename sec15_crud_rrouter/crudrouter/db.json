@@ -29,6 +29,12 @@
       "precioPlatillo": "2",
       "categoria": "cortes",
       "id": 5
+    },
+    {
+      "nombrePlatillo": "Maria",
+      "precioPlatillo": "14",
+      "categoria": "bebida",
+      "id": 6
     }
   ]
 }

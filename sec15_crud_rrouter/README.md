@@ -589,8 +589,28 @@ function AgregarProducto({history,setRecargar}){
   }//onsubmit_async  
 ```
 ## 16. Pasando los datos del producto a editar
-- 
 ```js
+//App.js
+  <Route exact path="/productos" component={Productos}/>
+  <Route exact path="/productos/editar/:id" 
+      render={
+        //con props podremos acceder al id pasado en la url. props.match.params.id
+        props =>{
+          console.log("productos:",productos)
+          console.log("props.match.params.id:",props.match.params.id)
+          const idproducto = props.match.params.id
+          const objproducto = productos.filter(objprod => objprod.id.toString()===idproducto)[0]
+          console.log("objprod:",objproducto)
+
+          return (
+            <EditarProducto 
+              producto={objproducto}
+            />
+          )
+        }
+      }          
+  />
+  <Route exact path="/productos/:id" component={Producto}/>
 ```
 ## 17. Ajustando el Formulario para editar productos
 - 
