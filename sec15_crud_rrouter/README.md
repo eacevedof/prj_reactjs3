@@ -613,9 +613,9 @@ function AgregarProducto({history,setRecargar}){
   <Route exact path="/productos/:id" component={Producto}/>
 ```
 ## 17. Ajustando el Formulario para editar productos
-- 
-```js
-```
+- Casi se duplica lo que hay en agregar producto
+- EditarProducto es un formulario igual que AgregarProducto
+- Se usara refs para mostrar los valores
 ## 18. Mostrando los datos en el formulario
 - 
 ```js
