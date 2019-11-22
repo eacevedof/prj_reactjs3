@@ -618,6 +618,7 @@ function AgregarProducto({history,setRecargar}){
 - Se usara refs para mostrar los valores
 ## 18. Mostrando los datos en el formulario
 - 
+
 ```js
 ```
 ## 19. Enviando el Request para editar
