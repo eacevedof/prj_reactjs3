@@ -617,7 +617,9 @@ function AgregarProducto({history,setRecargar}){
 - EditarProducto es un formulario igual que AgregarProducto
 - Se usara refs para mostrar los valores
 ## 18. Mostrando los datos en el formulario
-- 
+- json-server ./db.json -p 4000
+- http://localhost:4000/restaurant
+- Al editar un registro se usan los refs **useRef from 'react'**
 
 ```js
 ```

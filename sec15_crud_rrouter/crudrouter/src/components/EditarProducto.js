@@ -1,9 +1,12 @@
 //EditarProducto.js
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import Error from "./Error"
 
-function EditarProducto(){
+function EditarProducto({producto}){
   
+  const precioPlatilloRef = useRef("")
+  const nombrePlatilloRef = useRef("")
+
   const [error,setError] = useState(false)
   const [errmsg,setErrmsg] = useState("")
   const [categoria,setCategoria] = useState("")
@@ -35,6 +38,8 @@ function EditarProducto(){
             className="form-control" 
             name="nombre" 
             placeholder="Nombre Platillo"
+            ref={precioPlatilloRef}
+            defaultValue={producto.nombrePlatillo}
           />
         </div>
 
@@ -45,6 +50,8 @@ function EditarProducto(){
             className="form-control" 
             name="precio"
             placeholder="Precio Platillo"
+            ref={precioPlatilloRef}
+            defaultValue={producto.precioPlatillo}
           />
         </div>
 
@@ -57,6 +64,7 @@ function EditarProducto(){
               name="categoria"
               value="postre"
               onChange={getValorRadio}
+              defaultChecked={(producto.categoria === "postre")}
             />
             <label className="form-check-label">
                 Postre
@@ -70,6 +78,7 @@ function EditarProducto(){
               name="categoria"
               value="bebida"
               onChange={getValorRadio}
+              defaultChecked={(producto.categoria === "bebida")}
             />
             <label className="form-check-label">
                 Bebida
@@ -83,6 +92,7 @@ function EditarProducto(){
               name="categoria"
               value="cortes"
               onChange={getValorRadio}
+              defaultChecked={(producto.categoria === "cortes")}
             />
             <label className="form-check-label">
                 Cortes
@@ -96,6 +106,7 @@ function EditarProducto(){
               name="categoria"
               value="ensalada"
               onChange={getValorRadio}
+              defaultChecked={(producto.categoria === "ensalada")}
             />
             <label className="form-check-label">
                 Ensalada
