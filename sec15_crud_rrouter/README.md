@@ -620,8 +620,150 @@ function AgregarProducto({history,setRecargar}){
 - json-server ./db.json -p 4000
 - http://localhost:4000/restaurant
 - Al editar un registro se usan los refs **useRef from 'react'**
-
+- defaultValue
+- defaultChecked
+- useRef
 ```js
+//App.js
+<Route exact path="/productos/editar/:id" 
+      render={
+        //con props podremos acceder al id pasado en la url. props.match.params.id
+        props =>{
+          console.log("productos:",productos)
+          console.log("props.match.params.id",props.match.params.id)
+          const idproducto = props.match.params.id
+          const objproducto = productos.filter(objprod => objprod.id.toString()===idproducto)[0]
+          console.log("objprod:",objproducto)
+
+          return (
+            <EditarProducto 
+              producto={objproducto}
+            />
+          )
+        }
+      }          
+  />
+//EditarProducto.js
+import React, {useState, useRef} from 'react';
+import Error from "./Error"
+
+function EditarProducto({producto}){
+  
+  const precioPlatilloRef = useRef("")
+  const nombrePlatilloRef = useRef("")
+
+  const [error,setError] = useState(false)
+  const [errmsg,setErrmsg] = useState("")
+  const [categoria,setCategoria] = useState("")
+
+  const getValorRadio = e => {
+    setCategoria(e.target.value)
+  }
+
+  const onsubmit_async = async ()=>{ }
+
+  return (
+    <div className="col-md-8 mx-auto ">
+      <h1 className="text-center">Editar Producto</h1>
+
+      {
+        error ? <Error msg={errmsg} /> : null
+      }
+
+      <form
+          className="mt-5"
+          onSubmit={onsubmit_async}
+      >
+        <div className="form-group">
+          <label>Nombre Platillo</label>
+          <input 
+            type="text" 
+            className="form-control" 
+            name="nombre" 
+            placeholder="Nombre Platillo"
+            ref={precioPlatilloRef}
+            defaultValue={producto.nombrePlatillo}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Precio Platillo</label>
+          <input 
+            type="number" 
+            className="form-control" 
+            name="precio"
+            placeholder="Precio Platillo"
+            ref={precioPlatilloRef}
+            defaultValue={producto.precioPlatillo}
+          />
+        </div>
+
+        <legend className="text-center">Categoría:</legend>
+        <div className="text-center">
+          <div className="form-check form-check-inline">
+            <input 
+              className="form-check-input" 
+              type="radio" 
+              name="categoria"
+              value="postre"
+              onChange={getValorRadio}
+              defaultChecked={(producto.categoria === "postre")}
+            />
+            <label className="form-check-label">
+                Postre
+            </label>
+          </div>
+        
+          <div className="form-check form-check-inline">
+            <input 
+              className="form-check-input" 
+              type="radio" 
+              name="categoria"
+              value="bebida"
+              onChange={getValorRadio}
+              defaultChecked={(producto.categoria === "bebida")}
+            />
+            <label className="form-check-label">
+                Bebida
+            </label>
+          </div>
+
+          <div className="form-check form-check-inline">
+            <input 
+              className="form-check-input" 
+              type="radio" 
+              name="categoria"
+              value="cortes"
+              onChange={getValorRadio}
+              defaultChecked={(producto.categoria === "cortes")}
+            />
+            <label className="form-check-label">
+                Cortes
+            </label>
+          </div>
+
+          <div className="form-check form-check-inline">
+            <input 
+              className="form-check-input" 
+              type="radio" 
+              name="categoria"
+              value="ensalada"
+              onChange={getValorRadio}
+              defaultChecked={(producto.categoria === "ensalada")}
+            />
+            <label className="form-check-label">
+                Ensalada
+            </label>
+          </div>
+        </div>
+
+        <input type="submit" className="font-weight-bold text-uppercase mt-5 btn btn-primary btn-block py-3" value="Editar Producto" />
+      </form>
+    </div>
+  )  
+}
+
+export default EditarProducto;
 ```
 ## 19. Enviando el Request para editar
 - 
