@@ -21,14 +21,25 @@ function EditarProducto(props){
   const onsubmit_async = async e =>{
     e.preventDefault();
 
+    //validacion
+    const tmpPrecio = precioPlatilloRef.current.value,
+          tmpNombre = nombrePlatilloRef.current.value
+
+    //esto no está fino, categoria siempre se detecta como ""
+    if(tmpPrecio==="" || tmpNombre==="" || categoria===""){
+      setErrmsg("Todos los campos son obligatorios")
+      return setError(true)
+    }
+    setError(false)
+
     //revisar si cambio la cat de lo contrario asignar el mismo valor
     let categoriaPlatillo = (categoria === "") ? producto.categoria : categoria;
     console.log("categoriaPlatillo:",categoriaPlatillo)
 
     //obtener los valores del formulario
     const editarPlatillo = {
-      precioPlatillo : precioPlatilloRef.current.value,
-      nombrePlatillo : nombrePlatilloRef.current.value,
+      precioPlatillo : tmpPrecio,
+      nombrePlatillo : tmpNombre,
       categoria: categoriaPlatillo
     }
 

@@ -860,8 +860,59 @@ function EditarProducto(props){
   }//onsubmit_async
 ```
 ## 21. Validando el Formulario
-- 
+- Aqui creo que hay un bug. En la edición si no se remarca un radio lo detecta como vacio y salta la advertencia de campos obligatorios
 ```js
+  const onsubmit_async = async e =>{
+    e.preventDefault();
+
+    //validacion
+    const tmpPrecio = precioPlatilloRef.current.value,
+          tmpNombre = nombrePlatilloRef.current.value
+
+    //esto no está fino, categoria siempre se detecta como ""
+    if(tmpPrecio==="" || tmpNombre==="" || categoria===""){
+      setErrmsg("Todos los campos son obligatorios")
+      return setError(true)
+    }
+    setError(false)
+
+    //revisar si cambio la cat de lo contrario asignar el mismo valor
+    let categoriaPlatillo = (categoria === "") ? producto.categoria : categoria;
+    console.log("categoriaPlatillo:",categoriaPlatillo)
+
+    //obtener los valores del formulario
+    const editarPlatillo = {
+      precioPlatillo : tmpPrecio,
+      nombrePlatillo : tmpNombre,
+      categoria: categoriaPlatillo
+    }
+
+    //enviar el request
+    try {
+      const url = `http://localhost:4000/restaurant/${producto.id}`
+      const resultado = await axios.put(url, editarPlatillo)
+      console.log("resultado modif:",resultado)
+      if(resultado.status === 200){
+        Swal.fire(
+          "Producto Modificado",
+          "El producto se modificó correctamente",
+          "success"
+        )
+      }
+    }
+    catch(err){
+      setError(true)
+      Swal.fire({
+        type: "error",
+        title: "Error",
+        text: err.toString(),
+      })
+    }
+
+    //app.setRecargar
+    setRecargar(true)
+    history.push("/productos")
+  }//onsubmit_async
 ```
 ## 22. Eliminando un Producto
 - 

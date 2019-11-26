@@ -2,14 +2,14 @@
   "restaurant": [
     {
       "precioPlatillo": "200",
-      "nombrePlatillo": "Cheescake aaa",
-      "categoria": "postre",
+      "nombrePlatillo": "Maria",
+      "categoria": "ensalada",
       "id": 1
     },
     {
       "precioPlatillo": "300",
       "nombrePlatillo": "Rib Eye 400g",
-      "categoria": "cortes",
+      "categoria": "ensalada",
       "id": 2
     },
     {
