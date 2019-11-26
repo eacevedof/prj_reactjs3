@@ -2,7 +2,7 @@
   "restaurant": [
     {
       "precioPlatillo": "200",
-      "nombrePlatillo": "Cheescake",
+      "nombrePlatillo": "Cheescake aaa",
       "categoria": "postre",
       "id": 1
     },
@@ -13,20 +13,20 @@
       "id": 2
     },
     {
-      "nombrePlatillo": "nueva enx",
       "precioPlatillo": "3",
+      "nombrePlatillo": "posssttt",
       "categoria": "postre",
       "id": 3
     },
     {
-      "nombrePlatillo": "ricorico",
       "precioPlatillo": "7",
+      "nombrePlatillo": "CCooorrrTTss",
       "categoria": "cortes",
       "id": 4
     },
     {
-      "nombrePlatillo": "bitcoin",
-      "precioPlatillo": "2",
+      "precioPlatillo": "11",
+      "nombrePlatillo": "CCCOOOOOORRRRTTTTSSS",
       "categoria": "cortes",
       "id": 5
     },

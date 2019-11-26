@@ -70,6 +70,7 @@ function App() {
                   return (
                     <EditarProducto 
                       producto={objproducto}
+                      setRecargar={setRecargar}
                     />
                   )
                 }

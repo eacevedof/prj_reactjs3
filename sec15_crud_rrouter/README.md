@@ -791,8 +791,73 @@ const getValorRadio = e => {
 }
 ```
 ## 20. Creando una alerta y refrescando la lista de productos
-- 
+- withRouter (Wrapper de componente) para redirects
 ```js
+//App.js
+return (
+  <EditarProducto 
+    producto={objproducto}
+    setRecargar={setRecargar}
+  />
+)
+
+//EditarProducto.js
+import axios from "axios"
+import Swal from "sweetalert2"
+import {withRouter} from "react-router-dom"
+
+function EditarProducto(props){
+  
+  //destructuring de props
+  const {history, producto, setRecargar} = props
+
+  const precioPlatilloRef = useRef("")
+  const nombrePlatilloRef = useRef("")
+
+  const [error,setError] = useState(false)
+  const [errmsg,setErrmsg] = useState("")
+  const [categoria,setCategoria] = useState("")
+
+  const onsubmit_async = async e =>{
+    e.preventDefault();
+
+    //revisar si cambio la cat de lo contrario asignar el mismo valor
+    let categoriaPlatillo = (categoria === "") ? producto.categoria : categoria;
+    console.log("categoriaPlatillo:",categoriaPlatillo)
+
+    //obtener los valores del formulario
+    const editarPlatillo = {
+      precioPlatillo : precioPlatilloRef.current.value,
+      nombrePlatillo : nombrePlatilloRef.current.value,
+      categoria: categoriaPlatillo
+    }
+
+    //enviar el request
+    try {
+      const url = `http://localhost:4000/restaurant/${producto.id}`
+      const resultado = await axios.put(url, editarPlatillo)
+      console.log("resultado modif:",resultado)
+      if(resultado.status === 200){
+        Swal.fire(
+          "Producto Modificado",
+          "El producto se modificó correctamente",
+          "success"
+        )
+      }
+    }
+    catch(err){
+      setError(true)
+      Swal.fire({
+        type: "error",
+        title: "Error",
+        text: err.toString(),
+      })
+    }
+
+    //app.setRecargar
+    setRecargar(true)
+    history.push("/productos")
+  }//onsubmit_async
 ```
 ## 21. Validando el Formulario
 - 
