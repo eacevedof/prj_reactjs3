@@ -915,6 +915,86 @@ function EditarProducto(props){
   }//onsubmit_async
 ```
 ## 22. Eliminando un Producto
-- 
 ```js
+//App.js
+<Route exact path="/productos"            
+  render={()=>(
+    //la forma de pasar datos a un componente es usando render
+    <Productos
+      productos={productos}
+      setRecargar={setRecargar}
+    />
+  )}
+/>
+//Productos.js
+function Productos({productos, setRecargar}){
+  console.log("Productos ","productos:",productos,"setRecargar",setRecargar)
+  return (
+    <Fragment>
+      <h1 className="text-center">Productos</h1>
+      <ul className="list-group mt-5">
+        {
+          productos.map(producto => (
+            <ProductoLista 
+              key={producto.id}
+              producto={producto}
+              setRecargar={setRecargar}
+            />
+          ))
+        }
+      </ul>
+    </Fragment>
+  )
+}
+
+//ProductoLista.js
+
+import axios from "axios"
+import Swal from "sweetalert2"
+
+//siempre que viene props.producto se puede hacer esto
+function ProductoLista({producto,setRecargar}){
+
+  const eliminarProducto = id => {
+    console.log("producto:",producto,"setrecargar",setRecargar)
+    console.log("eliminando",id)
+    Swal.fire({
+      title: "Estas seguro?",
+      text: "Esta operación no es reversible",
+      type: "Warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si",
+      cancelButtonText: "Cancelar"
+    }).then( async result => {
+
+      if(result.value){
+        //enviar el request
+        try {
+          const url = `http://localhost:4000/restaurant/${id}`
+          const resultado = await axios.delete(url)
+          console.log("resultado delete:",resultado)
+          if(resultado.status === 200){
+            //consultar la api
+            setRecargar(true)
+
+            Swal.fire(
+              "Producto eliminado",
+              "El producto se eliminó correctamente",
+              "success"
+            )
+          }
+        }
+        catch(err){
+          //setError(true)
+          Swal.fire({
+            type: "error",
+            title: "Error",
+            text: err.toString(),
+          })
+        }
+      }
+    })
+  }
 ```

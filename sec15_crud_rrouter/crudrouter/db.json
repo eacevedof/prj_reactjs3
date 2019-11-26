@@ -1,34 +1,10 @@
 {
   "restaurant": [
     {
-      "precioPlatillo": "200",
-      "nombrePlatillo": "Maria",
-      "categoria": "ensalada",
-      "id": 1
-    },
-    {
       "precioPlatillo": "300",
       "nombrePlatillo": "Rib Eye 400g",
       "categoria": "ensalada",
       "id": 2
-    },
-    {
-      "precioPlatillo": "3",
-      "nombrePlatillo": "posssttt",
-      "categoria": "postre",
-      "id": 3
-    },
-    {
-      "precioPlatillo": "7",
-      "nombrePlatillo": "CCooorrrTTss",
-      "categoria": "cortes",
-      "id": 4
-    },
-    {
-      "precioPlatillo": "11",
-      "nombrePlatillo": "CCCOOOOOORRRRTTTTSSS",
-      "categoria": "cortes",
-      "id": 5
     },
     {
       "nombrePlatillo": "Maria",

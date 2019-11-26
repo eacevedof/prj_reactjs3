@@ -43,6 +43,7 @@ function App() {
               //la forma de pasar datos a un componente es usando render
               <Productos
                 productos={productos}
+                setRecargar={setRecargar}
               />
             )}
           />
@@ -56,7 +57,6 @@ function App() {
               )
             }
           />
-          <Route exact path="/productos" component={Productos}/>
           <Route exact path="/productos/editar/:id" 
               render={
                 //con props podremos acceder al id pasado en la url. props.match.params.id
