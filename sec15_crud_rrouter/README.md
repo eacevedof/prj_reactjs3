@@ -762,12 +762,33 @@ function EditarProducto({producto}){
     </div>
   )  
 }
-
-export default EditarProducto;
 ```
 ## 19. Enviando el Request para editar
-- 
+- ![](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5d7fef6652faf333827e91c3/cc4be06093b051ccff32246a9469a472/image.png)
+  - Si nos fijamos EditarProducto tiene 2 ref y 3 states, los states apuntan a:
+  - categoria, error y errmsg
 ```js
+//EditarProducto.js
+const onsubmit_async = async e =>{
+  e.preventDefault();
+
+  //revisar si cambio la cat de lo contrario asignar el mismo valor
+  let categoriaPlatillo = (categoria === "") ? producto.categoria : categoria;
+  console.log("categoriaPlatillo:",categoriaPlatillo)
+
+  //obtener los valores del formulario
+  const editarPlatillo = {
+    precioPlatillo : precioPlatilloRef.current.value,
+    nombrePlatillo : nombrePlatilloRef.current.value,
+    categoria: categoriaPlatillo
+  }
+
+  console.log("editarPlatillo",editarPlatillo)
+}
+
+const getValorRadio = e => {
+  setCategoria(e.target.value)
+}
 ```
 ## 20. Creando una alerta y refrescando la lista de productos
 - 

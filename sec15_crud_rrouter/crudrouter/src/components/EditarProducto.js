@@ -11,12 +11,25 @@ function EditarProducto({producto}){
   const [errmsg,setErrmsg] = useState("")
   const [categoria,setCategoria] = useState("")
 
-  const getValorRadio = e => {
-    setCategoria(e.target.value)
+  const onsubmit_async = async e =>{
+    e.preventDefault();
+
+    //revisar si cambio la cat de lo contrario asignar el mismo valor
+    let categoriaPlatillo = (categoria === "") ? producto.categoria : categoria;
+    console.log("categoriaPlatillo:",categoriaPlatillo)
+
+    //obtener los valores del formulario
+    const editarPlatillo = {
+      precioPlatillo : precioPlatilloRef.current.value,
+      nombrePlatillo : nombrePlatilloRef.current.value,
+      categoria: categoriaPlatillo
+    }
+
+    console.log("editarPlatillo",editarPlatillo)
   }
 
-  const onsubmit_async = async ()=>{
-
+  const getValorRadio = e => {
+    setCategoria(e.target.value)
   }
 
   return (
@@ -38,7 +51,7 @@ function EditarProducto({producto}){
             className="form-control" 
             name="nombre" 
             placeholder="Nombre Platillo"
-            ref={precioPlatilloRef}
+            ref={nombrePlatilloRef}
             defaultValue={producto.nombrePlatillo}
           />
         </div>
@@ -67,7 +80,7 @@ function EditarProducto({producto}){
               defaultChecked={(producto.categoria === "postre")}
             />
             <label className="form-check-label">
-                Postre
+              Postre
             </label>
           </div>
         
@@ -81,7 +94,7 @@ function EditarProducto({producto}){
               defaultChecked={(producto.categoria === "bebida")}
             />
             <label className="form-check-label">
-                Bebida
+              Bebida
             </label>
           </div>
 
@@ -95,7 +108,7 @@ function EditarProducto({producto}){
               defaultChecked={(producto.categoria === "cortes")}
             />
             <label className="form-check-label">
-                Cortes
+              Cortes
             </label>
           </div>
 
