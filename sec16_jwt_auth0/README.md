@@ -1,9 +1,12 @@
 ## 16. PROYECTO Autenticación en React con JWT, Auth0 y un Servidor Express (NodeJS)
 
 ## 1. ¿Qué es JWT o JSON Web Token
-- 
-```js
-```
+- ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/736x394/adc71c44aa326ed0f3580613445434cf/image.png)
+- ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/741x408/a6755c32c4de83fca4e3b82d6bb92212/image.png)
+- ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/914x449/bd1e0f99b6b8f24265fef8c94e41e293/image.png)
+- ![](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5d7fef6652faf333827e91c3/e9b09f45a54b97881fa47f6ec87f6d9f/image.png)
+- ![](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5d7fef6652faf333827e91c3/945a1237e7a6fd6e27c88d1b5927fca5/image.png)
+
 ## 2. Lo que vamos a Construir en este capitulo
 - 
 ```js
