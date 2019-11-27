@@ -1,0 +1,15 @@
+.navegacion {
+     display: flex;
+     justify-content: space-between;
+     margin-top: 1rem;
+     padding-bottom: 3rem;
+ }
+ .navegacion a {
+     font-size: 1rem;
+     color: white;
+     text-decoration: none;
+     text-transform: uppercase;
+ }
+ .navegacion a.activo {
+     color: #ffce00;
+ }

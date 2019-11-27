@@ -11,9 +11,8 @@
 - ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/825x797/fbe9ec07662461b95fa11823225c73f4/image.png) 
 
 ## 3. Utilizando como base el Proyecto Anterior
-- 
-```js
-```
+- replico proyecto existente
+- explica como se trabjará con el cliente, servidor y dos terminales
 ## 4. Creando la Aplicación y la API en Auth0
 - 
 ```js
