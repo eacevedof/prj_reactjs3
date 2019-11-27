@@ -8,9 +8,8 @@
 - ![](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5d7fef6652faf333827e91c3/945a1237e7a6fd6e27c88d1b5927fca5/image.png)
 
 ## 2. Lo que vamos a Construir en este capitulo
-- 
-```js
-```
+- ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/825x797/fbe9ec07662461b95fa11823225c73f4/image.png) 
+
 ## 3. Utilizando como base el Proyecto Anterior
 - 
 ```js
