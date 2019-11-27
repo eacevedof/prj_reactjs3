@@ -14,7 +14,7 @@
 - replico proyecto existente
 - explica como se trabjará con el cliente, servidor y dos terminales
 ## 4. Creando la Aplicación y la API en Auth0
-- 
+- [manage.auth0.com](https://manage.auth0.com/dashboard/eu/ioedu/)
 ```js
 ```
 ## 5. Descargando el Código de Auth0
