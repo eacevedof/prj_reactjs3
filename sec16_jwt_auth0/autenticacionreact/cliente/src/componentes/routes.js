@@ -28,7 +28,7 @@ export const makeMainRoutes = () => {
         <div className="contenedor">
             <Header />
             <Navegacion auth={auth} />
-
+            
             <Route exact path="/" render={(props) => (
                   <Productos
                       auth={auth} {...props}
@@ -50,6 +50,8 @@ export const makeMainRoutes = () => {
             ) } />
 
             <Route exact path="/producto/:productoId" render={(props) => {
+//los props aqui son muy importantes para poder leer auth
+//todas las secciones que deseamos que sean seguras hay que pasar los props y auth              
                 let idProducto = props.location.pathname.replace('/producto/', '');
                 return (
                     <SingleProducto
