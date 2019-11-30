@@ -1,5 +1,9 @@
 ## 16. PROYECTO Autenticación en React con JWT, Auth0 y un Servidor Express (NodeJS)
 
+## Nota
+- > Es extraño pero este proyecto como tal no existe en la lista de proyectos
+- > quizas se ha eliminado por algún motivo
+
 ## 1. ¿Qué es JWT o JSON Web Token
 - ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/736x394/adc71c44aa326ed0f3580613445434cf/image.png)
 - ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/741x408/a6755c32c4de83fca4e3b82d6bb92212/image.png)
@@ -24,9 +28,12 @@
   - Express
 ```
 ## 5. Descargando el Código de Auth0
-- 
-```js
-```
+- configurar auth0.com
+- crear un nuevo proyecto
+- descargar el zip de react de auth0
+  - ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/898x295/561fb75a7ecedf927bcb407a87ae79ed/image.png)
+- **nota** la app demo de auth0 ahora es distinta a la del video con lo cual el movimiento de ficheros entre esta y la que estamos creando no coincide
+
 ## 6. Modificando el Archivo de las Rutas
 - 
 ```js
