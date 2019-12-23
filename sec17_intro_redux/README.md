@@ -10,7 +10,9 @@
 - ![](https://trello-attachments.s3.amazonaws.com/5d7fef6652faf333827e91c3/939x403/cda96da13cf1aa8f8f1bfcc815b315e3/image.png)
 
 ## [196. Creando la App y Primeros Componentes 4 min](https://www.udemy.com/course/react-de-principiante-a-experto-creando-mas-de-10-aplicaciones/learn/lecture/15777464#overview)
-- 
+- [gist](https://gist.github.com/juanpablogdl/0e8be4e059fdfeba992ee3d3b4a2c954)
+- daba error create-react-app, he tenido que actualizar con `npm install create-react-app -g`
+- despues he vuelto a lanzar `npx create-react-app citasredux` ha tardado un rato en instalar
 
 ```js
 ```
