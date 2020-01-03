@@ -50,3 +50,5 @@ const nodes = (
 RreactDOM.render(nodes, document.getElementById("root"))
 ```
 - Error: `./src/index.js Line 9:1:  'RreactDOM' is not defined  no-undef`
+- [Empezando la integración con redux](https://youtu.be/l48-c1U24eI?t=679)
+- Instalando redux `npm i react-redux redux redux-actions`
