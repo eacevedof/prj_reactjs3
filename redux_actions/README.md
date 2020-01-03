@@ -4,4 +4,7 @@
 - **La aplicación**
 - ![](https://trello-attachments.s3.amazonaws.com/5e0fa0a19672dd8191827199/587x896/1b8879496834c700cbbf76cb08d85fda/image.png)
 
+- [Instalación](https://youtu.be/l48-c1U24eI?t=433)
+  - `npx create-react-app fontend`
+- Eliminar la carpeta src
 - 
