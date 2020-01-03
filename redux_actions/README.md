@@ -7,4 +7,20 @@
 - [Instalación](https://youtu.be/l48-c1U24eI?t=433)
   - `npx create-react-app fontend`
 - Eliminar la carpeta src
-- 
+```
+frontend/
+  public/
+    favicon.ico
+    index.html
+    logo192.png
+    logo512.png
+    manifest.js
+    robots.txt
+  src/
+    components/
+    redux/
+      reducers/
+      actions.js
+      store.js
+    index.js
+```
