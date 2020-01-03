@@ -49,3 +49,4 @@ const nodes = (
 )
 RreactDOM.render(nodes, document.getElementById("root"))
 ```
+- Error: `./src/index.js Line 9:1:  'RreactDOM' is not defined  no-undef`
