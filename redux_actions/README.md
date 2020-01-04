@@ -52,4 +52,7 @@ RreactDOM.render(nodes, document.getElementById("root"))
 - Error: `./src/index.js Line 9:1:  'RreactDOM' is not defined  no-undef`
 - [Empezando la integración con redux](https://youtu.be/l48-c1U24eI?t=679)
 - [Instalando redux](https://youtu.be/l48-c1U24eI?t=719) `npm i react-redux redux redux-actions`
-
+- [Middleware o Store Inhances](https://youtu.be/l48-c1U24eI?t=835)
+  - Configurando el store
+- [combineReducers](https://youtu.be/l48-c1U24eI?t=915)
+- [creando reducer comments](https://youtu.be/l48-c1U24eI?t=1028)
