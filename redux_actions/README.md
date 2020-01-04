@@ -56,3 +56,6 @@ RreactDOM.render(nodes, document.getElementById("root"))
   - Configurando el store
 - [combineReducers](https://youtu.be/l48-c1U24eI?t=915)
 - [creando reducer comments](https://youtu.be/l48-c1U24eI?t=1028)
+
+### TO-DO
+- Crear reducers con prefijo
