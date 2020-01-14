@@ -89,6 +89,7 @@ export default function fn_rdcomments(state = [], objaction){
 }//fn_rdcomments
 ```
 - [ejemplo tradicional de definir acciones sin redux-actions](https://youtu.be/l48-c1U24eI?t=1563)
+  - ![](https://trello-attachments.s3.amazonaws.com/5b014dcaf4507eacfc1b4540/5e0fa0a19672dd8191827199/c347d00269fa58f8cba361133866088e/Captura_de_pantalla_2020-01-14_a_las_21.59.28.png)
 ```js
 //actions.js
 //se definen acciones que son "action creators"
