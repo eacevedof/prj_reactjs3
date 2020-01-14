@@ -3,10 +3,12 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import Root from "./components/root"
-import store from "./redux/store"
+import fnstore from "./redux/fnstore"
 
 const nodes = (
-  <Provider store={store}>
+  //el store es el almacen del estado
+  //el provider hace visible ese almacen a todo el "dom"
+  <Provider store={fnstore}>
     <Root/>
   </Provider>
 )

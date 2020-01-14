@@ -56,6 +56,38 @@ RreactDOM.render(nodes, document.getElementById("root"))
   - Configurando el store
 - [combineReducers](https://youtu.be/l48-c1U24eI?t=915)
 - [creando reducer comments](https://youtu.be/l48-c1U24eI?t=1028)
+- [explicación **handleActions**](https://youtu.be/l48-c1U24eI?t=1281)
+```js
+//rdcomments.js
+import { handleActions } from "redux-actions"
+
+//forma con handleActions:
+export default handleActions ({
+  action1: (state, objaction) => {
+    return [1,2,3]
+  },
+
+  action2: (state, objaction)=>{
+    return [4,5,6]
+  }
+},[])//handleActions
+
+
+//la forma tradicional:
+export default function fn_rdcomments(state = [], objaction){
+  //el nuevo estado para comments
+  //return state;
+  switch(objaction.type){
+    case "action1":
+      return [1,3,3]
+    case "action2":
+      return [4,5,6]
+    default:
+      return state
+  }
+
+}//fn_rdcomments
+```
 
 ### TO-DO
 - Crear reducers con prefijo
