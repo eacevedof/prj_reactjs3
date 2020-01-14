@@ -94,7 +94,6 @@ export default function fn_rdcomments(state = [], objaction){
 //actions.js
 //se definen acciones que son "action creators"
 //sin redux-actions:
-
 export const ACTION_1 = "action1"
 export const ACTION_2 = "action2"
 
@@ -111,6 +110,28 @@ function action2(){
     payload:  ["p1","p2","p3"], //nuevo estado
   }
 }//action2
+```
+- [otra forma de invocar una accion](https://youtu.be/l48-c1U24eI?t=1859)
+```js
+//actions.js
+//con redux-actions:
+import { createAction } from "redux-actions"
+
+export const action1 = createAction("action1")
+export const action2 = createAction("action2")
+
+//si se desea aplicar una lógica extra cuando se invoque a action2(some, params) se podria hacer esto
+export const action2 = createAction("action2", (some,params)=>{
+  //tu logica con esos parametros, solo se devolverá el payload, no el action
+  return [4,8,0]
+})
+
+//el resultado de:
+action2(2,4,5) sería por ejemplo 
+{
+  type:"action2",
+  payload [4,8,0]
+}
 ```
 ### TO-DO
 - Crear reducers con prefijo
