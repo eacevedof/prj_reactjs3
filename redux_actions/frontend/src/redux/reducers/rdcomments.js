@@ -1,4 +1,4 @@
-//reducer comments.js
+//reducer rdcomments.js
 import { handleActions } from "redux-actions"
 
 export default handleActions ({
