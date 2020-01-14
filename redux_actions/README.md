@@ -132,6 +132,24 @@ action2(2,4,5) sería por ejemplo
   type:"action2",
   payload [4,8,0]
 }
+
+//de esta forma con createAction se podria separar las funciones en handlers
+//reducer rdcomments.js
+import { handleActions } from "redux-actions"
+import { action1, action2 } from  "../actions"
+
+function fn_handle_action1(){
+  return 1
+}
+
+export default handleActions ({
+    //action1.toString() devolveria "action1"
+    [action1]: fn_handle_action1,
+  
+    [action2]: (state, objaction)=>{
+      return [4,5,6]
+    }
+  },[])//handleActions
 ```
 ### TO-DO
 - Crear reducers con prefijo
