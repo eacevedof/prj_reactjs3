@@ -151,5 +151,60 @@ export default handleActions ({
     }
   },[])//handleActions
 ```
+
+```js
+//store.js
+//El store es una función que agrupa un conjunto de funciones setters (reducers)
+import {createStore, combineReducers} from "redux";
+//los reducers son funciones que setean el estado
+import fn_rdposts from "./reducers/rdposts"
+import fn_rdcomments from "./reducers/rdcomments"
+
+const fnreducer = combineReducers({
+  //cada llave debe ser un fnreducer
+  fn_rdposts,
+  fn_rdcomments,
+})
+
+//console.log("typeof:",typeof fnreducer,"fnreducer", fnreducer)
+
+//middleware o store inhances
+const fnstore = createStore(fnreducer)
+
+export default fnstore;
+
+//root.js
+import React, { Component } from 'react'
+import { connect } from "react-redux"
+import { action1 } from "../redux/actions"
+
+class Root extends Component {
+  state = {}
+
+  componentDidMount(){
+    this.props.action1(777)
+  }
+
+  render(){
+    console.log("this.props",this.props)
+    return (
+      <div>
+        Root
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = (state) => {
+  return state
+}
+
+const mapDispatchToProps = {
+  action1
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Root);
+```
+- ![](https://trello-attachments.s3.amazonaws.com/5e0fa0a19672dd8191827199/547x198/f52ebb67d18a4e4d33cde66ec3d61518/trazas.png)
 ### TO-DO
 - Crear reducers con prefijo
