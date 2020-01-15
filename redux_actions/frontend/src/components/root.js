@@ -2,6 +2,8 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
 import { action1 } from "../redux/actions"
+import Layout from "./layout"
+import PostAdmin from "./postAdmin"
 
 class Root extends Component {
   state = {}
@@ -14,7 +16,9 @@ class Root extends Component {
     console.log("this.props",this.props)
     return (
       <div>
-        Root
+        <Layout>
+          <PostAdmin />
+        </Layout>
       </div>
     )
   }

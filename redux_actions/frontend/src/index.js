@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import Root from "./components/root"
 import fnstore from "./redux/fnstore"
+import "./style.css"
 
 const nodes = (
   //el store es el almacen del estado

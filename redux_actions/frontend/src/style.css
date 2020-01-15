@@ -1,0 +1,12 @@
+/*style.css*/
+.nooutline {
+  border: none;
+  overflow: auto;
+  outline: none;
+  box-shadow: none !important;
+  resize: none;
+}
+
+.card-body-border {
+  border-bottom: 1px solid #eee;
+}

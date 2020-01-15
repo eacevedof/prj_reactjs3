@@ -247,5 +247,13 @@ const nodes = (
 ReactDOM .render(nodes, document.getElementById("root"))
 ```
 - ![](https://trello-attachments.s3.amazonaws.com/5e0fa0a19672dd8191827199/547x198/f52ebb67d18a4e4d33cde66ec3d61518/trazas.png)
+
+### [Parte 2](https://youtu.be/o_IsXVq8QBo)
+- Axios
+- Rest API
+- [Configuración de PostAdmin](https://youtu.be/o_IsXVq8QBo?t=256)
+- [`ref={ref => this.textRef = ref}`](https://youtu.be/o_IsXVq8QBo?t=365) es una técnica que usa **React** para poder tener acceso al elemento nativo del DOM al momento de cargar el componente, justo antes de montarlo ejecuta esa lógica.  Esto nos sirve para poder utilizar `this.textRef` en el evento onSubmit
+- ![](https://trello-attachments.s3.amazonaws.com/5e0fa0a19672dd8191827199/924x294/d044d5902d1575281f4c73241c04ce5c/image.png)
+
 ### TO-DO
 - Crear reducers con prefijo
