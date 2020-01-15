@@ -20,9 +20,11 @@ class Root extends Component {
           <PostAdmin />
         </Layout>
       </div>
-    )
-  }
-}
+    )//return
+    
+  }//Render
+
+}//class Root
 
 const mapStateToProps = (state) => {
   return state

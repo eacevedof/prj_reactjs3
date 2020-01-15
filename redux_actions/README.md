@@ -254,6 +254,125 @@ ReactDOM .render(nodes, document.getElementById("root"))
 - [Configuración de PostAdmin](https://youtu.be/o_IsXVq8QBo?t=256)
 - [`ref={ref => this.textRef = ref}`](https://youtu.be/o_IsXVq8QBo?t=365) es una técnica que usa **React** para poder tener acceso al elemento nativo del DOM al momento de cargar el componente, justo antes de montarlo ejecuta esa lógica.  Esto nos sirve para poder utilizar `this.textRef` en el evento onSubmit
 - ![](https://trello-attachments.s3.amazonaws.com/5e0fa0a19672dd8191827199/924x294/d044d5902d1575281f4c73241c04ce5c/image.png)
+```js
+//postAdmin.js
+import React, {Component} from "react";
+
+class PostAdmin extends Component {
+  state = {}
+
+  render(){
+    return (
+      <form
+        onSubmit={(e) => {
+          e.preventDefault()
+          
+        }}
+      >
+        <div className="card border-light mb-3">
+          <div className="card-header">Crear Publicación</div>
+          <div className="card-body">
+            <textarea
+              ref={ref => this.textRef = ref}
+              className="form-control nooutline"
+              placeholder="Que estas pensando"
+            />
+            <label
+              className="btn btn-secondary m-0 ml-2 mr-2"
+              htmlFor="photoFile"
+            >
+              Foto
+            </label>
+            <input
+              ref={ref => this.imageRef = ref}
+              type="file"
+              className="form-control-file d-none"
+              id="photoFile"
+            />
+            <button type="submit" className="btn btn-primary">Publicar</button>
+          </div>
+        </div>
+      </form>
+    )//return
+
+  }//render
+
+}//PostAdmin
+
+export default PostAdmin
+
+//index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+//root.js
+class Root extends Component {
+  state = {}
+
+  componentDidMount(){
+    this.props.action1(777)
+  }
+
+  render(){
+    console.log("this.props",this.props)
+    return (
+      <div>
+        <Layout>
+          <PostAdmin />
+        </Layout>
+      </div>
+    )//return
+    
+  }//Render
+
+}//class Root
+
+//layout.js
+import React from "react"
+
+const Layout = (props)=>{
+  const { children } = props
+  return (
+    <>
+      <nav className="navbar navbar-light bg-light"> 
+        <span className="navbar-brand">CRUD</span>
+      </nav>
+
+      <div className="container">
+        <div className="row p-3">
+          <div className="offset-3 col-6">
+            {children}
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default Layout
+```
 
 ### TO-DO
 - Crear reducers con prefijo
