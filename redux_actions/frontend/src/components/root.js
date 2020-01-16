@@ -54,8 +54,8 @@ class Root extends Component {
       //y esto mapdispatchtoprops y las acciones
       //ac_getcomments,
       //ac_getposts,      
-      //ac_insertcomment,
-      //ac_insertpost,
+      ac_insertcomment,
+      ac_insertpost,
     } = this.props
 
     return (
@@ -65,9 +65,12 @@ class Root extends Component {
           {posts.map(post => (
             <Post 
               key={post.id}
+              postid={post.id}
+              author="Guest"
               content={post.content}
               imageUrl={post.image}
               comments={comments.filter(comment => comment.postid === post.id)}
+              fn_insertcomment={ac_insertcomment}
             />
           ))}
         </Layout>

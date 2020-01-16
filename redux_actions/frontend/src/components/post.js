@@ -5,9 +5,12 @@ class Post extends Component {
   state = {  }
   render() { 
     const {
+      postid,
+      author,
       content,
       imageUrl,
       comments,
+      fn_insertcomment, //viene de Root.actions.ac_insertcomment
     } = this.props
 
     return ( 
@@ -43,13 +46,24 @@ class Post extends Component {
             type="text"
             className="form-control nooutline"
             placeholder="Escribe un comentario..."
+            onKeyPress={(e)=>{
+              if(e.key === "Enter"){
+                //Root.actions.ac_insertcomment
+                fn_insertcomment({
+                  //el contenido que queremos crear en el comentario
+                  postid: postid,
+                  author: author,
+                  content: this.commentTextRef.value
+                })
 
+                this.commentTextRef.value = ""
+              }
+            }}
           />
         </div>
-        
       </div>
-    )
-  }
-}
+    )//return
+  }//render
+}//Post
  
 export default Post

@@ -700,6 +700,73 @@ const mapDispatchToProps = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Root);
 ```
+# [configurando nuevos comentarios y nuevos posts](https://youtu.be/o_IsXVq8QBo?t=2182)
+```js
+//root.js
+...
+      //ac_getposts,      
+      ac_insertcomment,
+      ac_insertpost,
+    } = this.props
+
+    return (
+      <div>
+        <Layout>
+          <PostAdmin />
+          {posts.map(post => (
+            <Post 
+              key={post.id}
+              postid={post.id}
+              author="Guest"
+              content={post.content}
+              imageUrl={post.image}
+              comments={comments.filter(comment => comment.postid === post.id)}
+              fn_insertcomment={ac_insertcomment}
+            />
+          ))}
+        </Layout>
+      </div>
+    )//return
+
+//post.js
+import React, { Component } from 'react';
+
+class Post extends Component {
+  state = {  }
+  render() { 
+    const {
+      postid,
+      author,
+      content,
+      imageUrl,
+      comments,
+      fn_insertcomment, //viene de Root.actions.ac_insertcomment
+    } = this.props
+...
+  <div className="card-footer p-1">
+    <input
+      ref={ref=>this.commentTextRef = ref}
+      type="text"
+      className="form-control nooutline"
+      placeholder="Escribe un comentario..."
+      onKeyPress={(e)=>{
+        if(e.key === "Enter"){
+          //Root.actions.ac_insertcomment
+          fn_insertcomment({
+            //el contenido que queremos crear en el comentario
+            postid: postid,
+            author: author,
+            content: this.commentTextRef.value
+          })
+
+          this.commentTextRef.value = ""
+        }
+      }}
+    />
+  </div>
+...
+```
+
 
 ### TO-DO
 - Crear reducers con prefijo
