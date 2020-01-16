@@ -464,6 +464,7 @@ export default Post
 - ![](https://trello-attachments.s3.amazonaws.com/5e0fa0a19672dd8191827199/557x709/696262cbcd55f2dd691741085b276cba/image.png)
 
 ### [Instalación de Json server](https://youtu.be/o_IsXVq8QBo?t=930)
+- `npm i json-server `
 ```js
 //crear fichero src/dbjson/api.json
 {
@@ -494,6 +495,7 @@ export default Post
 ```
 - ![](https://trello-attachments.s3.amazonaws.com/5e0fa0a19672dd8191827199/696x346/1ab0c6ceb7f4ad9ba6df4a90b66a9b0f/image.png)
 
+### [Instalación de axios](https://youtu.be/o_IsXVq8QBo?t=1104)
 
 ### TO-DO
 - Crear reducers con prefijo
