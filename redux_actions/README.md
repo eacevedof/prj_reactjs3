@@ -838,6 +838,8 @@ return (
   </div>
 )//return
 ```
+## [Parte 3](https://youtu.be/Q_e42GPpSrE)
+
 
 ### Notas
 - Los reducers son como los getters y setters de la entidad que se encuentra en el estado
