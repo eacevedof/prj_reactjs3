@@ -1,16 +1,49 @@
 //postAdmin.js
 import React, {Component} from "react";
 
+function getAsyncBase64(file){
+  return new Promise((fn_resolve,fn_reject) => {
+    const reader = new FileReader()
+    reader.onload = ()=> fn_resolve(reader.result)
+    //reader.onerror = (error) => fn_reject(error) lo mismo
+    reader.onerror = fn_reject
+    reader.readAsDataURL(file)
+  })
+}
+
+
 class PostAdmin extends Component {
   state = {}
 
   render(){
+
+    const {fn_insertpost} = this.props
+
     return (
       <form
-        onSubmit={(e) => {
+        // pasa a async ya que hay una función que devuelve una promesa
+        onSubmit={ async (e) => {
           e.preventDefault()
           
-        }}
+          //debugger
+          let strimage = ""
+          if(this.imageRef.files.length>0){
+            const objimg = this.imageRef.files[0]
+            strimage = await getAsyncBase64(objimg)
+            console.log("strimage:",strimage)
+          }
+
+          //Root.actions.ac_insertpost
+          fn_insertpost({
+            id: Date.now(),
+            image: strimage,
+            content: this.textRef.value,
+          })
+
+          this.imageRef.value = ""
+          this.textRef.value = ""
+
+        }}//onSubmit
       >
         <div className="card border-light mb-3">
           <div className="card-header">Crear Publicación</div>

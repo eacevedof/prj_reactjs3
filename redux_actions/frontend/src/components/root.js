@@ -1,7 +1,6 @@
 //root.js
 import React, { Component } from 'react'
 import { connect } from "react-redux"
-import { action1, ac_getcomments } from "../redux/actions"
 import Layout from "./layout"
 import PostAdmin from "./postAdmin"
 import Post from "./post"
@@ -20,32 +19,13 @@ class Root extends Component {
   //como document.ready
   componentDidMount(){
     console.log("componentDidMount(): this.props",this.props)
-    //this.props.action1(777)
-    //api.comments.create({author: "eaf", content:"x y z"})
     //gracias a mapdispatchtoprops
     const {ac_getposts, ac_getcomments} = this.props
-
-    //fuerzo carga inicial para demo llamando a las acciones
-    ac_getposts([
-      {
-        "id":123,
-        "content": "hola"
-      }
-    ])
-
-    ac_getcomments([
-      {
-        "id": 1,
-        "postid": 123,
-        "author": "leo",
-        "content": "que tal"
-      }
-    ])
-
+    
   }//componentDidMount
 
   render(){
-    console.log("render(): this.props",this.props)
+    //console.log("Root.render.props",this.props)
     const {
       //esto lo proporciona mapstatetoprops y los reducers
       comments,
@@ -58,21 +38,24 @@ class Root extends Component {
       ac_insertpost,
     } = this.props
 
+    console.log("Root.posts:",posts)
     return (
       <div>
         <Layout>
-          <PostAdmin />
-          {posts.map(post => (
-            <Post 
-              key={post.id}
-              postid={post.id}
-              author="Guest"
-              content={post.content}
-              imageUrl={post.image}
-              comments={comments.filter(comment => comment.postid === post.id)}
-              fn_insertcomment={ac_insertcomment}
-            />
-          ))}
+          <PostAdmin fn_insertpost={ac_insertpost} />
+          {
+            posts.map(post => ( 
+              <Post 
+                key={post.id}
+                postid={post.id}
+                author="Guest"
+                content={post.content}
+                imageUrl={post.image}
+                comments={comments.filter(comment => comment.postid === post.id)}
+                fn_insertcomment={ac_insertcomment}
+              />
+            ))
+          }
         </Layout>
       </div>
     )//return
