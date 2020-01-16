@@ -496,6 +496,45 @@ export default Post
 - ![](https://trello-attachments.s3.amazonaws.com/5e0fa0a19672dd8191827199/696x346/1ab0c6ceb7f4ad9ba6df4a90b66a9b0f/image.png)
 
 ### [Instalación de axios](https://youtu.be/o_IsXVq8QBo?t=1104)
+- `npm i axios`
+```js
+//api.js
+import axios from "axios"
+
+const reqhelper = axios.create({
+  baseURL: "http://localhost:4000"
+})
+
+const objroutes = {
+  posts: {
+    get: () => reqhelper({
+      url: "posts",
+      method: "get",
+    }),
+
+    create: data => reqhelper({
+      url: "posts",
+      method: "post",
+      data,
+    })
+
+  },
+
+  comments: {
+    get: () => reqhelper({
+      url: "comments",
+      method: "get",
+    }),
+
+    create: data => reqhelper({
+      url: "comments",
+      method: "post",
+      data,
+    })  }
+}//objroutes
+
+export default objroutes
+```
 
 ### TO-DO
 - Crear reducers con prefijo
