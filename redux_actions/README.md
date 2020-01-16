@@ -893,6 +893,16 @@ const todo = () => {
 }
 
 //objstore.js
+//implementa el patron observador
+/*
+dispatch: ƒ, subscribe: ƒ, getState: ƒ, replaceReducer: ƒ, Symbol(observable): ƒ}
+dispatch: fn_action => {…}
+subscribe: ƒ subscribe(listener)
+getState: ƒ getState()
+replaceReducer: ƒ replaceReducer(nextReducer)
+Symbol(observable): ƒ observable()
+__proto__: Object
+*/
 // Ejemplo Middleware
 //defino el middleware
 //se ejecuta entre componentDidMount() y rd*.actionX
@@ -907,7 +917,6 @@ const fn_logger = (objstore) => (fn_next) => (fn_action) => {
 const objstore = createStore(fn_rdcombined, applyMiddleware(fn_logger))
 console.log("objstore.js objstore",objstore)
 export default objstore;
-
 ```
 
 
