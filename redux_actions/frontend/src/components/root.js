@@ -5,12 +5,14 @@ import { action1 } from "../redux/actions"
 import Layout from "./layout"
 import PostAdmin from "./postAdmin"
 import Post from "./post"
+import api from "../services/api"
 
 class Root extends Component {
   state = {}
 
   componentDidMount(){
-    this.props.action1(777)
+    //this.props.action1(777)
+    api.comments.create({author: "eaf", content:"x y z"})
   }
 
   render(){

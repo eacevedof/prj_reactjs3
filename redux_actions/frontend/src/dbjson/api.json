@@ -1,10 +1,18 @@
 {
-  "comments":[
+  "comments": [
     {
-      "id":1
+      "id": 1
+    },
+    {
+      "author": "eaf",
+      "content": "x y z",
+      "id": 2
+    },
+    {
+      "author": "eaf",
+      "content": "x y z",
+      "id": 3
     }
   ],
-  "posts": [
-    
-  ]
+  "posts": []
 }

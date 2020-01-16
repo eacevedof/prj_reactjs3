@@ -535,6 +535,38 @@ const objroutes = {
 
 export default objroutes
 ```
+- [probando api - axios en Root](https://youtu.be/o_IsXVq8QBo?t=1372)
+```js
+import api from "../services/api"
+
+class Root extends Component {
+  state = {}
+
+  componentDidMount(){
+    //this.props.action1(777)
+    api.comments.create({author: "eaf", content:"x y z"})
+  }
+
+//api.json
+{
+  "comments": [
+    {
+      "id": 1
+    },
+    {
+      "author": "eaf",
+      "content": "x y z",
+      "id": 2
+    },
+    {
+      "author": "eaf",
+      "content": "x y z",
+      "id": 3
+    }
+  ],
+  "posts": []
+}
+```
 
 ### TO-DO
 - Crear reducers con prefijo
