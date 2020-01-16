@@ -18,9 +18,13 @@ class Root extends Component {
 
   //como document.ready
   componentDidMount(){
-    console.log("componentDidMount(): this.props",this.props)
+    console.log("Root.componentDidMount(): this.props",this.props)
     //gracias a mapdispatchtoprops
     const {ac_getposts, ac_getcomments} = this.props
+
+    console.log("Root.componentDidMount() calling ac_get*()")
+    ac_getposts([])
+    ac_getcomments([])
     
   }//componentDidMount
 
@@ -38,7 +42,7 @@ class Root extends Component {
       ac_insertpost,
     } = this.props
 
-    console.log("Root.posts:",posts)
+    console.log("Root.render.posts:",posts)
     return (
       <div>
         <Layout>

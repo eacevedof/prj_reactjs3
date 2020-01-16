@@ -839,6 +839,76 @@ return (
 )//return
 ```
 ## [Parte 3](https://youtu.be/Q_e42GPpSrE)
+- Vamos a conectar las acciones para que funcionen de una manera asincrona
+- Las acciones se conectarán a la API con **redux-thunk**
+- Estamos usando "actions.js" **redux-actions** y este tipo de acciones no soporta código asincrono
+- Por lo tanto vamos a usar un thunk
+- `npm i redux-thunk`
+- [Explicación de como funciona redux-thunk](https://youtu.be/Q_e42GPpSrE?t=186)
+- [Configuración middleware logger](https://youtu.be/Q_e42GPpSrE?t=517)
+```js
+export const ac_insertpost = createAction("ac_insertpost")
+export const ac_getposts = createAction("ac_getposts")
+
+export const ac_insertcomment = createAction("ac_insertcomment")
+export const ac_getcomments = createAction("ac_getcomments")
+
+//estas acciones no son totalmente compatibles con redux-thunk
+
+//actualmente se tiene algo como esto
+const todo = () => {
+    return {
+        type: "",
+        payload: "",
+    }
+}
+
+//se necesita esto, que devuelva una función ya thunk usa middlewares
+// más sobre middlewares: https://www.youtube.com/watch?v=sVHCWrh1vYM
+const todo = () => {
+    return () => {
+
+    }
+}
+//cuando se llama a ac_getposts([]) se está emitiendo una acción,
+//esta tiene que pasar por los reducers, cada reducer recibe las acciones
+//y estos modifican el estado basandose en la acción
+//El trayecto es: punto inicial: cuando emites una acción, por ejemplo en 
+//componentDidMount().ac_getposts([])
+//Cuando la recibes en un reducer es el último punto
+//Entre estos dos puntos se puede inyectar una lógica y es lo que se entiende como middleware
+
+//como esta acción pasará por el middleware antes de llegar al reducer
+//el middleware espera que retorne una función que puede ser asincrona
+
+const todo = () => {
+  return async (fn_dispatch) => {
+    const d = await get_asyncdata()
+    //una vez que se tiene los datos entonces se puede llamar a la accion
+    fn_dispatch({
+      type: "",
+      payload: d
+    })
+  }
+}
+
+//objstore.js
+// Ejemplo Middleware
+//defino el middleware
+//se ejecuta entre componentDidMount() y rd*.actionX
+//todas las acciones emitidas pasaran por aqui 
+const fn_logger = (objstore) => (fn_next) => (fn_action) => {
+  console.log("objstore.middleware.fn_logger.action",fn_action)
+  fn_next(fn_action)
+  // objstore.dispatch({type:"aaa",payload:"b"})
+}
+
+//middleware o store inhances
+const objstore = createStore(fn_rdcombined, applyMiddleware(fn_logger))
+console.log("objstore.js objstore",objstore)
+export default objstore;
+
+```
 
 
 ### Notas
