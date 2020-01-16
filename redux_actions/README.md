@@ -463,5 +463,37 @@ export default Post
 ```
 - ![](https://trello-attachments.s3.amazonaws.com/5e0fa0a19672dd8191827199/557x709/696262cbcd55f2dd691741085b276cba/image.png)
 
+### [Instalación de Json server](https://youtu.be/o_IsXVq8QBo?t=930)
+```js
+//crear fichero src/dbjson/api.json
+{
+  "comments":[
+    {
+      "id":1
+    }
+  ],
+  "posts": [
+    
+  ]
+}
+
+//package.json
+  ... 
+  "json-server": "^0.15.1",
+  ...
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    //creo script de llamada: npm run api
+    "api": "json-server --watch ./src/dbjson/api.json --port 4000"
+  },
+
+//crear  src/services/api.js
+```
+- ![](https://trello-attachments.s3.amazonaws.com/5e0fa0a19672dd8191827199/696x346/1ab0c6ceb7f4ad9ba6df4a90b66a9b0f/image.png)
+
+
 ### TO-DO
 - Crear reducers con prefijo
