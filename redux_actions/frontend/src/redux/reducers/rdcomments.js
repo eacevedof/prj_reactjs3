@@ -1,13 +1,14 @@
-//reducer rdcomments.js
+//rdcomments.js
 import { handleActions } from "redux-actions"
-
+import { ac_insertcomment, ac_getcomments } from  "../actions"
 
 export default handleActions ({
-  action1: (state, objaction) => {
-    return [1,2,3]
+  [ac_insertcomment] : (state, action) => {
+    //action.payload va a tener el comment que queremos agregar
+    return [...state, action.payload]
   },
 
-  action2: (state, objaction)=>{
-    return [4,5,6]
+  [ac_getcomments] : (state, action) => {  
+    return action.payload
   }
-},[])//handleActions
+ },[])//handleActions

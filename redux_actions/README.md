@@ -567,6 +567,34 @@ class Root extends Component {
   "posts": []
 }
 ```
+### [reconfigurando las acciones y los reducers](https://youtu.be/o_IsXVq8QBo?t=1488)
+```js
+//definimos las acciones globales
+//actions.js
+import { createAction } from "redux-actions"
 
+export const ac_insertpost = createAction("ac_insertpost")
+export const ac_getposts = createAction("ac_getposts")
+
+export const ac_insertcomment = createAction("ac_insertcomment")
+export const ac_getcomments = createAction("ac_getcomments")
+
+//rdcomments.js
+import { handleActions } from "redux-actions"
+import { ac_insertcomment, ac_getcomments } from  "../actions"
+
+export default handleActions ({
+  [ac_insertcomment] : (state, action) => {
+    //action.payload va a tener el comment que queremos agregar
+    return [...state, action.payload]
+  },
+
+  [ac_getcomments] : (state, action) => {  
+    return action.payload
+  }
+ },[])//handleActions
+```
+- parece un poco repetición de código pero al ser un proyecto tan sencillo lo dejamos así
+- si esto creciera demasiado entonces habria que replantearse un cambio de estructura
 ### TO-DO
 - Crear reducers con prefijo
