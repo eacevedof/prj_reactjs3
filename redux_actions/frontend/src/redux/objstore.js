@@ -10,7 +10,7 @@ Symbol(observable): ƒ observable()
 __proto__: Object
 */
 import {createStore, combineReducers, applyMiddleware} from "redux";
-import thunk from "redux-thunk"
+import thunk from "redux-thunk" 
 //los reducers son funciones que setean el estado
 import fn_rdposts from "./reducers/rdposts"
 import fn_rdcomments from "./reducers/rdcomments"
@@ -22,17 +22,18 @@ const fn_rdcombined = combineReducers({
   fn_rdcomments,
 })
 
-
-//defino el middleware
-//se ejecuta entre componentDidMount() y rd*.actionX
-//todas las acciones emitidas pasaran por aqui 
-const fn_logger = (objstore) => (fn_next) => (fn_action) => {
-  console.log("objstore.middleware.fn_logger.action",fn_action)
-  fn_next(fn_action)
-  // objstore.dispatch({type:"aaa",payload:"b"})
-}
+console.log("objstore.js middlthunk: ",thunk)
+/** 
+objstore.js middlthunk:  ƒ (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return…
+*/
 
 //middleware o store inhances
-const objstore = createStore(fn_rdcombined, applyMiddleware(fn_logger))
+const objstore = createStore(fn_rdcombined, applyMiddleware(thunk))
 console.log("objstore.js objstore",objstore)
 export default objstore;

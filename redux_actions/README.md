@@ -918,7 +918,97 @@ const objstore = createStore(fn_rdcombined, applyMiddleware(fn_logger))
 console.log("objstore.js objstore",objstore)
 export default objstore;
 ```
+- [Configurando actions de modo asincrono y con services/api.js](https://youtu.be/Q_e42GPpSrE?t=910)
+```js
+//actions.js
+import { createAction } from "redux-actions"
+import api from "../services/api"
 
+export const ac_getposts_ok = createAction("ac_getposts_ok")
+export const ac_getposts_nok = createAction("ac_getposts_nok")
+export const ac_getposts = () => async fn_dispatch => {
+  try {
+    const response = await api.posts.get()
+    console.log("response.data",response.data)
+    fn_dispatch( ac_getposts_ok(response.data) )
+  
+  }
+  catch (err) {
+    fn_dispatch(ac_getposts_nok(err))
+  }
+}// ac_getposts
+
+
+export const ac_insertpost_ok = createAction("ac_insertpost_ok")
+export const ac_insertpost = (data) => async fn_dispatch => {
+  try {
+    const response = await api.posts.create(data)
+    console.log("response.data",response.data)
+    fn_dispatch( ac_insertpost_ok(response.data) )
+  
+  }
+  catch (err) {
+    fn_dispatch(ac_getposts_nok(err))
+  }
+}// ac_insertpost
+
+export const ac_getcomments_ok = createAction("ac_getcomments_ok")
+export const ac_getcomments_nok = createAction("ac_getcomments_nok")
+export const ac_getcomments = () => async fn_dispatch => {
+  try {
+    const response = await api.comments.get()
+    console.log("response.data",response.data)
+    fn_dispatch( ac_getcomments_ok(response.data) )
+  }
+  catch (err) {
+    fn_dispatch(ac_getcomments_nok(err))
+  }
+}// ac_getcomments
+
+
+export const ac_insertcomment_ok = createAction("ac_insertcomment_ok")
+export const ac_insertcomment = (data) => async fn_dispatch => {
+  try {
+    const response = await api.comments.create(data)
+    console.log("insertcomment response.data",response.data)
+    fn_dispatch( ac_insertcomment_ok(response.data) )  
+  }
+  catch (err) {
+    fn_dispatch(ac_getcomments_nok(err))
+  }
+}// ac_insertcomment
+
+//rdcomments.js
+import { handleActions } from "redux-actions"
+import { ac_insertcomment_ok, ac_getcomments_ok } from  "../actions"
+
+export default handleActions ({
+  [ac_insertcomment_ok] : (state, action) => {
+    //action.payload va a tener el comment que queremos agregar
+    return [...state, action.payload]
+  },
+
+  [ac_getcomments_ok] : (state, action) => {  
+    return action.payload
+  }
+ },[])//handleActions
+
+//rdposts.js
+import { handleActions } from "redux-actions"
+import { ac_insertpost_ok, ac_getposts_ok } from  "../actions"
+
+export default handleActions ({
+  [ac_insertpost_ok] : (state, action) => {
+    //action.payload va a tener el post que queremos agregar
+    console.log("insertpost: action.payload",action.payload)
+    return [...state, action.payload]
+  },
+
+  [ac_getposts_ok] : (state, action) => {  
+    return action.payload
+  }
+ },[])//handleActions
+```
 
 ### Notas
 - Los reducers son como los getters y setters de la entidad que se encuentra en el estado
