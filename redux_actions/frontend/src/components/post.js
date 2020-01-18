@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class Post extends Component {
   state = {  }
   render() { 
-    console.log("Post.render.props",this.props)
+    console.log("posts.js Post.render.props",this.props)
 
     const {
       postid,

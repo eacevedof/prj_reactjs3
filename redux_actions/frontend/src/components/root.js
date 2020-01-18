@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import Layout from "./layout"
 import PostAdmin from "./postAdmin"
 import Post from "./post"
-import api from "../services/api"
+//import api from "../services/api"
 import {
   ac_getposts as acgetposts,
   ac_insertpost as acinsertpost,
@@ -18,18 +18,19 @@ class Root extends Component {
 
   //como document.ready
   componentDidMount(){
-    console.log("Root.componentDidMount(): this.props",this.props)
+    console.log("root.js Root.componentDidMount(): this.props",this.props)
     //gracias a mapdispatchtoprops
     const {ac_getposts, ac_getcomments} = this.props
 
-    console.log("Root.componentDidMount() calling ac_get*()")
+    console.log("root.js Root.componentDidMount() calling async ac_getposts y ac_getcomments begin")
     ac_getposts([])
     ac_getcomments([])
+    console.log("root.js Root.componentDidMount() calling async ac_getposts y ac_getcomments end")
     
   }//componentDidMount
 
   render(){
-    //console.log("Root.render.props",this.props)
+    //console.log("root.js Root.render.props",this.props)
     const {
       //esto lo proporciona mapstatetoprops y los reducers
       comments,
@@ -42,7 +43,7 @@ class Root extends Component {
       ac_insertpost,
     } = this.props
 
-    console.log("Root.render.posts:",posts)
+    console.log("root.js Root.render: this.props",this.props)
     return (
       <div>
         <Layout>

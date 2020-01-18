@@ -10,7 +10,7 @@ Symbol(observable): ƒ observable()
 __proto__: Object
 */
 import {createStore, combineReducers, applyMiddleware} from "redux";
-import thunk from "redux-thunk" 
+import fn_thunk from "redux-thunk" 
 //los reducers son funciones que setean el estado
 import fn_rdposts from "./reducers/rdposts"
 import fn_rdcomments from "./reducers/rdcomments"
@@ -22,9 +22,9 @@ const fn_rdcombined = combineReducers({
   fn_rdcomments,
 })
 
-console.log("objstore.js middlthunk: ",thunk)
+console.log("objstore.js: thunk: ",fn_thunk)
 /** 
-objstore.js middlthunk:  ƒ (_ref) {
+objstore.js fn_thunk:  ƒ (_ref) {
     var dispatch = _ref.dispatch,
         getState = _ref.getState;
     return function (next) {
@@ -34,6 +34,6 @@ objstore.js middlthunk:  ƒ (_ref) {
 */
 
 //middleware o store inhances
-const objstore = createStore(fn_rdcombined, applyMiddleware(thunk))
-console.log("objstore.js objstore",objstore)
+const objstore = createStore(fn_rdcombined, applyMiddleware(fn_thunk))
+console.log("objstore.js: objstore",objstore)
 export default objstore;

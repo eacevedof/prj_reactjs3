@@ -928,8 +928,9 @@ export const ac_getposts_ok = createAction("ac_getposts_ok")
 export const ac_getposts_nok = createAction("ac_getposts_nok")
 export const ac_getposts = () => async fn_dispatch => {
   try {
+    console.log("ac_getposts fn_dispatch",typeof fn_dispatch, fn_dispatch)
     const response = await api.posts.get()
-    console.log("response.data",response.data)
+    console.log("ac_getposts response.data",response.data)
     fn_dispatch( ac_getposts_ok(response.data) )
   
   }
@@ -942,6 +943,7 @@ export const ac_getposts = () => async fn_dispatch => {
 export const ac_insertpost_ok = createAction("ac_insertpost_ok")
 export const ac_insertpost = (data) => async fn_dispatch => {
   try {
+    console.log("ac_insertpost fn_dispatch",typeof fn_dispatch, fn_dispatch)
     const response = await api.posts.create(data)
     console.log("response.data",response.data)
     fn_dispatch( ac_insertpost_ok(response.data) )
@@ -956,8 +958,9 @@ export const ac_getcomments_ok = createAction("ac_getcomments_ok")
 export const ac_getcomments_nok = createAction("ac_getcomments_nok")
 export const ac_getcomments = () => async fn_dispatch => {
   try {
+    console.log("ac_getcomments fn_dispatch",typeof fn_dispatch, fn_dispatch)
     const response = await api.comments.get()
-    console.log("response.data",response.data)
+    console.log("ac_getcomments response.data",response.data)
     fn_dispatch( ac_getcomments_ok(response.data) )
   }
   catch (err) {
@@ -970,7 +973,7 @@ export const ac_insertcomment_ok = createAction("ac_insertcomment_ok")
 export const ac_insertcomment = (data) => async fn_dispatch => {
   try {
     const response = await api.comments.create(data)
-    console.log("insertcomment response.data",response.data)
+    console.log("ac_insertcomment response.data",response.data)
     fn_dispatch( ac_insertcomment_ok(response.data) )  
   }
   catch (err) {
@@ -1000,7 +1003,7 @@ import { ac_insertpost_ok, ac_getposts_ok } from  "../actions"
 export default handleActions ({
   [ac_insertpost_ok] : (state, action) => {
     //action.payload va a tener el post que queremos agregar
-    console.log("insertpost: action.payload",action.payload)
+    console.log("ac_insertpost_ok: action.payload",action.payload)
     return [...state, action.payload]
   },
 
@@ -1008,6 +1011,92 @@ export default handleActions ({
     return action.payload
   }
  },[])//handleActions
+```
+### Flujo Primera carga
+```js
+objstore.js: thunk:  ƒ (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return…
+objstore.js:38 objstore.js: objstore {dispatch: ƒ, subscribe: ƒ, getState: ƒ, replaceReducer: ƒ, Symbol(observable): ƒ}
+index.js:16 index.js nodes: 
+  {$$typeof: Symbol(react.element), key: null, ref: null, props: {…}, type: ƒ, …}$$typeof: Symbol(react.element)type: ƒ Provider(_ref)key: nullref: nullprops: {store: {…}, children: {…}}_owner: null_store: {validated: false}_self: null_source: {fileName: "/Users/ioedu/projects/prj_reactjs3/redux_actions/frontend/src/index.js", lineNumber: 12}__proto__: Object  typeof nodes: object
+root.js:46 root.js Root.render: this.props 
+  {comments: Array(0), posts: Array(0), ac_getposts: ƒ, ac_getcomments: ƒ, ac_insertpost: ƒ, …}comments: []posts: []ac_getposts: ƒ ()ac_getcomments: ƒ ()ac_insertpost: ƒ ()ac_insertcomment: ƒ ()__proto__: Object
+layout.js:5 layout.js Layout props  
+  {children: Array(2)}children: Array(2)0: {$$typeof: Symbol(react.element), key: null, ref: null, props: {…}, type: ƒ, …}$$typeof: Symbol(react.element)type: class PostAdminkey: nullref: nullprops: {fn_insertpost: ƒ}_owner: FiberNode {tag: 1, key: null, stateNode: Root, elementType: ƒ, type: ƒ, …}_store: {validated: true}_self: Root {props: {…}, context: {…}, refs: {…}, updater: {…}, state: {…}, …}_source: {fileName: "/Users/ioedu/projects/prj_reactjs3/redux_actions/frontend/src/components/root.js", lineNumber: 50}__proto__: Object1: []length: 2__proto__: Array(0)__proto__: Object
+postAdmin.js:24 postAdmin.js props:  
+  {fn_insertpost: ƒ}fn_insertpost: ƒ ()__proto__: Object
+root.js:21 root.js Root.componentDidMount(): this.props 
+  {comments: Array(0), posts: Array(0), ac_getposts: ƒ, ac_getcomments: ƒ, ac_insertpost: ƒ, …}comments: []posts: []ac_getposts: ƒ ()ac_getcomments: ƒ ()ac_insertpost: ƒ ()ac_insertcomment: ƒ ()__proto__: Object
+root.js:25 root.js Root.componentDidMount() calling async ac_getposts y ac_getcomments begin
+actions.js:8 actions.js ac_getposts.async fn_dispatch: ƒ dispatch() {
+          return _dispatch.apply(void 0, arguments);
+        }
+root.js:28 root.js Root.componentDidMount() calling async ac_getposts y ac_getcomments end
+webpackHotDevClient.js:137 ./src/index.js
+  Line 17:1:  Unexpected whitespace before property render  no-whitespace-before-property
+printWarnings @ webpackHotDevClient.js:137
+handleWarnings @ webpackHotDevClient.js:142
+push../node_modules/react-dev-utils/webpackHotDevClient.js.connection.onmessage @ webpackHotDevClient.js:209
+actions.js:41 actions.js ac_getcomments response.data []length: 0__proto__: Array(0)
+rdcomments.js:13 rdcomments.js handleActions.ac_getcomments_ok.state []
+rdcomments.js:14 rdcomments.js handleActions.ac_getcomments_ok.action 
+  {type: "ac_getcomments_ok", payload: Array(0)}type: "ac_getcomments_ok"payload: []__proto__: Object
+root.js:46 root.js Root.render: this.props 
+  {comments: Array(0), posts: Array(0), ac_getposts: ƒ, ac_getcomments: ƒ, ac_insertpost: ƒ, …}comments: []posts: []ac_getposts: ƒ ()ac_getcomments: ƒ ()ac_insertpost: ƒ ()ac_insertcomment: ƒ ()__proto__: Object
+layout.js:5 layout.js Layout props  
+  {children: Array(2)}children: (2) [{…}, Array(0)]0: {$$typeof: Symbol(react.element), key: null, ref: null, props: {…}, type: ƒ, …}1: []length: 0__proto__: Array(0)length: 2__proto__: Array(0)__proto__: Object
+postAdmin.js:24 postAdmin.js props:  
+  {fn_insertpost: ƒ}
+actions.js:11 actions.js ac_getposts response.data (2) [{…}, {…}]
+actions.js:12 actions.js ac_getposts llamando al reducer handleActions.ac_getposts_ok
+rdposts.js:14 rdposts.js handleActions.ac_getposts_ok.state []
+rdposts.js:15 rdposts.js handleActions.ac_getposts_ok.action 
+  {type: "ac_getposts_ok", payload: Array(2)}type: "ac_getposts_ok"payload: Array(2)0: {id: 1579287381285, image: "data:image/jpeg;base64,/9j/4AAQSkZJ", content: ""}1: {id: 1579290352411, image: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD…44XzZ8nd/EwP973FFFcdBv2gzihyTUi8LyWA9qKK7XsLqf//Z", content: "Mi optimus"}length: 2__proto__: Array(0)__proto__: Object
+root.js:46 root.js Root.render: this.props 
+  {comments: Array(0), posts: Array(2), ac_getposts: ƒ, ac_getcomments: ƒ, ac_insertpost: ƒ, …}comments: []posts: (2) [{…}, {…}]0: {id: 1579287381285, image: "data:image/jpeg;base64,/9j/4AAQSkZJR", content: ""}1: {id: 1579290352411, image: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD…44XzZ8nd/EwP973FFFcdBv2gzihyTUi8LyWA9qKK7XsLqf//Z", content: "Mi optimus"}length: 2__proto__: Array(0)ac_getposts: ƒ ()ac_getcomments: ƒ ()ac_insertpost: ƒ ()ac_insertcomment: ƒ ()__proto__: Object
+layout.js:5 layout.js Layout props  
+  {children: Array(2)}children: (2) [{…}, Array(2)]0: {$$typeof: Symbol(react.element), key: null, ref: null, props: {…}, type: ƒ, …}1: (2) [{…}, {…}]length: 2__proto__: Array(0)__proto__: Object
+postAdmin.js:24 postAdmin.js props:  
+  {fn_insertpost: ƒ}
+post.js:7 posts.js Post.render.props 
+  {postid: 1579287381285, author: "Guest", content: "", imageUrl: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQ", comments: Array(0), …}
+post.js:7 posts.js Post.render.props 
+  {postid: 1579290352411, author: "Guest", content: "Mi optimus", imageUrl: "data:image/jpeg;base64,/9j/4AAQSk", comments: Array(0), …}
+```
+### Flujo insert post
+```js
+postAdmin.js getAsyncBase64: file File {name: "Captura de pantalla 2020-01-15 a las 21.38.21.png", lastModified: 1579120706857, lastModifiedDate: Wed Jan 15 2020 21:38:26 GMT+0100 (hora estándar de Europa central), webkitRelativePath: "", size: 1831663, …}
+actions.js ac_insertpost.fn_dispatch: data => async fn_dispatch => {
+  console.log("actions.js ac_insertpost.fn_dispatch:", ac_insertpost);
+
+  try {
+    const response = await _services_api__WEBPACK_IMPORTED_MODULE_1__["default"].posts.c…
+actions.js:26 actions.js ac_insertpost response.data {id: 1579355103968, image: "data:image/png;base64,+H8VLyYVGMY0kQAAAABJRU5ErkJggg==", content: "un nuevo post"}
+rdposts.js:8 rdposts.js handleActions.ac_insertpost_ok.state (2) [{…}, {…}]
+rdposts.js:9 rdposts.js handleActions.ac_insertpost_ok.action {type: "ac_insertpost_ok", payload: {…}}
+root.js:46 root.js Root.render: this.props {comments: Array(0), posts: Array(3), ac_getposts: ƒ, ac_getcomments: ƒ, ac_insertpost: ƒ, …}
+layout.js:5 layout.js Layout props  {children: Array(2)}
+postAdmin.js:24 postAdmin.js props:  {fn_insertpost: ƒ}
+post.js:7 posts.js Post.render.props {postid: 1579287381285, author: "Guest", content: "", imageUrl: "data:image/jpeg;base64,/9j/=", comments: Array(0), …}
+post.js:7 posts.js Post.render.props {postid: 1579290352411, author: "Guest", content: "Mi optimus", imageUrl: "data:image/jpeg;base64,/9j/", comments: Array(0), …}
+post.js:7 posts.js Post.render.props {postid: 1579355103968, author: "Guest", content: "un nuevo post", imageUrl: "data:image/png;base64,+", comments: Array(0), …}
+```
+### Flujo insert comment
+```js
+actions.js ac_insertcomment response.data {postid: 1579355103968, author: "Guest", content: "comentario aaa", id: 1}
+rdcomments.js:7 rdcomments.js handleActions.ac_insertcomment_ok.state []
+rdcomments.js:8 rdcomments.js handleActions.ac_insertcomment_ok.action {type: "ac_insertcomment_ok", payload: {…}}
+root.js:46 root.js Root.render: this.props {comments: Array(1), posts: Array(3), ac_getposts: ƒ, ac_getcomments: ƒ, ac_insertpost: ƒ, …}
+layout.js:5 layout.js Layout props  {children: Array(2)}
+postAdmin.js:24 postAdmin.js props:  {fn_insertpost: ƒ}
+post.js:7 posts.js Post.render.props {postid: 1579287381285, author: "Guest", content: "", imageUrl: "data:image/jpeg;base64,/9j", comments: Array(0), …}
+post.js:7 posts.js Post.render.props {postid: 1579290352411, author: "Guest", content: "Mi optimus", imageUrl: "data:image/jpeg;base64,/9", comments: Array(0), …}
+post.js:7 posts.js Post.render.props {postid: 1579355103968, author: "Guest", content: "un nuevo post", imageUrl: "data:image/png;base64,", comments: Array(1), …}
 ```
 
 ### Notas

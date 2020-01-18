@@ -13,4 +13,5 @@ const nodes = (
     <Root/>
   </Provider>
 )
+console.log("index.js nodes:",nodes," typeof nodes:",typeof nodes)
 ReactDOM .render(nodes, document.getElementById("root"))

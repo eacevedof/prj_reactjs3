@@ -2,6 +2,7 @@
 import React from "react"
 
 const Layout = (props)=>{
+  console.log("layout.js Layout props ",props)
   const { children } = props
   return (
     <>

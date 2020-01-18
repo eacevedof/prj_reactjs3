@@ -2,13 +2,18 @@
 import React, {Component} from "react";
 
 function getAsyncBase64(file){
-  return new Promise((fn_resolve,fn_reject) => {
+  
+  console.log("postAdmin.js getAsyncBase64: file",file)
+
+  const objpromise = new Promise((fn_resolve,fn_reject) => {
     const reader = new FileReader()
     reader.onload = ()=> fn_resolve(reader.result)
     //reader.onerror = (error) => fn_reject(error) lo mismo
     reader.onerror = fn_reject
     reader.readAsDataURL(file)
   })
+  console.log("postAdmin.js getAsyncBase64: objpromise",objpromise)
+  return objpromise
 }
 
 
@@ -16,7 +21,7 @@ class PostAdmin extends Component {
   state = {}
 
   render(){
-
+    console.log("postAdmin.js props: ",this.props)
     const {fn_insertpost} = this.props
 
     return (
@@ -30,7 +35,7 @@ class PostAdmin extends Component {
           if(this.imageRef.files.length>0){
             const objimg = this.imageRef.files[0]
             strimage = await getAsyncBase64(objimg)
-            console.log("strimage:",strimage)
+            console.log("postAdmin.js onsubmit strimage:",strimage)
           }
 
           //Root.actions.ac_insertpost
