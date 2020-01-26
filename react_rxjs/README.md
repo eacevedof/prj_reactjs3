@@ -308,7 +308,10 @@ function Rxjs1() {
     })
 
     console.log("unsubscribing from async$",subscriber)
-    return () => subscriber.unsubscribe()
+    return () => {
+      console.log("suscriber.unsubscribe")
+      return subscriber.unsubscribe()
+    }
 
   },[])//useEffect
 

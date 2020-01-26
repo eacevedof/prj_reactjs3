@@ -42,8 +42,11 @@ function Rxjs1() {
       set_results(array)
     })
 
-    console.log("unsubscribing from async$",subscriber)
-    return () => subscriber.unsubscribe()
+    console.log("returning unsubscriber")
+    return () => {
+      console.log("subscriber.unsubscribe")
+      return subscriber.unsubscribe()
+    }
 
   },[])//useEffect
 
