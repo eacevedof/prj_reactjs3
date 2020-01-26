@@ -14,13 +14,9 @@ const objsquared$ = objnumbers$.pipe(
 const hook_use_observable = (obs$, fn_setter) => {
   useEffect(()=>{
 
-    const objsuscription = obs$.subscribe( r => {
-      fn_setter(r)
-    })
+  
 
-    return () => objsuscription.unsubscribe()
-
-  },[obs$, fn_setter])//useEffect
+  },[])//useEffect
 
 }//hook_use_observable (hook)
 

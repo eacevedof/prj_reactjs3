@@ -137,8 +137,7 @@ export default Rxjs1
 ```js
 Failed to compile
 ./src/components/rxjs1.js
-  Line 15:3:  React Hook "useEffect" is called in function "hook_use_observable" which is neither a React function component or a custom React Hook function  react-hooks/rules-of-hooks
-
+Line 15:3:  React Hook "useEffect" is called in function "hook_use_observable" which is neither a React function component or a custom React Hook function  react-hooks/rules-of-hooks
 Search for the keywords to learn more about each error.
 This error occurred during the build time and cannot be dismissed
 ```
