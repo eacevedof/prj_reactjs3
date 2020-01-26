@@ -141,3 +141,4 @@ Line 15:3:  React Hook "useEffect" is called in function "hook_use_observable" w
 Search for the keywords to learn more about each error.
 This error occurred during the build time and cannot be dismissed
 ```
+### [Ejemplo con pokemon API](https://youtu.be/Urv82SGIu_0?t=770)

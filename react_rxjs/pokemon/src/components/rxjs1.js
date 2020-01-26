@@ -11,21 +11,24 @@ const objsquared$ = objnumbers$.pipe(
   map(n => n * n)
 )
 
-const hook_use_observable = (obs$, fn_setter) => {
-  useEffect(()=>{
-
-  
-
-  },[])//useEffect
-
-}//hook_use_observable (hook)
-
 
 function Rxjs1() {
 
   const [currnumber, set_currnumber] = useState(0)
 
-  hook_use_observable(objsquared$, set_currnumber)
+  useEffect(()=>{
+    console.log("useEffect subscribe")
+    const objsuscription = objsquared$.subscribe( r => {
+      console.log("observer called r:",r);
+      set_currnumber(r)
+      //this.objsuscription.unsubscribe()
+    })
+
+    console.log("calling objsuscription.unsubscribe")
+    return () => objsuscription.unsubscribe()
+
+  },[])//useEffect
+
 
   return (
     <>
