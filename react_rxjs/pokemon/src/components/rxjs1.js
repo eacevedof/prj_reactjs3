@@ -1,7 +1,7 @@
 //src/components/rxjs1.js
 import React, { useState, useEffect } from 'react';
 import {from, BehaviorSubject} from "rxjs"
-import {map, filter, delay, mergeMap, debounceTime, distinctUntilChanged, tap} from "rxjs/operators"
+import {filter, mergeMap, debounceTime, distinctUntilChanged, tap} from "rxjs/operators"
 
 const get_async_pokemon_name = async name => {
   console.log("get_async_pokemon_name.name",name)
@@ -12,18 +12,18 @@ const get_async_pokemon_name = async name => {
   return allpokemons.filter(pokemon => pokemon.name.includes(name))
 }
 
-//es observable y observer a la vez
-//tiene un estado inicial que es de tipo singleton, es decir, cada vez que modifica su estado
-//lo comparte a todos los observadores
-const behavsubj$ = new BehaviorSubject("")
+//al principio es un observable con estado inicial yyy
+//despues de inicializarse generará otro observable a partir de este estado
+//cada vez que haya un cambio en el input se forzará una emisión 
+const behavsubj$ = new BehaviorSubject("yyy")
 
 const async$ = behavsubj$.pipe(
-  tap("behavsubj$ ini str:"),
+  tap(str => console.log("ini behavsubj$ str:",str)),
   filter(str => str.length>0),
   debounceTime(750),
   distinctUntilChanged(),
   mergeMap(str => from(get_async_pokemon_name(str))),
-  tap("behavsubj$ end str:"),
+  tap(array => console.log("end behavsubj$ array:",array)),
 )
 //async$ es annonymousSubject
 console.log("type of async$:",typeof async$,async$)
@@ -37,8 +37,9 @@ function Rxjs1() {
 
   useEffect(()=>{
     console.log("useEffect() suscribing to async$")
-    const subscriber = async$.subscribe( r => {
-      set_results(r)
+    const subscriber = async$.subscribe( array => {
+      console.log("dentro de async$.subscribe")
+      set_results(array)
     })
 
     console.log("unsubscribing from async$",subscriber)
@@ -50,7 +51,7 @@ function Rxjs1() {
     const strnew = e.target.value
     set_search(strnew)
     //aqui actua como observador
-    console.log("llmamando a behavsubj$.next() con strnew",strnew)
+    console.log("on_change: llmamando a behavsubj$.next() con strnew",strnew)
     behavsubj$.next(strnew)
   }
 

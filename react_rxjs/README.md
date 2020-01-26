@@ -261,3 +261,117 @@ function Rxjs1() {
 
 export default Rxjs1
 ```
+- Código final comentado
+```js
+//src/components/rxjs1.js
+import React, { useState, useEffect } from 'react';
+import {from, BehaviorSubject} from "rxjs"
+import {filter, mergeMap, debounceTime, distinctUntilChanged, tap} from "rxjs/operators"
+
+const get_async_pokemon_name = async name => {
+  console.log("get_async_pokemon_name.name",name)
+  const objpromise = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=1000")//.then(result => result.json)
+  const objjson = await objpromise.json()
+  const allpokemons = objjson.results
+  //console.log("allpokemons:",allpokemons)
+  return allpokemons.filter(pokemon => pokemon.name.includes(name))
+}
+
+//al principio es un observable con estado inicial yyy
+//despues de inicializarse generará otro observable a partir de este estado
+//cada vez que haya un cambio en el input se forzará una emisión 
+const behavsubj$ = new BehaviorSubject("yyy")
+
+const async$ = behavsubj$.pipe(
+  tap(str => console.log("ini behavsubj$ str:",str)),
+  filter(str => str.length>0),
+  debounceTime(750),
+  distinctUntilChanged(),
+  mergeMap(str => from(get_async_pokemon_name(str))),
+  tap(array => console.log("end behavsubj$ array:",array)),
+)
+//async$ es annonymousSubject
+console.log("type of async$:",typeof async$,async$)
+console.log("behavsubj$ y async$ configurados...")
+
+function Rxjs1() {
+  console.log("starting Rxjs1()")
+  const [search, set_search] = useState("")
+  //set_results observará a async$
+  const [results, set_results] = useState([])
+
+  useEffect(()=>{
+    console.log("useEffect() suscribing to async$")
+    const subscriber = async$.subscribe( array => {
+      console.log("dentro de async$.subscribe")
+      set_results(array)
+    })
+
+    console.log("unsubscribing from async$",subscriber)
+    return () => subscriber.unsubscribe()
+
+  },[])//useEffect
+
+  const on_change = e => {
+    const strnew = e.target.value
+    set_search(strnew)
+    //aqui actua como observador
+    console.log("on_change: llmamando a behavsubj$.next() con strnew",strnew)
+    behavsubj$.next(strnew)
+  }
+
+  return (
+    <>
+      <input 
+        type="text" 
+        placeholder="Search" 
+        value={search} 
+        onChange={on_change}
+      />
+      <div>
+        {
+          results.map(pokemon => (
+            <div key={pokemon.name}>
+              {pokemon.name}
+            </div>
+          ))
+        }
+      </div>
+    </>
+  )
+
+}//function Rxjs1 (hook)
+
+export default Rxjs1
+```
+- Resultado:
+- Al cargar:
+```js
+HMR] Waiting for update signal from WDS...
+rxjs1.js:29 type of async$: object AnonymousSubject {_isScalar: false, observers: Array(0), closed: false, isStopped: false, hasError: false, …}
+rxjs1.js:30 behavsubj$ y async$ configurados...
+rxjs1.js:33 starting Rxjs1()
+rxjs1.js:39 useEffect() suscribing to async$
+rxjs1.js:20 ini behavsubj$ str: yyy
+rxjs1.js:45 unsubscribing from async$ Subscriber {closed: false, _parentOrParents: null, _subscriptions: Array(1), syncErrorValue: null, syncErrorThrown: false, …}
+rxjs1.js:7 get_async_pokemon_name.name yyy
+rxjs1.js:20 end behavsubj$ array: []
+rxjs1.js:41 dentro de async$.subscribe
+rxjs1.js:33 starting Rxjs1()
+```
+- Al buscar:
+```js
+on_change: llmamando a behavsubj$.next() con strnew p
+rxjs1.js:20 ini behavsubj$ str: p
+rxjs1.js:33 starting Rxjs1()
+rxjs1.js:54 on_change: llmamando a behavsubj$.next() con strnew po
+rxjs1.js:20 ini behavsubj$ str: po
+rxjs1.js:33 starting Rxjs1()
+rxjs1.js:54 on_change: llmamando a behavsubj$.next() con strnew pok
+rxjs1.js:20 ini behavsubj$ str: pok
+rxjs1.js:33 starting Rxjs1()
+rxjs1.js:7 get_async_pokemon_name.name pok
+rxjs1.js:20 end behavsubj$ array: [{…}]
+rxjs1.js:41 dentro de async$.subscribe
+rxjs1.js:33 starting Rxjs1()
+```
