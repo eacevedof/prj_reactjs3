@@ -51,7 +51,13 @@ function Rxjs1() {
         onChange={on_change}
       />
       <div>
-        {JSON.stringify(results, null, 2)}
+        {
+          results.map(pokemon => (
+            <div key={pokemon.name}>
+              {pokemon.name}
+            </div>
+          ))
+        }
       </div>
     </>
   )
