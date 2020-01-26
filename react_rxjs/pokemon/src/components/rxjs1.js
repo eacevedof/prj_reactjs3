@@ -1,18 +1,21 @@
 //src/components/rxjs1.js
 import React, { Component } from 'react';
 import {from} from "rxjs"
-import {map} from "rxjs/operators"
+import {map, filter} from "rxjs/operators"
 
-let objnumbers$ = from([1,2,3,4,5])
-let objsquared$ = objnumbers$.pipe(
+const objnumbers$ = from([1,2,3,4,5])
+
+const objsquared$ = objnumbers$.pipe(
+  filter(val => val >2),
   map(val => val * val)
 )
 
-//observer
-const fn_next = r => console.log("observer called","r:",r)
-
-//observer a la escucha del array de numeros
-objsquared$.subscribe(fn_next)
+const objsuscription = objsquared$.subscribe(r => {
+  console.log("observer called r:",r);
+  //esto no tira según el ejemplo: https://youtu.be/Urv82SGIu_0?t=306
+  //solo se imprimiria 9
+  //objsuscription.unsubscribe()
+})
 
 class Rxjs1 extends Component {
   state = {}
@@ -23,6 +26,7 @@ class Rxjs1 extends Component {
       </>
     )
   }
+
 }
 
 export default Rxjs1
