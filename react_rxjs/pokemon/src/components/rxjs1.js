@@ -1,14 +1,24 @@
 //src/components/rxjs1.js
 import React, { useState, useEffect } from 'react';
 import {from, BehaviorSubject} from "rxjs"
-import {map, filter, delay, mergeMap} from "rxjs/operators"
+import {map, filter, delay, mergeMap, debounceTime, distinctUntilChanged} from "rxjs/operators"
 
 const get_async_pokemon_name = async name => {
-  const {results: allPokemons} = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=1000").then(result => result.json)
-  return allPokemons.filter(pokemon => pokemon.name.includes(name))
+  console.log("get_async_pokemon_name.name",name)
+  const objpromise = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=1000")//.then(result => result.json)
+  const objjson = await objpromise.json()
+  const allpokemons = objjson.results
+  //console.log("allpokemons:",allpokemons)
+  return allpokemons.filter(pokemon => pokemon.name.includes(name))
 }
 
 const objsubject = new BehaviorSubject("")
+const result$ = objsubject.pipe(
+  filter(str => str.length>0),
+  debounceTime(750),
+  distinctUntilChanged(),
+  mergeMap(str => from(get_async_pokemon_name(str)))
+)
 
 function Rxjs1() {
   const [search, set_search] = useState("")
@@ -16,7 +26,7 @@ function Rxjs1() {
 
   useEffect(()=>{
     console.log("useEffect subscribe")
-    const objsuscription = objsubject.subscribe( r => {
+    const objsuscription = result$.subscribe( r => {
       console.log("observer called r:",r);
       set_results(r)
     })
