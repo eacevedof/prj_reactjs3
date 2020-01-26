@@ -1,5 +1,5 @@
 //src/components/rxjs1.js
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import {from} from "rxjs"
 import {map, filter, delay, mergeMap} from "rxjs/operators"
 
@@ -11,36 +11,29 @@ const objsquared$ = objnumbers$.pipe(
   map(n => n * n)
 )
 
-class Rxjs1 extends Component {
+function Rxjs1() {
 
-  constructor(){
-    super()
-    //aqui no vale setState pq el componente no esta renderizado
-    this.state = {currnumber:0}
-  }
+  const [currnumber, set_currnumber] = useState(0)
 
-  componentDidMount(){
-    console.log("componentDidMount","subscribe")
-    this.objsuscription = objsquared$.subscribe( r => {
+  useEffect(()=>{
+    console.log("useEffect subscribe")
+    const objsuscription = objsquared$.subscribe( r => {
       console.log("observer called r:",r);
-      this.setState({currnumber: r})
+      set_currnumber(r)
       //this.objsuscription.unsubscribe()
     })
-  }
 
-  componentWillUnmount(){
-    console.log("componentWillUnmount","unsubscribe")
-    this.objsuscription.unsubscribe()
-  }
+    console.log("calling objsuscription.unsubscribe")
+    return () => objsuscription.unsubscribe()
 
-  render(){
-    return (
-      <>
-        Current number is {this.state.currnumber}
-      </>
-    )
-  }
+  },[])//useEffect
 
-}//class Rxjs1 extends Component
+  return (
+    <>
+      Current number is {currnumber}
+    </>
+  )
+
+}//function Rxjs1 (hook)
 
 export default Rxjs1
