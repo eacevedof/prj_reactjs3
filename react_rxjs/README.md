@@ -5,13 +5,14 @@
 //src/components/rxjs1.js
 import React, { Component } from 'react';
 import {from} from "rxjs"
-import {map, filter} from "rxjs/operators"
+import {map, filter, delay, mergeMap} from "rxjs/operators"
 
 const objnumbers$ = from([1,2,3,4,5])
 
 const objsquared$ = objnumbers$.pipe(
-  filter(val => val >2),
-  map(val => val * val)
+  filter(n => n > 2),
+  mergeMap(n => from([n]).pipe(delay(1000 * n))),
+  map(n => n * n)
 )
 
 class Rxjs1 extends Component {
@@ -47,4 +48,8 @@ class Rxjs1 extends Component {
 }//class Rxjs1 extends Component
 
 export default Rxjs1
+```
+### [El ejemplo anterior con hooks](https://youtu.be/Urv82SGIu_0?t=579)
+```js
+
 ```
