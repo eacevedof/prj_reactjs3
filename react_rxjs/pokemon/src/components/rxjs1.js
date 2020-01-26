@@ -10,23 +10,36 @@ const objsquared$ = objnumbers$.pipe(
   map(val => val * val)
 )
 
-const objsuscription = objsquared$.subscribe(r => {
-  console.log("observer called r:",r);
-  //esto no tira según el ejemplo: https://youtu.be/Urv82SGIu_0?t=306
-  //solo se imprimiria 9
-  //objsuscription.unsubscribe()
-})
-
 class Rxjs1 extends Component {
-  state = {}
+
+  constructor(){
+    super()
+    //aqui no vale setState pq el componente no esta renderizado
+    this.state = {currnumber:0}
+  }
+
+  componentDidMount(){
+    console.log("componentDidMount","subscribe")
+    this.objsuscription = objsquared$.subscribe( r => {
+      console.log("observer called r:",r);
+      this.setState({currnumber: r})
+      //this.objsuscription.unsubscribe()
+    })
+  }
+
+  componentWillUnmount(){
+    console.log("componentWillUnmount","unsubscribe")
+    this.objsuscription.unsubscribe()
+  }
+
   render(){
     return (
       <>
-        Rxjs1
+        Current number is {this.state.currnumber}
       </>
     )
   }
 
-}
+}//class Rxjs1 extends Component
 
 export default Rxjs1
