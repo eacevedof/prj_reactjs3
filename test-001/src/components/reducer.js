@@ -1,7 +1,7 @@
 import { useReducer, useEffect } from "react"
 import "../css/reducer.css"
 
-const URL_PRODUCTS = "https://json.theframework.es/index.php?getfile=app_product.json"
+const URL_PRODUCTS = "https://json.theframework.es/index.php?getfile=app_productx.json"
 
 const ACTIONS = {
   FETCH_SUCCESS: "FETCH_SUCCESS",
@@ -76,14 +76,17 @@ function Reducer() {
 
   return (
     <>
-      <span className="status">
+      <div className="center">
+        <h2>Productos</h2>
+        <span className="status">
         Estado: {
           state.error ? 
             <h1 className="badge bg-danger">{state.error}</h1> 
           : 
             <h1 className="badge bg-success">Ok</h1>
         }
-      </span>
+        </span>
+      </div>
       <div className="grid mt-3">
         <div className="center">
             <ul className="list-group">
