@@ -17,15 +17,10 @@ const stateproducts = {
 const fn_reducer = (state, action) => {
   switch(action.type) {
     case ACTIONS.FETCH_SUCCESS:
-      return {
-        error: "",
-        loading: false,
-        products: action.payload,
-      }
     case ACTIONS.FETCH_ERROR:
       return {
-        error: "bad request",
-        loading: false,
+        error: action.error,
+        loading: action.loading,
         products: action.payload 
       }
     default:
@@ -42,12 +37,12 @@ function Reducer() {
       .then(response => response.json())
       .then(data => dispatch({
         type: ACTIONS.FETCH_SUCCESS,
-        error: false,
+        error: "",
         payload: data
       }))
-      .catch(error => dispatch({
+      .catch(ex => dispatch({
         type: ACTIONS.FETCH_ERROR,
-        error: true,
+        error: ex.message,
         payload: []
       }))
   }, [])
@@ -62,15 +57,15 @@ function Reducer() {
           const data = await response.json()
           dispatch({
             type: ACTIONS.FETCH_SUCCESS,
-            error: false,
+            error: "",
             payload: data
           })
 
         }
-        catch (error) {
-          console.log(error)
+        catch (ex) {
+          console.log(ex.message)
           dispatch({
-            error: true,
+            error: ex.message,
             type: ACTIONS.FETCH_ERROR,
             payload: []
           })          
@@ -81,9 +76,16 @@ function Reducer() {
 
   return (
     <>
-      <div className="grid">
+      <span className="status">
+        Estado: {
+          state.error ? 
+            <h1 className="badge bg-danger">{state.error}</h1> 
+          : 
+            <h1 className="badge bg-success">Ok</h1>
+        }
+      </span>
+      <div className="grid mt-3">
         <div className="center">
-            {state.error && <h1 className="badge bg-danger">Error</h1>}
             <ul className="list-group">
             {state.loading ? 
               "Loading" 
