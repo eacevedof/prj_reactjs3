@@ -1,0 +1,16 @@
+.grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+  
+    gap: 4px;
+    grid-auto-flow: column;
+}
+
+.center {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 4px;
+    align-items: center;
+    justify-items: center;
+}
